@@ -9,7 +9,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //added comment for team activity for Jordan (take 2)
+        //added comment for team activity for Jordan
         // MB - Comment Added for Team Activity
     }
 }
