@@ -11,5 +11,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //added comment for team activity for Jordan
         // MB - Comment Added for Team Activity - My Edit
+        // MB - Comment Added for Team Activity- edited by JJ
     }
 }
