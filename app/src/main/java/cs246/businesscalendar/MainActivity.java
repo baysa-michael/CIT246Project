@@ -10,5 +10,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //added comment for team activity for Jordan (take 2)
+        // MB - Comment Added for Team Activity
     }
 }
