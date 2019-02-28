@@ -11,6 +11,9 @@ public class Appointment {
     private String appointmentLocation;
     private String attendees;
 
+    public Appointment() {
+    }
+
     public Appointment(Date appointmentDate, boolean isAllDay, String appointmentTitle, String appointmentDescription, String appointmentLocation, String attendees) {
         this.appointmentDate = appointmentDate;
         this.isAllDay = isAllDay;
