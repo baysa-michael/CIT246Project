@@ -12,6 +12,12 @@ public class Appointment {
     private String attendees;
 
     public Appointment() {
+        this.appointmentDate = new Date(2019, 2 , 22);
+        this.isAllDay = true;
+        this.appointmentTitle = "";
+        this.appointmentDescription = "";
+        this.appointmentLocation = "";
+        this.attendees = "";
     }
 
     public Appointment(Date appointmentDate, boolean isAllDay, String appointmentTitle, String appointmentDescription, String appointmentLocation, String attendees) {
