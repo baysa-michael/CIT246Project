@@ -1,8 +1,8 @@
 package cs246.businesscalendar;
 
-import org.junit.Test;
+import org.junit.*;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
