@@ -187,7 +187,7 @@
         android:id="@+id/createaccountCreateAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/large_margin"
+        android:layout_marginBottom="@dimen/general_margin"
         android:text="Button"
         android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toTopOf="@+id/createaccountCancelButton"
