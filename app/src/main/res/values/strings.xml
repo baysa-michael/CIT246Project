@@ -1,3 +1,9 @@
+<!-- Global Entities to reference --><!DOCTYPE resources [<!ENTITY appname "My Biz Cal">]>
+
+
 <resources>
-    <string name="app_name">Business Calendar</string>
+    <string name="app_name">&appname;</string>
+    <string name="welcome_string">Welcome to \n&appname;</string>
+    <string name="create_account_button">Create New Account</string>
+    <string name="login_button">Login</string>
 </resources>
