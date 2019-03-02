@@ -2,8 +2,33 @@
 
 
 <resources>
+    <!-- GENERAL PURPOSE STRINGS -->
     <string name="app_name">&appname;</string>
-    <string name="welcome_string">Welcome to \n&appname;</string>
+
+
+    <!-- TITLE SCREEN STRINGS -->
+    <string name="welcome_title">WELCOME TO \n&appname;</string>
+    <string name="create_account_title">CREATE NEW ACCOUNT</string>
+
+
+    <!-- LABEL STRINGS -->
+    <string name="username_label">USERNAME:</string>
+    <string name="password_label">PASSWORD:</string>
+    <string name="display_name_label">DISPLAY NAME:</string>
+    <string name="email_label">E-MAIL:</string>
+    <string name="phone_label">PHONE:</string>
+    <string name="time_zone_label">TIME ZONE:</string>
+    <string name="time_1224H_label">12 / 24 H:</string>
+
+
+    <!-- MESSAGES STRINGS -->
+    <string name="password_requirements_text">14-Character Minimum</string>
+    <string name="username_requirements_text">Unique Username</string>
+
+
+    <!-- BUTTON STRINGS -->
     <string name="create_account_button">Create New Account</string>
     <string name="login_button">Login</string>
+    <string name="confirm_button">Confirm</string>
+    <string name="cancel_button">Cancel</string>
 </resources>
