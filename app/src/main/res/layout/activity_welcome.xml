@@ -7,37 +7,40 @@
     tools:context=".Welcome">
 
     <TextView
-        android:id="@+id/welcomeWelcomeMessage"
+        android:id="@+id/welcomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/large_margin"
         android:text="@string/welcome_string"
         android:textAlignment="center"
-        android:textSize="36sp"
+        android:textSize="@dimen/screen_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <Button
         android:id="@+id/welcomeLoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="@dimen/large_margin"
         android:text="@string/login_button"
-        android:textSize="18sp"
+        android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toTopOf="@+id/welcomeCreateAccountButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <Button
         android:id="@+id/welcomeCreateAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="@dimen/large_margin"
         android:text="@string/create_account_button"
-        android:textSize="18sp"
+        android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </android.support.constraint.ConstraintLayout>
