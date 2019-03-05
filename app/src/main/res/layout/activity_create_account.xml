@@ -32,13 +32,16 @@
     <EditText
         android:id="@+id/createaccountUsernameEdit"
         android:hint="@string/username_hint"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="49dp"
+        android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBaseline_toBaselineOf="@+id/createaccountUsernameLabel"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
+        />
 
     <TextView
         android:id="@+id/createaccountPasswordLabel"
@@ -50,18 +53,20 @@
         android:layout_marginStart="@dimen/general_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createaccountUsernameLabel"
-     />
+        />
 
     <EditText
         android:id="@+id/createaccountPasswordEdit"
         android:hint="@string/password_hint"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBaseline_toBaselineOf="@+id/createaccountPasswordLabel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
         />
 
     <TextView
@@ -78,15 +83,16 @@
 
     <EditText
         android:id="@+id/createaccountDisplayNameEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:ems="10"
         android:hint="@string/display_name_hint"
         android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_height="wrap_content"
-        android:layout_width="200dp"
-        android:layout_marginTop="@dimen/general_margin"
-        android:layout_marginEnd="@dimen/general_margin"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/createaccountDisplayNameLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
         />
 
     <TextView
@@ -107,11 +113,13 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:layout_height="wrap_content"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
+        android:layout_marginStart="@dimen/general_margin"
         android:layout_marginTop="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/createaccountEmailLabel"
+        app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
         />
 
     <TextView
@@ -132,11 +140,13 @@
         android:ems="10"
         android:inputType="phone"
         android:layout_height="wrap_content"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/createaccountPhoneLabel"
+        app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
         />
 
     <TextView
@@ -154,11 +164,13 @@
     <Spinner
         android:id="@+id/createaccountTimeZoneSpinner"
         android:layout_height="wrap_content"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/createaccountTimeZoneLabel"
+        app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
         />
 
     <TextView
@@ -176,11 +188,13 @@
     <Spinner
         android:id="@+id/createaccount1224HSpinner"
         android:layout_height="wrap_content"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/createaccount1224HLabel"
+        app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
         />
 
 

@@ -25,7 +25,6 @@
     <string name="password_requirements_text">Password must be a minimum of 14 characters</string>
 
 
-
     <!-- HINT STRINGS -->
     <string name="username_hint">Enter Username</string>
     <string name="password_hint">Enter Password</string>
@@ -39,4 +38,41 @@
     <string name="login_button">Login</string>
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
+
+
+    <!-- STRING ARRAYS -->
+    <string-array name="time_zone">
+        <item>Greenwich Mean (GMT + 0)</item>
+        <item>Universal Coordinated (GMT + 0)</item>
+        <item>European Central (GMT + 1)</item>
+        <item>Eastern European (GMT + 2)</item>
+        <item>(Arabic) Egypt Standard (GMT + 2)</item>
+        <item>Eastern African (GMT + 3)</item>
+        <item>Near East (GMT + 4)</item>
+        <item>Pakistan Lahore (GMT + 5)</item>
+        <item>Bangladesh Standard (GMT + 6)</item>
+        <item>Vietnam Standard (GMT + 7)</item>
+        <item>China Taiwan (GMT + 8)</item>
+        <item>Japan Standard (GMT + 9)</item>
+        <item>Australia Eastern (GMT + 10)</item>
+        <item>Solomon Standard (GMT + 11)</item>
+        <item>New Zealand Standard (GMT + 12)</item>
+        <item>Midway Islands (GMT - 11)</item>
+        <item>Hawaii Standard (GMT - 10)</item>
+        <item>Alaska Standard (GMT - 9)</item>
+        <item>Pacific Standard (GMT - 8)</item>
+        <item>Phoenix Standard (GMT - 7)</item>
+        <item>Mountain Standard (GMT - 7)</item>
+        <item>Central Standard (GMT - 6)</item>
+        <item>Eastern Standard (GMT - 5)</item>
+        <item>Indiana Eastern Standard (GMT - 5)</item>
+        <item>Puerto Rico/US Virgin Islands (GMT - 4)</item>
+        <item>Argentina Standard (GMT - 3)</item>
+        <item>Brazil Eastern (GMT - 3)</item>
+        <item>Central African (GMT - 1)</item>
+    </string-array>
+    <string-array name="time_1224">
+        <item>12H</item>
+        <item>24H</item>
+    </string-array>
 </resources>
