@@ -11,10 +11,6 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        //added comment for team activity for Jordan
-        // MB - Comment Added for Team Activity - My Edit
-        // MB - Comment Added for Team Activity- edited by JJ
-        // TS = comment for Team Activity
     }
 
     /**
@@ -23,6 +19,16 @@ public class Welcome extends AppCompatActivity {
     public void clickCreateNewAccount(View view) {
         // Create and Start Intent to Create New Account Activity
         Intent thisIntent = new Intent(this, CreateAccount.class);
+
+        startActivity(thisIntent);
+    }
+
+    /**
+     * Called when user taps on Login Button
+     */
+    public void clickLogin(View view) {
+        // Create and Start Intent to Create New Account Activity
+        Intent thisIntent = new Intent(this, Login.class);
 
         startActivity(thisIntent);
     }

@@ -9,6 +9,8 @@
     <!-- TITLE SCREEN STRINGS -->
     <string name="welcome_title">WELCOME TO \n&appname;</string>
     <string name="create_account_title">CREATE NEW ACCOUNT</string>
+    <string name="login_title">LOG IN</string>
+    <string name="landing_title">WELCOME</string>
 
 
     <!-- LABEL STRINGS -->
@@ -38,6 +40,9 @@
     <string name="login_button">Login</string>
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
+    <string name="schedule_button">Schedule</string>
+    <string name="tasks_button">Tasks</string>
+    <string name="goals_button">Goals</string>
 
 
     <!-- STRING ARRAYS -->

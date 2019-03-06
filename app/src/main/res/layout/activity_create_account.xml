@@ -33,7 +33,7 @@
         android:id="@+id/createaccountUsernameEdit"
         android:hint="@string/username_hint"
         android:layout_width="0dp"
-        android:layout_height="49dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         android:ems="10"
@@ -200,9 +200,11 @@
 
     <Button
         android:id="@+id/createaccountConfirmButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
         android:text="@string/confirm_button"
         android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toTopOf="@+id/createaccountCancelButton"
@@ -212,9 +214,11 @@
 
     <Button
         android:id="@+id/createaccountCancelButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/large_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
         android:text="@string/cancel_button"
         android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toBottomOf="parent"

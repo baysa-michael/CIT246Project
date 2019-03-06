@@ -4,44 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Welcome">
+    tools:context=".Landing">
 
     <TextView
-        android:id="@+id/welcomeTitle"
+        android:id="@+id/landingTitle"
+        android:text="@string/landing_title"
+        android:textSize="@dimen/screen_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_margin"
-        android:text="@string/welcome_title"
-        android:textAlignment="center"
-        android:textSize="@dimen/screen_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <Button
-        android:id="@+id/welcomeLoginButton"
-        android:onClick="clickLogin"
+        android:id="@+id/landingScheduleButton"
+        android:text="@string/schedule_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/large_margin"
-        android:text="@string/login_button"
-        android:textSize="@dimen/button_text"
-        app:layout_constraintBottom_toTopOf="@+id/welcomeCreateAccountButton"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/general_margin"
+        app:layout_constraintTop_toBottomOf="@+id/landingTitle"
         app:layout_constraintStart_toStartOf="parent"
         />
 
     <Button
-        android:id="@+id/welcomeCreateAccountButton"
-        android:onClick="clickCreateNewAccount"
+        android:id="@+id/landingTasksButton"
+        android:text="@string/tasks_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/large_margin"
-        android:text="@string/create_account_button"
-        android:textSize="@dimen/button_text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landingTitle"
+        app:layout_constraintStart_toStartOf="@+id/landingScheduleButton"
+        app:layout_constraintEnd_toEndOf="@+id/landingGoalsButton"
+        />
+
+    <Button
+        android:id="@+id/landingGoalsButton"
+        android:text="@string/goals_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/general_margin"
+        app:layout_constraintTop_toBottomOf="@+id/landingTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        />
 
 </android.support.constraint.ConstraintLayout>
