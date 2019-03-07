@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
         startActivity(thisIntent);
     }
 
-    public void clickCancel(View view) {
+    public void clickLoginCancel(View view) {
         finish();
     }
 }

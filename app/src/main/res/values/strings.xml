@@ -43,9 +43,11 @@
     <string name="schedule_button">Schedule</string>
     <string name="tasks_button">Tasks</string>
     <string name="goals_button">Goals</string>
+    <string name="logout_button">Logout</string>
 
 
     <!-- SHARED PREFERENCE STRINGS -->
+    <string name="general_shared_preferences">cs246.businesscalendar.general_shared_preferences</string>
 
 
     <!-- STRING ARRAYS -->

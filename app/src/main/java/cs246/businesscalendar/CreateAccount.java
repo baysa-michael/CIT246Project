@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class CreateAccount extends AppCompatActivity {
-    Spinner timeZoneSpinner;
-    Spinner time1224HSpinner;
+    private Spinner timeZoneSpinner;
+    private Spinner time1224HSpinner;
+    private String username;
+    private String displayName;
+    private String email;
+    private String phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,25 +44,50 @@ public class CreateAccount extends AppCompatActivity {
         time1224HSpinner.setAdapter(time1224HAdapter);
     }
 
-    public void saveUsername(View view) {
-        SharedPreferences myPreferences = this.getSharedPreferences(,Context.MODE_PRIVATE);
+    public void clickCreateAccount(View view) {
+        // Gather form information into Edit Texts and place into Strings
+        EditText usernameInput = findViewById(R.id.createaccountUsernameEdit);
+        username = usernameInput.getText().toString();
+        EditText displayNameInput = findViewById(R.id.createaccountDisplayNameEdit);
+        displayName = displayNameInput.getText().toString();
+        EditText emailInput = findViewById(R.id.createaccountEmailEdit);
+        email = emailInput.getText().toString();
+        EditText phoneInput = findViewById(R.id.createaccountPhoneEdit);
+        phone = phoneInput.getText().toString();
 
+
+        // Create Genearal Shared Preferences File
+        SharedPreferences myPreferences = this
+                .getSharedPreferences(getString(R.string.general_shared_preferences)
+                        ,Context.MODE_PRIVATE);
+
+        // Create an Editor
         SharedPreferences.Editor myEditor = myPreferences.edit();
 
-        myEditor.putString("savedUsername", username);
+        // Add Key-Value Pairs
+        myEditor.putString("username", username);
+        myEditor.putString("display_name", displayName);
+        myEditor.putString("e-mail", email);
+        myEditor.putString("phone", phone);
 
+        // Confirm
         myEditor.apply();
 
-        Context myContext = DisplayUsername.this;
-        CharSequence myText = "Username Saved";
+
+        // Display a toast indicating the save was successful
+        Context myContext = this;
+        CharSequence myText = "User Preferences Saved";
         int duration = Toast.LENGTH_SHORT;
         Toast toastSuccessful = Toast.makeText(myContext, myText, duration);
         toastSuccessful.setGravity(Gravity.CENTER, 0, 0);
         toastSuccessful.show();
 
-        Intent intent = new Intent(this, Login.class);
+        // Finish Create New Account Activity
+        finish();
+    }
 
-        startActivity(intent);
+    public void clickCreateAccountCancel(View view) {
+        finish();
     }
 
 }

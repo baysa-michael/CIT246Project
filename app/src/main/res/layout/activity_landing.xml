@@ -49,13 +49,14 @@
         />
 
     <Button
-        android:id="@+id/createaccountConfirmButton"
+        android:id="@+id/landingLogoutButton"
+        android:onClick="clickLandingLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/general_margin"
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
-        android:text="@string/confirm_button"
+        android:text="@string/logout_button"
         android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
