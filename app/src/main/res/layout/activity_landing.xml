@@ -48,4 +48,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <Button
+        android:id="@+id/createaccountConfirmButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:text="@string/confirm_button"
+        android:textSize="@dimen/button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 </android.support.constraint.ConstraintLayout>
