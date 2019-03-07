@@ -70,21 +70,23 @@
         />
 
     <Button
-        android:id="@+id/createaccountConfirmButton"
+        android:id="@+id/loginLoginButton"
+        android:onClick="clickLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/large_margin"
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
-        android:text="@string/confirm_button"
+        android:text="@string/login_button"
         android:textSize="@dimen/button_text"
-        app:layout_constraintBottom_toTopOf="@+id/createaccountCancelButton"
+        app:layout_constraintBottom_toTopOf="@+id/loginCancelButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
 
     <Button
-        android:id="@+id/createaccountCancelButton"
+        android:id="@+id/loginCancelButton"
+        android:onClick="clickCancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/extra_large_margin"

@@ -20,4 +20,8 @@ public class Login extends AppCompatActivity {
 
         startActivity(thisIntent);
     }
+
+    public void clickCancel(View view) {
+        finish();
+    }
 }
