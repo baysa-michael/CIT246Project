@@ -43,6 +43,10 @@
     <string name="schedule_button">Schedule</string>
     <string name="tasks_button">Tasks</string>
     <string name="goals_button">Goals</string>
+    <string name="add_new_button">Add New</string>
+    <string name="calendar_view_button">Calendar View</string>
+    <string name="search_button">Search</string>
+    <string name="settings_button">Settings</string>
     <string name="logout_button">Logout</string>
 
 
