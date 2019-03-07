@@ -20,6 +20,7 @@
 
     <Button
         android:id="@+id/landingScheduleButton"
+        android:onClick="clickLogout"
         android:text="@string/schedule_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
 
     <Button
         android:id="@+id/landingTasksButton"
+        android:onClick="clickLogout"
         android:text="@string/tasks_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +42,7 @@
 
     <Button
         android:id="@+id/landingGoalsButton"
+        android:onClick="clickLogout"
         android:text="@string/goals_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,7 +68,7 @@
 
     <Button
         android:id="@+id/landingAddNewButton"
-        android:onClick="clickLandingLogout"
+        android:onClick="clickAddNew"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/small_margin"
@@ -80,7 +83,7 @@
 
     <Button
         android:id="@+id/landingCalendarViewButton"
-        android:onClick="clickLandingLogout"
+        android:onClick="clickLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/small_margin"
@@ -95,7 +98,7 @@
 
     <Button
         android:id="@+id/landingSearchButton"
-        android:onClick="clickLandingLogout"
+        android:onClick="clickLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/small_margin"
@@ -110,7 +113,7 @@
 
     <Button
         android:id="@+id/landingSettingsButton"
-        android:onClick="clickLandingLogout"
+        android:onClick="clickLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/small_margin"
@@ -125,7 +128,7 @@
 
     <Button
         android:id="@+id/landingLogoutButton"
-        android:onClick="clickLandingLogout"
+        android:onClick="clickLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/small_margin"

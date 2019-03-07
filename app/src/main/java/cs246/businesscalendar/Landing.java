@@ -1,6 +1,7 @@
 package cs246.businesscalendar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +25,13 @@ public class Landing extends AppCompatActivity {
         welcomeText.setText(welcome);
     }
 
-    public void clickLandingLogout(View view) {
+    public void clickAddNew(View view) {
+        Intent thisIntent = new Intent(this, AddNew.class);
+
+        startActivity(thisIntent);
+    }
+
+    public void clickLogout(View view) {
         finish();
     }
 }

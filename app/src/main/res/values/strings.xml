@@ -11,6 +11,7 @@
     <string name="create_account_title">CREATE NEW ACCOUNT</string>
     <string name="login_title">LOG IN</string>
     <string name="landing_title">WELCOME</string>
+    <string name="add_new_title">ADD NEW</string>
 
 
     <!-- LABEL STRINGS -->
@@ -48,6 +49,11 @@
     <string name="search_button">Search</string>
     <string name="settings_button">Settings</string>
     <string name="logout_button">Logout</string>
+    <string name="add_new_appointment_button">Add New Appointment</string>
+    <string name="add_new_task_button">Add New Task</string>
+    <string name="add_new_goal_button">Add New Goal</string>
+    <string name="join_group_button">Join Group</string>
+    <string name="create_group_button">Create Group</string>
 
 
     <!-- SHARED PREFERENCE STRINGS -->
