@@ -45,6 +45,9 @@
     <string name="goals_button">Goals</string>
 
 
+    <!-- SHARED PREFERENCE STRINGS -->
+
+
     <!-- STRING ARRAYS -->
     <string-array name="time_zone">
         <item>Greenwich Mean (GMT + 0)</item>
