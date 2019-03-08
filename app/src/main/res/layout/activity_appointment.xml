@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/appointmentTitle"
-        android:text="@string/appointment_title"
-        android:textSize="@dimen/screen_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_margin"
+        android:text="@string/appointment_title"
+        android:textSize="@dimen/screen_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,54 +22,68 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/general_margin"
+        android:background="@drawable/general_border"
+        app:layout_constraintBottom_toTopOf="@+id/appointmentConfirmButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appointmentTitle"
-        app:layout_constraintBottom_toTopOf="@+id/appointmentConfirmButton"
         >
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            >
 
             <TextView
                 android:id="@+id/appointmentDateLabel"
                 android:text="@string/date_label"
-                android:textSize="@dimen/label_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
-                android:layout_marginStart="@dimen/general_margin"
+                android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
             <EditText
                 android:id="@+id/appointmentDateEdit"
-                android:inputType="date"
+                android:ems="10"
+                android:hint="@string/date_hint"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/small_margin"
+                app:layout_constraintBaseline_toBaselineOf="@+id/appointmentDateLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/appointmentTitleLabel"
+                android:text="@string/title_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                app:layout_constraintBaseline_toBaselineOf="@+id/appointmentDateLabel"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginTop="@dimen/general_margin"
+                android:textSize="@dimen/label_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentDateLabel"
                 />
 
 
 
-        </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+
     </ScrollView>
 
     <Button
         android:id="@+id/appointmentConfirmButton"
-        android:onClick="clickCancel"
-        android:text="@string/confirm_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/general_margin"
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:onClick="clickCancel"
+        android:text="@string/confirm_button"
         android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toTopOf="@+id/appointmentCancelButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,16 +92,17 @@
 
     <Button
         android:id="@+id/appointmentCancelButton"
-        android:onClick="clickCancel"
-        android:text="@string/cancel_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/general_margin"
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:onClick="clickCancel"
+        android:text="@string/cancel_button"
         android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
+
 </android.support.constraint.ConstraintLayout>
