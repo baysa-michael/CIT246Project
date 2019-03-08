@@ -12,6 +12,7 @@
     <string name="login_title">LOG IN</string>
     <string name="landing_title">WELCOME</string>
     <string name="add_new_title">ADD NEW</string>
+    <string name="appointment_title">APPOINTMENT</string>
 
 
     <!-- LABEL STRINGS -->
@@ -22,6 +23,7 @@
     <string name="phone_label">PHONE:</string>
     <string name="time_zone_label">TIME ZONE:</string>
     <string name="time_1224H_label">12 / 24 H:</string>
+    <string name="date_label">DATE:</string>
 
 
     <!-- MESSAGES STRINGS -->

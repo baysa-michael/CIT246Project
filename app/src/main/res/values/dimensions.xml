@@ -4,6 +4,7 @@
     <dimen name="screen_title">36sp</dimen>
     <dimen name="button_text">24sp</dimen>
     <dimen name="label_text">22sp</dimen>
+    <dimen name="small_label_text">12sp</dimen>
 
     <!-- Margin & Spacing Resources -->
     <dimen name="extra_large_margin">84dp</dimen>

@@ -20,7 +20,7 @@
 
     <Button
         android:id="@+id/addnewAppointmentButton"
-        android:onClick="clickCancel"
+        android:onClick="clickAddNewAppointment"
         android:text="@string/add_new_appointment_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
