@@ -39,6 +39,7 @@
     <string name="reminder_label">REMINDER:</string>
     <string name="month_of_label">MONTH OF:</string>
     <string name="week_of_label">WEEK OF:</string>
+    <string name="calendar_date_label">CALENDAR DATE:</string>
 
 
     <!-- MESSAGES STRINGS -->
