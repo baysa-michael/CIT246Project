@@ -11,12 +11,20 @@ import cs246.businesscalendar.view_presenter.create_account.CreateAccount;
 import cs246.businesscalendar.view_presenter.login.Login;
 
 
-public class Welcome extends AppCompatActivity {
+public class Welcome extends AppCompatActivity implements WelcomeContract {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+    }
+
+    public void showCreateAccount() {
+
+    }
+
+    public void showLogin() {
+
     }
 
     /**
