@@ -1,9 +1,13 @@
-package cs246.businesscalendar;
+package cs246.businesscalendar.view_presenter.add_new;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import cs246.businesscalendar.R;
+
+import cs246.businesscalendar.view_presenter.appointment.Appointment;
 
 public class AddNew extends AppCompatActivity {
 

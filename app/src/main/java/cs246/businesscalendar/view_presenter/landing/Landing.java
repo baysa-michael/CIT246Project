@@ -1,4 +1,4 @@
-package cs246.businesscalendar;
+package cs246.businesscalendar.view_presenter.landing;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import cs246.businesscalendar.R;
+
+import cs246.businesscalendar.view_presenter.select_view.SelectView;
+import cs246.businesscalendar.view_presenter.add_new.AddNew;
 
 public class Landing extends AppCompatActivity {
 

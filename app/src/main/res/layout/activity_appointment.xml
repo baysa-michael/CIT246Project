@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Appointment">
+    tools:context=".view_presenter.appointment.Appointment">
 
     <TextView
         android:id="@+id/appointmentTitle"
@@ -46,6 +46,7 @@
 
             <EditText
                 android:id="@+id/appointmentDateEdit"
+                tools:ignore="Autofill"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/small_margin"
@@ -78,6 +79,7 @@
 
             <EditText
                 android:id="@+id/appointmentStartTimeEdit"
+                tools:ignore="Autofill"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/small_margin"
@@ -100,6 +102,7 @@
 
             <EditText
                 android:id="@+id/appointmentEndTimeEdit"
+                tools:ignore="Autofill"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/small_margin"
@@ -122,6 +125,7 @@
 
             <EditText
                 android:id="@+id/appointmentTitleEdit"
+                tools:ignore="Autofill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
@@ -147,6 +151,7 @@
 
             <EditText
                 android:id="@+id/appointmentDescriptionEdit"
+                tools:ignore="Autofill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
@@ -173,6 +178,7 @@
 
             <EditText
                 android:id="@+id/appointmentLocationEdit"
+                tools:ignore="Autofill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
@@ -198,6 +204,7 @@
 
             <EditText
                 android:id="@+id/appointmentAttendeesEdit"
+                tools:ignore="Autofill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"

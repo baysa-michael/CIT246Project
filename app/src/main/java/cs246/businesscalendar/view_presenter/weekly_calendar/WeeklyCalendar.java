@@ -1,15 +1,17 @@
-package cs246.businesscalendar;
+package cs246.businesscalendar.view_presenter.weekly_calendar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class DailyCalendar extends AppCompatActivity {
+import cs246.businesscalendar.R;
+
+public class WeeklyCalendar extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_calendar);
+        setContentView(R.layout.activity_weekly_calendar);
     }
 
     public void clickReturn(View view) {

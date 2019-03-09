@@ -1,8 +1,10 @@
-package cs246.businesscalendar;
+package cs246.businesscalendar.view_presenter.appointment;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import cs246.businesscalendar.R;
 
 public class Appointment extends AppCompatActivity {
 

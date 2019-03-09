@@ -9,24 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DailyCalendar"></activity>
-        <activity android:name=".WeeklyCalendar" />
-        <activity android:name=".MonthlyCalendar" />
-        <activity android:name=".SelectView" />
-        <activity android:name=".Appointment" />
-        <activity android:name=".AddNew" />
-        <activity android:name=".Landing" />
-        <activity android:name=".Login">
+        <activity android:name=".view_presenter.daily_calendar.DailyCalendar" />
+        <activity android:name=".view_presenter.weekly_calendar.WeeklyCalendar" />
+        <activity android:name=".view_presenter.monthly_calendar.MonthlyCalendar" />
+        <activity android:name=".view_presenter.select_view.SelectView" />
+        <activity android:name=".view_presenter.appointment.Appointment" />
+        <activity android:name=".view_presenter.add_new.AddNew" />
+        <activity android:name=".view_presenter.landing.Landing" />
+        <activity android:name=".view_presenter.login.Login">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".view_presenter.welcome.Welcome" />
         </activity>
-        <activity android:name=".CreateAccount">
+        <activity android:name=".view_presenter.create_account.CreateAccount">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".view_presenter.welcome.Welcome" />
         </activity>
-        <activity android:name=".Welcome">
+        <activity android:name=".view_presenter.welcome.Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

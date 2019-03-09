@@ -1,7 +1,6 @@
-package cs246.businesscalendar;
+package cs246.businesscalendar.view_presenter.create_account;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import cs246.businesscalendar.R;
 
 public class CreateAccount extends AppCompatActivity {
     private Spinner timeZoneSpinner;
@@ -26,8 +27,8 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
         // Set Drop-down Lists
-        timeZoneSpinner = (Spinner) findViewById(R.id.createaccountTimeZoneSpinner);
-        time1224HSpinner = (Spinner) findViewById(R.id.createaccount1224HSpinner);
+        timeZoneSpinner = findViewById(R.id.createaccountTimeZoneSpinner);
+        time1224HSpinner = findViewById(R.id.createaccount1224HSpinner);
 
         // Create Array Adapters
         ArrayAdapter<CharSequence> timeZoneAdapter = ArrayAdapter.createFromResource(this,

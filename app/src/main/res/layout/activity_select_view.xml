@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectView">
+    tools:context=".view_presenter.select_view.SelectView">
 
     <TextView
         android:id="@+id/selectviewTitle"
@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/selectviewWeeklyViewButton"
-        android:onClick="clickCancel"
+        android:onClick="clickWeekly"
         android:text="@string/weekly_view_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/selectviewDailyViewButton"
-        android:onClick="clickCancel"
+        android:onClick="clickDaily"
         android:text="@string/daily_view_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

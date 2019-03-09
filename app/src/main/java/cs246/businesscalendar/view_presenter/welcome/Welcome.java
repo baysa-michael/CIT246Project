@@ -1,9 +1,15 @@
-package cs246.businesscalendar;
+package cs246.businesscalendar.view_presenter.welcome;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import cs246.businesscalendar.R;
+
+import cs246.businesscalendar.view_presenter.create_account.CreateAccount;
+import cs246.businesscalendar.view_presenter.login.Login;
+
 
 public class Welcome extends AppCompatActivity {
 
