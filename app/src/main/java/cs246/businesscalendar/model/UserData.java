@@ -1,29 +1,46 @@
 package cs246.businesscalendar.model;
 
+import org.joda.time.DateTimeZone;
+
+import java.util.List;
+
 public class UserData {
     private String username;
     private String hashedPassword;
-    private String displayId;
+    private String displayName;
     private String email;
-    private String businessPhone;
-    private String ampm;
+    private String phone;
+    private DateTimeZone defaultTimeZone;
+    private boolean is24H;
+    private List<Appointment> userAppointments;
 
     public UserData() {
         this.username = "";
         this.hashedPassword = "";
-        this.displayId = "";
+        this.displayName = "";
         this.email = "";
-        this.businessPhone = "";
-        this.ampm = "";
+        this.phone = "";
+        this.defaultTimeZone = DateTimeZone.UTC;
+        this.is24H = false;
+        this.userAppointments = null;
     }
 
-    public UserData(String username, String hashedPassword, String displayId, String email, String businessPhone, String ampm) {
+    public UserData(String username,
+                    String hashedPassword,
+                    String displayName,
+                    String email,
+                    String phone,
+                    DateTimeZone defaultTimeZone,
+                    boolean is24H,
+                    List<Appointment> userAppointments) {
         this.username = username;
         this.hashedPassword = hashedPassword;
-        this.displayId = displayId;
+        this.displayName = displayName;
         this.email = email;
-        this.businessPhone = businessPhone;
-        this.ampm = ampm;
+        this.phone = phone;
+        this.defaultTimeZone = defaultTimeZone;
+        this.is24H = is24H;
+        this.userAppointments = userAppointments;
     }
 
     public String getUsername() {
@@ -42,12 +59,12 @@ public class UserData {
         this.hashedPassword = hashedPassword;
     }
 
-    public String getDisplayId() {
-        return displayId;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setDisplayId(String displayId) {
-        this.displayId = displayId;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public String getEmail() {
@@ -58,19 +75,35 @@ public class UserData {
         this.email = email;
     }
 
-    public String getBusinessPhone() {
-        return businessPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setBusinessPhone(String businessPhone) {
-        this.businessPhone = businessPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getAmpm() {
-        return ampm;
+    public DateTimeZone getDefaultTimeZone() {
+        return defaultTimeZone;
     }
 
-    public void setAmpm(String ampm) {
-        this.ampm = ampm;
+    public void setDefaultTimeZone(DateTimeZone defaultTimeZone) {
+        this.defaultTimeZone = defaultTimeZone;
+    }
+
+    public boolean isIs24H() {
+        return is24H;
+    }
+
+    public void setIs24H(boolean is24H) {
+        this.is24H = is24H;
+    }
+
+    public List<Appointment> getUserAppointments() {
+        return userAppointments;
+    }
+
+    public void setUserAppointments(List<Appointment> userAppointments) {
+        this.userAppointments = userAppointments;
     }
 }
