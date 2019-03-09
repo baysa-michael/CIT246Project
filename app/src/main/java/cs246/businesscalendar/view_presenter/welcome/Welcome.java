@@ -11,7 +11,7 @@ import cs246.businesscalendar.view_presenter.create_account.CreateAccount;
 import cs246.businesscalendar.view_presenter.login.Login;
 
 
-public class Welcome extends AppCompatActivity implements WelcomeContract {
+public class Welcome extends AppCompatActivity implements WelcomeContract.View {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

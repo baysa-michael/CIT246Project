@@ -1,6 +1,6 @@
 package cs246.businesscalendar.view_presenter.add_new;
 
-public class AddNewPresenter implements AddNewContract {
+public class AddNewPresenter implements AddNewContract.Presenter {
     public void handleClickAddNewAppointment() {
 
     }
