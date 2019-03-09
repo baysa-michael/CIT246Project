@@ -20,7 +20,7 @@
 
     <Button
         android:id="@+id/selectviewMonthlyViewButton"
-        android:onClick="clickCancel"
+        android:onClick="clickMonthly"
         android:text="@string/monthly_view_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

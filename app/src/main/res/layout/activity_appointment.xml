@@ -27,161 +27,149 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appointmentTitle"
-        >
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/appointmentDateLabel"
-                android:text="@string/date_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/date_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/appointmentDateEdit"
-                android:inputType="date"
-                android:ems="10"
-                android:hint="@string/date_hint"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/small_margin"
+                android:ems="10"
+                android:hint="@string/date_hint"
+                android:inputType="date"
                 app:layout_constraintBaseline_toBaselineOf="@+id/appointmentDateLabel"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <CheckBox
                 android:id="@+id/appointmentAllDayCheckbox"
-                android:text="@string/all_day_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/general_margin"
                 android:layout_marginEnd="@dimen/small_margin"
+                android:text="@string/all_day_label"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/appointmentDateEdit"
-                />
+                app:layout_constraintTop_toBottomOf="@id/appointmentDateEdit" />
 
             <TextView
                 android:id="@+id/appointmentStartTimeLabel"
-                android:text="@string/start_time_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/start_time_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentAllDayCheckbox"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/appointmentAllDayCheckbox" />
 
             <EditText
                 android:id="@+id/appointmentStartTimeEdit"
-                android:inputType="time"
-                android:ems="10"
-                android:hint="@string/start_time_hint"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/small_margin"
+                android:ems="10"
+                android:hint="@string/start_time_hint"
+                android:inputType="time"
                 app:layout_constraintBaseline_toBaselineOf="@+id/appointmentStartTimeLabel"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/appointmentEndTimeLabel"
-                android:text="@string/end_time_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/end_time_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentStartTimeLabel"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/appointmentStartTimeLabel" />
 
             <EditText
                 android:id="@+id/appointmentEndTimeEdit"
-                android:inputType="time"
-                android:ems="10"
-                android:hint="@string/end_time_hint"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/small_margin"
+                android:ems="10"
+                android:hint="@string/end_time_hint"
+                android:inputType="time"
                 app:layout_constraintBaseline_toBaselineOf="@+id/appointmentEndTimeLabel"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/appointmentTitleLabel"
-                android:text="@string/title_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/title_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentEndTimeLabel"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/appointmentEndTimeLabel" />
 
             <EditText
                 android:id="@+id/appointmentTitleEdit"
-                android:inputType="text"
-                android:ems="10"
-                android:hint="@string/title_hint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginEnd="@dimen/small_margin"
-                app:layout_constraintStart_toStartOf="parent"
+                android:ems="10"
+                android:hint="@string/title_hint"
+                android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentTitleLabel"
-                />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentTitleLabel" />
 
             <TextView
                 android:id="@+id/appointmentDescriptionLabel"
-                android:text="@string/description_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/description_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentTitleEdit"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/appointmentTitleEdit" />
 
             <EditText
                 android:id="@+id/appointmentDescriptionEdit"
-                android:inputType="textMultiLine"
-                android:minLines="3"
-                android:maxLines="3"
-                android:ems="10"
-                android:hint="@string/description_hint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginEnd="@dimen/small_margin"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentDescriptionLabel"
-                app:layout_constraintStart_toStartOf="parent"
+                android:ems="10"
+                android:hint="@string/description_hint"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:minLines="3"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentDescriptionLabel" />
 
             <TextView
                 android:id="@+id/appointmentLocationLabel"
-                android:text="@string/location_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/location_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentDescriptionEdit"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/appointmentDescriptionEdit" />
 
             <EditText
                 android:id="@+id/appointmentLocationEdit"
@@ -199,80 +187,73 @@
 
             <TextView
                 android:id="@+id/appointmentAttendeesLabel"
-                android:text="@string/attendees_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/attendees_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentLocationEdit"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/appointmentLocationEdit" />
 
             <EditText
                 android:id="@+id/appointmentAttendeesEdit"
-                android:inputType="textMultiLine"
-                android:minLines="3"
-                android:maxLines="3"
-                android:ems="10"
-                android:hint="@string/attendees_hint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginEnd="@dimen/small_margin"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesLabel"
-                app:layout_constraintStart_toStartOf="parent"
+                android:ems="10"
+                android:hint="@string/attendees_hint"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:minLines="3"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesLabel" />
 
             <TextView
                 android:id="@+id/appointmentRecurrenceLabel"
-                android:text="@string/recurrence_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/recurrence_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesEdit"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesEdit" />
 
             <Spinner
                 android:id="@+id/appointmentRecurrenceSpinner"
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/general_margin"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/general_margin"
+                android:layout_marginTop="@dimen/general_margin"
                 android:layout_marginEnd="@dimen/general_margin"
-                app:layout_constraintStart_toEndOf="@+id/appointmentRecurrenceLabel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesEdit"
-                />
+                app:layout_constraintStart_toEndOf="@+id/appointmentRecurrenceLabel"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesEdit" />
 
             <TextView
                 android:id="@+id/appointmentReminderLabel"
-                android:text="@string/reminder_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/general_margin"
+                android:text="@string/reminder_label"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentRecurrenceLabel"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/appointmentRecurrenceLabel" />
 
             <Spinner
                 android:id="@+id/appointmentReminderSpinner"
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/general_margin"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/general_margin"
+                android:layout_marginTop="@dimen/general_margin"
                 android:layout_marginEnd="@dimen/general_margin"
-                app:layout_constraintStart_toEndOf="@+id/appointmentReminderLabel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentRecurrenceLabel"
-                />
-
+                app:layout_constraintStart_toEndOf="@+id/appointmentReminderLabel"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentRecurrenceLabel" />
 
 
         </android.support.constraint.ConstraintLayout>

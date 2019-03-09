@@ -14,6 +14,9 @@
     <string name="add_new_title">ADD NEW</string>
     <string name="appointment_title">APPOINTMENT</string>
     <string name="select_view_title">SELECT VIEW</string>
+    <string name="monthly_view_title">MONTHLY VIEW</string>
+    <string name="weekly_view_title">WEEKLY VIEW</string>
+    <string name="daily_view_title">DAILY VIEW</string>
 
 
     <!-- LABEL STRINGS -->
@@ -34,6 +37,9 @@
     <string name="attendees_label">ATTENDEES:</string>
     <string name="recurrence_label">RECURRENCE:</string>
     <string name="reminder_label">REMINDER:</string>
+    <string name="month_of_label">MONTH OF:</string>
+    <string name="week_of_label">WEEK OF:</string>
+
 
 
     <!-- MESSAGES STRINGS -->
@@ -76,6 +82,8 @@
     <string name="monthly_view_button">Monthly View</string>
     <string name="weekly_view_button">Weekly View</string>
     <string name="daily_view_button">Daily View</string>
+    <string name="return_button">Return</string>
+    <string name="add_button">Add</string>
 
 
     <!-- SHARED PREFERENCE STRINGS -->
