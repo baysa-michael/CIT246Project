@@ -7,7 +7,7 @@ public interface WelcomeContract {
     }
 
     interface Presenter {
-        void handleClickCreateAccountButton();
-        void handleClickLoginButton();
+        void handleClickCreateAccount();
+        void handleClickLogin();
     }
 }

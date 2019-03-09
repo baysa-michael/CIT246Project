@@ -1,11 +1,11 @@
 package cs246.businesscalendar.view_presenter.welcome;
 
 public class WelcomePresenter implements WelcomeContract {
-    public void handleClickCreateAccountButton() {
+    public void handleClickCreateAccount() {
 
     }
 
-    public void handleClickLoginButton() {
+    public void handleClickLogin() {
 
     }
 }

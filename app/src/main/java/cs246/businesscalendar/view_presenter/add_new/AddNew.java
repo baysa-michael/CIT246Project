@@ -17,6 +17,30 @@ public class AddNew extends AppCompatActivity {
         setContentView(R.layout.activity_add_new);
     }
 
+    public void showAddNewAppointment() {
+
+    }
+
+    public void showAddNewTask() {
+
+    }
+
+    public void showAddNewGoal() {
+
+    }
+
+    public void showJoinGroup() {
+
+    }
+
+    public void showCreateGroup() {
+
+    }
+
+    public void showCancel() {
+
+    }
+
     public void clickAddNewAppointment(View view) {
         Intent thisIntent = new Intent(this, Appointment.class);
 
