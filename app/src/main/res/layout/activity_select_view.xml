@@ -19,7 +19,7 @@
         />
 
     <Button
-        android:id="@+id/selectviewMonthlyViewButton"
+        android:id="@+id/selectviewweeklyviewButton"
         android:onClick="clickMonthly"
         android:text="@string/monthly_view_button"
         android:layout_width="0dp"
@@ -43,7 +43,7 @@
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         android:textSize="@dimen/button_text"
-        app:layout_constraintTop_toBottomOf="@+id/selectviewMonthlyViewButton"
+        app:layout_constraintTop_toBottomOf="@+id/selectviewweeklyviewButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
