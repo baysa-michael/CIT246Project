@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/monthlyviewTitle"
-        android:text="@string/select_view_title"
+        android:text="@string/monthly_view_title"
         android:textSize="@dimen/screen_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +29,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/monthlyviewTitle"
         />
+
+    <EditText
+        android:id="@+id/monthlyviewDateEdit"
+        android:inputType="date"
+        android:textAlignment="center"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:ems="10"
+        android:hint="@string/date_hint"
+        app:layout_constraintBaseline_toBaselineOf="@+id/monthlyviewMonthOf"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ********** REPLACE WITH RECYCLER VIEW ********* -->
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/monthlyviewCalendar"
