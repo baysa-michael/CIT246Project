@@ -31,6 +31,12 @@ public class Landing extends AppCompatActivity {
         startActivity(thisIntent);
     }
 
+    public void clickSelectView(View view) {
+        Intent thisIntent = new Intent(this, SelectView.class);
+
+        startActivity(thisIntent);
+    }
+
     public void clickLogout(View view) {
         finish();
     }

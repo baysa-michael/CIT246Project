@@ -13,6 +13,7 @@
     <string name="landing_title">WELCOME</string>
     <string name="add_new_title">ADD NEW</string>
     <string name="appointment_title">APPOINTMENT</string>
+    <string name="select_view_title">SELECT VIEW</string>
 
 
     <!-- LABEL STRINGS -->
@@ -63,7 +64,7 @@
     <string name="tasks_button">Tasks</string>
     <string name="goals_button">Goals</string>
     <string name="add_new_button">Add New</string>
-    <string name="calendar_view_button">Calendar View</string>
+    <string name="view_button">Select View</string>
     <string name="search_button">Search</string>
     <string name="settings_button">Settings</string>
     <string name="logout_button">Logout</string>
@@ -72,6 +73,9 @@
     <string name="add_new_goal_button">Add New Goal</string>
     <string name="join_group_button">Join Group</string>
     <string name="create_group_button">Create Group</string>
+    <string name="monthly_view_button">Monthly View</string>
+    <string name="weekly_view_button">Weekly View</string>
+    <string name="daily_view_button">Daily View</string>
 
 
     <!-- SHARED PREFERENCE STRINGS -->

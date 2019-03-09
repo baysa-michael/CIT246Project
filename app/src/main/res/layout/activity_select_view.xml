@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectView">
+
+    <TextView
+        android:id="@+id/selectviewTitle"
+        android:text="@string/select_view_title"
+        android:textSize="@dimen/screen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/selectviewMonthlyViewButton"
+        android:onClick="clickCancel"
+        android:text="@string/monthly_view_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:textSize="@dimen/button_text"
+        app:layout_constraintTop_toBottomOf="@+id/selectviewTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/selectviewWeeklyViewButton"
+        android:onClick="clickCancel"
+        android:text="@string/weekly_view_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:textSize="@dimen/button_text"
+        app:layout_constraintTop_toBottomOf="@+id/selectviewMonthlyViewButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/selectviewDailyViewButton"
+        android:onClick="clickCancel"
+        android:text="@string/daily_view_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:textSize="@dimen/button_text"
+        app:layout_constraintTop_toBottomOf="@+id/selectviewWeeklyViewButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/selectviewCancelButton"
+        android:onClick="clickCancel"
+        android:text="@string/cancel_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/extra_large_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:textSize="@dimen/button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+</android.support.constraint.ConstraintLayout>
