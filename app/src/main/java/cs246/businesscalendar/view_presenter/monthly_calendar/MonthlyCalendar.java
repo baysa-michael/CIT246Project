@@ -6,12 +6,20 @@ import android.view.View;
 
 import cs246.businesscalendar.R;
 
-public class MonthlyCalendar extends AppCompatActivity {
+public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalendarContract.View {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly_calendar);
+    }
+
+    public void showReturn() {
+
+    }
+
+    public void showAdd() {
+
     }
 
     public void clickReturn(View view) {

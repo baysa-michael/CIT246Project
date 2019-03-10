@@ -1,6 +1,6 @@
-package cs246.businesscalendar.view_presenter.monthly_calendar;
+package cs246.businesscalendar.view_presenter.weekly_calendar;
 
-public interface MonthlyCalendarContract {
+public interface WeeklyCalendarContract {
     interface View {
         void showReturn();
         void showAdd();
