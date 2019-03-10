@@ -5,31 +5,12 @@ public class AppointmentPresenter implements AppointmentContract.Presenter {
 
     }
 
-    public void handleClickTasks() {
+    public void handleClickConfirm() {
 
     }
 
-    public void handleClickGoals() {
+    public void handleClickCancel() {
 
     }
 
-    public void handleClickAddNew() {
-
-    }
-
-    public void handleClickSelectView() {
-
-    }
-
-    public void handleClickSearch() {
-
-    }
-
-    public void handleClickSettings() {
-
-    }
-
-    public void handleClickLogout() {
-
-    }
 }

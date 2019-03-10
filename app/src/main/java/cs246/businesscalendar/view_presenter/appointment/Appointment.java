@@ -14,35 +14,11 @@ public class Appointment extends AppCompatActivity implements AppointmentContrac
         setContentView(R.layout.activity_appointment);
     }
 
-    public void showSchedule() {
+    public void showConfirm() {
 
     }
 
-    public void showTasks() {
-
-    }
-
-    public void showGoals() {
-
-    }
-
-    public void showAddNew() {
-
-    }
-
-    public void showSelectView() {
-
-    }
-
-    public void showSearch() {
-
-    }
-
-    public void showSettings() {
-
-    }
-
-    public void showLogout() {
+    public void showCancel() {
 
     }
 

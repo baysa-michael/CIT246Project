@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import cs246.businesscalendar.R;
 
-public class CreateAccount extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity implements CreateAccountContract.View {
     private Spinner timeZoneSpinner;
     private Spinner time1224HSpinner;
     private String username;
@@ -43,6 +43,14 @@ public class CreateAccount extends AppCompatActivity {
         // Apply the adapter to the appropriate spinner
         timeZoneSpinner.setAdapter(timeZoneAdapter);
         time1224HSpinner.setAdapter(time1224HAdapter);
+    }
+
+    public void showConfirm() {
+
+    }
+
+    public void showCancel() {
+
     }
 
     public void clickCreateAccount(View view) {

@@ -30,6 +30,38 @@ public class Landing extends AppCompatActivity {
         welcomeText.setText(welcome);
     }
 
+    public void showSchedule() {
+
+    }
+
+    public void showTasks() {
+
+    }
+
+    public void showGoals() {
+
+    }
+
+    public void showAddNew() {
+
+    }
+
+    public void showSelectView() {
+
+    }
+
+    public void showSearch() {
+
+    }
+
+    public void showSettings() {
+
+    }
+
+    public void showLogout() {
+
+    }
+
     public void clickAddNew(View view) {
         Intent thisIntent = new Intent(this, AddNew.class);
 
