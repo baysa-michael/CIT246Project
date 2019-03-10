@@ -9,12 +9,20 @@ import cs246.businesscalendar.R;
 
 import cs246.businesscalendar.view_presenter.landing.Landing;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements LoginContract.View {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+    }
+
+    public void showLogin() {
+
+    }
+
+    public void showCancel() {
+
     }
 
     public void clickLogin(View view) {
