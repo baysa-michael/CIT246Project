@@ -11,12 +11,28 @@ import cs246.businesscalendar.view_presenter.daily_calendar.DailyCalendar;
 import cs246.businesscalendar.view_presenter.monthly_calendar.MonthlyCalendar;
 import cs246.businesscalendar.view_presenter.weekly_calendar.WeeklyCalendar;
 
-public class SelectView extends AppCompatActivity {
+public class SelectView extends AppCompatActivity implements SelectViewContract.View {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_view);
+    }
+
+    public void showMonthlyView() {
+
+    }
+
+    public void showWeeklyView() {
+
+    }
+
+    public void showDailyView() {
+
+    }
+
+    public void showCancel() {
+
     }
 
     public void clickMonthly(View view) {
