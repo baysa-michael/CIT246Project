@@ -1,12 +1,12 @@
 package cs246.businesscalendar.view_presenter.appointment;
 
-public class AppointmentPresenter implements AppointmentContract.Presenter {
-    public void handleClickSchedule() {
+import android.util.Log;
 
-    }
+public class AppointmentPresenter implements AppointmentContract.Presenter {
+    private static final String TAG = "Appointment";
 
     public void handleClickConfirm() {
-
+        Log.i(TAG, "Confirming appointment");
     }
 
     public void handleClickCancel() {
