@@ -99,6 +99,8 @@ public class Landing extends AppCompatActivity {
         // Include Display Name with Welcome
         TextView welcomeText = findViewById(R.id.landingTitle);
         welcomeText.setText(welcome);
+
+
     }
 
     public void showSchedule() {

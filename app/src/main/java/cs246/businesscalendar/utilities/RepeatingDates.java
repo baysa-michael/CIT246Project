@@ -6,7 +6,7 @@ public class RepeatingDates {
 /*
 Time Recurrence Patterns for Appointments:
 
-Start Repeat Date  (Identified in Initial Appointment Date)
+Start Repeat Date  (Identified in Initial ModelAppointment Date)
 
 Stop Repeat Date (Need to Explicitly Identify)
 OR

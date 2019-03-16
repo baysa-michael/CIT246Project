@@ -8,7 +8,7 @@ import android.widget.Button;
 import cs246.businesscalendar.R;
 
 public class Appointment extends AppCompatActivity implements AppointmentContract.View {
-    private static final String TAG = "Appointment";
+    private static final String TAG = "ModelAppointment";
     private AppointmentPresenter presenter;
 
     @Override
