@@ -20,7 +20,7 @@ public class WeeklyCalendar extends AppCompatActivity implements DailyCalendarCo
         setContentView(R.layout.activity_weekly_calendar);
 
         // Set Buttons
-        returnButton = findViewById(R.id.dailyviewReturnButton);
+        returnButton = findViewById(R.id.weeklyviewReturnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,7 +28,7 @@ public class WeeklyCalendar extends AppCompatActivity implements DailyCalendarCo
             }
         });
 
-        addButton = findViewById(R.id.dailyviewAddButton);
+        addButton = findViewById(R.id.weeklyviewAddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

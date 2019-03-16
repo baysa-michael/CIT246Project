@@ -19,7 +19,7 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
         setContentView(R.layout.activity_monthly_calendar);
 
         // Set Buttons
-        returnButton = findViewById(R.id.dailyviewReturnButton);
+        returnButton = findViewById(R.id.monthlyviewReturnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,7 +27,7 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
             }
         });
 
-        addButton = findViewById(R.id.dailyviewAddButton);
+        addButton = findViewById(R.id.monthlyviewAddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
