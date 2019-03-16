@@ -9,8 +9,6 @@ import cs246.businesscalendar.R;
 
 public class DailyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
     private static final String TAG = "DailyCalendar";
-    private Button returnButton;
-    private Button addButton;
     private DailyCalendarPresenter presenter;
 
     @Override
@@ -19,7 +17,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         setContentView(R.layout.activity_daily_calendar);
 
         // Set Buttons
-        returnButton = findViewById(R.id.dailyviewReturnButton);
+        Button returnButton = findViewById(R.id.dailyviewReturnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,7 +25,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             }
         });
 
-        addButton = findViewById(R.id.dailyviewAddButton);
+        Button addButton = findViewById(R.id.dailyviewAddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

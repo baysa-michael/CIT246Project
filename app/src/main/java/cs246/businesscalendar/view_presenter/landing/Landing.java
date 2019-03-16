@@ -16,14 +16,6 @@ import cs246.businesscalendar.view_presenter.add_new.AddNew;
 
 public class Landing extends AppCompatActivity {
     private static final String TAG = "Landing";
-    private Button scheduleButton;
-    private Button tasksButton;
-    private Button goalsButton;
-    private Button addNewButton;
-    private Button selectViewButton;
-    private Button searchButton;
-    private Button settingsButton;
-    private Button logoutButton;
     private LandingPresenter presenter;
 
     @Override
@@ -32,7 +24,7 @@ public class Landing extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
 
         // Set Buttons
-        scheduleButton = findViewById(R.id.landingScheduleButton);
+        Button scheduleButton = findViewById(R.id.landingScheduleButton);
         scheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,7 +32,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        tasksButton = findViewById(R.id.landingTasksButton);
+        Button tasksButton = findViewById(R.id.landingTasksButton);
         tasksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +40,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        goalsButton = findViewById(R.id.landingGoalsButton);
+        Button goalsButton = findViewById(R.id.landingGoalsButton);
         goalsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +48,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        addNewButton = findViewById(R.id.landingAddNewButton);
+        Button addNewButton = findViewById(R.id.landingAddNewButton);
         addNewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,7 +56,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        selectViewButton = findViewById(R.id.landingSelectViewButton);
+        Button selectViewButton = findViewById(R.id.landingSelectViewButton);
         selectViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +64,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        searchButton = findViewById(R.id.landingSearchButton);
+        Button searchButton = findViewById(R.id.landingSearchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +72,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        settingsButton = findViewById(R.id.landingSettingsButton);
+        Button settingsButton = findViewById(R.id.landingSettingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +80,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        logoutButton = findViewById(R.id.landingLogoutButton);
+        Button logoutButton = findViewById(R.id.landingLogoutButton);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

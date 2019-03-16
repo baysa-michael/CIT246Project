@@ -12,12 +12,6 @@ import cs246.businesscalendar.view_presenter.appointment.Appointment;
 
 public class AddNew extends AppCompatActivity implements AddNewContract.View {
     private static final String TAG = "AddNew";
-    private Button addNewAppointmentButton;
-    private Button addNewTaskButton;
-    private Button addNewGoalButton;
-    private Button joinGroupButton;
-    private Button createGroupButton;
-    private Button cancelButton;
     private AddNewPresenter presenter;
 
     @Override
@@ -26,7 +20,7 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
         setContentView(R.layout.activity_add_new);
 
         // Set Buttons
-        addNewAppointmentButton = findViewById(R.id.addnewAppointmentButton);
+        Button addNewAppointmentButton = findViewById(R.id.addnewAppointmentButton);
         addNewAppointmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +28,7 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
             }
         });
 
-        addNewTaskButton = findViewById(R.id.addnewTaskButton);
+        Button addNewTaskButton = findViewById(R.id.addnewTaskButton);
         addNewTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +36,7 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
             }
         });
 
-        addNewGoalButton = findViewById(R.id.addnewGoalButton);
+        Button addNewGoalButton = findViewById(R.id.addnewGoalButton);
         addNewGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +44,7 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
             }
         });
 
-        joinGroupButton = findViewById(R.id.addnewJoinGroupButton);
+        Button joinGroupButton = findViewById(R.id.addnewJoinGroupButton);
         joinGroupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +52,7 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
             }
         });
 
-        createGroupButton = findViewById(R.id.addnewCreateGroupButton);
+        Button createGroupButton = findViewById(R.id.addnewCreateGroupButton);
         createGroupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +60,7 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
             }
         });
 
-        cancelButton = findViewById(R.id.addnewCancelButton);
+        Button cancelButton = findViewById(R.id.addnewCancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

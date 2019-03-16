@@ -9,8 +9,6 @@ import cs246.businesscalendar.R;
 
 public class Appointment extends AppCompatActivity implements AppointmentContract.View {
     private static final String TAG = "Appointment";
-    private Button confirmButton;
-    private Button cancelButton;
     private AppointmentPresenter presenter;
 
     @Override
@@ -19,7 +17,7 @@ public class Appointment extends AppCompatActivity implements AppointmentContrac
         setContentView(R.layout.activity_appointment);
 
         // Set Buttons
-        confirmButton = findViewById(R.id.appointmentConfirmButton);
+        Button confirmButton = findViewById(R.id.appointmentConfirmButton);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,7 +25,7 @@ public class Appointment extends AppCompatActivity implements AppointmentContrac
             }
         });
 
-        cancelButton = findViewById(R.id.appointmentCancelButton);
+        Button cancelButton = findViewById(R.id.appointmentCancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

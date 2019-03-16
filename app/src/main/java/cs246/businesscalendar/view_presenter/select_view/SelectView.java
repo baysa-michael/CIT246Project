@@ -14,10 +14,6 @@ import cs246.businesscalendar.view_presenter.weekly_calendar.WeeklyCalendar;
 
 public class SelectView extends AppCompatActivity implements SelectViewContract.View {
     private static final String TAG = "SelectView";
-    private Button monthlyViewButton;
-    private Button weeklyViewButton;
-    private Button dailyViewButton;
-    private Button cancelButton;
     private SelectViewPresenter presenter;
 
     @Override
@@ -26,7 +22,7 @@ public class SelectView extends AppCompatActivity implements SelectViewContract.
         setContentView(R.layout.activity_select_view);
 
         // Set Buttons
-        monthlyViewButton = findViewById(R.id.selectviewMonthlyViewButton);
+        Button monthlyViewButton = findViewById(R.id.selectviewMonthlyViewButton);
         monthlyViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +30,7 @@ public class SelectView extends AppCompatActivity implements SelectViewContract.
             }
         });
 
-        weeklyViewButton = findViewById(R.id.selectviewWeeklyViewButton);
+        Button weeklyViewButton = findViewById(R.id.selectviewWeeklyViewButton);
         weeklyViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +38,7 @@ public class SelectView extends AppCompatActivity implements SelectViewContract.
             }
         });
 
-        dailyViewButton = findViewById(R.id.selectviewDailyViewButton);
+        Button dailyViewButton = findViewById(R.id.selectviewDailyViewButton);
         dailyViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +46,7 @@ public class SelectView extends AppCompatActivity implements SelectViewContract.
             }
         });
 
-        cancelButton = findViewById(R.id.selectviewCancelButton);
+        Button cancelButton = findViewById(R.id.selectviewCancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

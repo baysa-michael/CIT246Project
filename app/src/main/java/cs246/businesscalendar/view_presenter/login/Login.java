@@ -16,8 +16,6 @@ import cs246.businesscalendar.view_presenter.landing.Landing;
 
 public class Login extends AppCompatActivity implements LoginContract.View {
     private static final String TAG = "Login";
-    private Button loginButton;
-    private Button cancelButton;
     private LoginPresenter presenter;
 
 
@@ -27,7 +25,7 @@ public class Login extends AppCompatActivity implements LoginContract.View {
         setContentView(R.layout.activity_login);
 
         // Set Buttons
-        loginButton = findViewById(R.id.loginLoginButton);
+        Button loginButton = findViewById(R.id.loginLoginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +33,7 @@ public class Login extends AppCompatActivity implements LoginContract.View {
             }
         });
 
-        cancelButton = findViewById(R.id.loginCancelButton);
+        Button cancelButton = findViewById(R.id.loginCancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -16,8 +16,6 @@ import cs246.businesscalendar.R;
 
 public class CreateAccount extends AppCompatActivity implements CreateAccountContract.View {
     private static final String TAG = "CreateAccount";
-    private Button confirmButton;
-    private Button cancelButton;
     private CreateAccountPresenter presenter;
     private Spinner timeZoneSpinner;
     private Spinner time1224HSpinner;
@@ -32,7 +30,7 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
         setContentView(R.layout.activity_create_account);
 
         // Set Buttons
-        confirmButton = findViewById(R.id.createaccountConfirmButton);
+        Button confirmButton = findViewById(R.id.createaccountConfirmButton);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,7 +38,7 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
             }
         });
 
-        cancelButton = findViewById(R.id.createaccountCancelButton);
+        Button cancelButton = findViewById(R.id.createaccountCancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

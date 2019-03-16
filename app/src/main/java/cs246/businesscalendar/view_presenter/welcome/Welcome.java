@@ -14,8 +14,6 @@ import cs246.businesscalendar.view_presenter.login.Login;
 
 public class Welcome extends AppCompatActivity implements WelcomeContract.View {
     private static final String TAG = "Welcome";
-    private Button loginButton;
-    private Button createNewAccountButton;
     private WelcomePresenter presenter;
 
     @Override
@@ -24,7 +22,7 @@ public class Welcome extends AppCompatActivity implements WelcomeContract.View {
         setContentView(R.layout.activity_welcome);
 
         // Set Buttons
-        loginButton = findViewById(R.id.welcomeLoginButton);
+        Button loginButton = findViewById(R.id.welcomeLoginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,7 +30,7 @@ public class Welcome extends AppCompatActivity implements WelcomeContract.View {
             }
         });
 
-        createNewAccountButton = findViewById(R.id.welcomeCreateAccountButton);
+        Button createNewAccountButton = findViewById(R.id.welcomeCreateAccountButton);
         createNewAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

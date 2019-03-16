@@ -10,8 +10,6 @@ import cs246.businesscalendar.view_presenter.daily_calendar.DailyCalendarContrac
 
 public class WeeklyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
     private static final String TAG = "MonthlyCalendar";
-    private Button returnButton;
-    private Button addButton;
     private WeeklyCalendarPresenter presenter;
 
     @Override
@@ -20,7 +18,7 @@ public class WeeklyCalendar extends AppCompatActivity implements DailyCalendarCo
         setContentView(R.layout.activity_weekly_calendar);
 
         // Set Buttons
-        returnButton = findViewById(R.id.weeklyviewReturnButton);
+        Button returnButton = findViewById(R.id.weeklyviewReturnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,7 +26,7 @@ public class WeeklyCalendar extends AppCompatActivity implements DailyCalendarCo
             }
         });
 
-        addButton = findViewById(R.id.weeklyviewAddButton);
+        Button addButton = findViewById(R.id.weeklyviewAddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
