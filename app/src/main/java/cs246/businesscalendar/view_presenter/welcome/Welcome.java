@@ -39,6 +39,9 @@ public class Welcome extends AppCompatActivity implements WelcomeContract.View {
                 showCreateAccount();
             }
         });
+
+        // Set Presenter
+        presenter = new WelcomePresenter();
     }
 
     public void showCreateAccount() {

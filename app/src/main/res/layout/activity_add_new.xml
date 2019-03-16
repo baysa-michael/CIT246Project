@@ -20,7 +20,6 @@
 
     <Button
         android:id="@+id/addnewAppointmentButton"
-        android:onClick="clickAddNewAppointment"
         android:text="@string/add_new_appointment_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -35,7 +34,6 @@
 
     <Button
         android:id="@+id/addnewTaskButton"
-        android:onClick="clickCancel"
         android:text="@string/add_new_task_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,7 +48,6 @@
 
     <Button
         android:id="@+id/addnewGoalButton"
-        android:onClick="clickCancel"
         android:text="@string/add_new_goal_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -65,7 +62,6 @@
 
     <Button
         android:id="@+id/addnewJoinGroupButton"
-        android:onClick="clickCancel"
         android:text="@string/join_group_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -80,7 +76,6 @@
 
     <Button
         android:id="@+id/addnewCreateGroupButton"
-        android:onClick="clickCancel"
         android:text="@string/create_group_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -95,7 +90,6 @@
 
     <Button
         android:id="@+id/addnewCancelButton"
-        android:onClick="clickCancel"
         android:text="@string/cancel_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
