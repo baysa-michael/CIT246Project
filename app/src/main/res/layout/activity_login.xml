@@ -73,7 +73,6 @@
 
     <Button
         android:id="@+id/loginLoginButton"
-        android:onClick="clickLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/large_margin"
@@ -88,7 +87,6 @@
 
     <Button
         android:id="@+id/loginCancelButton"
-        android:onClick="clickLoginCancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/extra_large_margin"
