@@ -631,7 +631,6 @@
 
     <Button
         android:id="@+id/monthlyviewReturnButton"
-        android:onClick="clickReturn"
         android:text="@string/return_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -644,7 +643,6 @@
 
     <Button
         android:id="@+id/monthlyviewAddButton"
-        android:onClick="clickReturn"
         android:text="@string/add_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
