@@ -15,7 +15,7 @@ import android.widget.Toast;
 import cs246.businesscalendar.R;
 
 public class CreateAccount extends AppCompatActivity implements CreateAccountContract.View {
-    public static final String TAG = "CreateAccount";
+    private static final String TAG = "CreateAccount";
     private Button confirmButton;
     private Button cancelButton;
     private CreateAccountPresenter presenter;

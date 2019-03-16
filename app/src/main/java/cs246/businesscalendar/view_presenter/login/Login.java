@@ -15,7 +15,7 @@ import cs246.businesscalendar.R;
 import cs246.businesscalendar.view_presenter.landing.Landing;
 
 public class Login extends AppCompatActivity implements LoginContract.View {
-    public static final String TAG = "Login";
+    private static final String TAG = "Login";
     private Button loginButton;
     private Button cancelButton;
     private LoginPresenter presenter;

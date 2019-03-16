@@ -11,7 +11,7 @@ import cs246.businesscalendar.R;
 import cs246.businesscalendar.view_presenter.appointment.Appointment;
 
 public class AddNew extends AppCompatActivity implements AddNewContract.View {
-    public static final String TAG = "AddNew";
+    private static final String TAG = "AddNew";
     private Button addNewAppointmentButton;
     private Button addNewTaskButton;
     private Button addNewGoalButton;

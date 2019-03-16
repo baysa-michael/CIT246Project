@@ -13,7 +13,7 @@ import cs246.businesscalendar.view_presenter.login.Login;
 
 
 public class Welcome extends AppCompatActivity implements WelcomeContract.View {
-    public static final String TAG = "Welcome";
+    private static final String TAG = "Welcome";
     private Button loginButton;
     private Button createNewAccountButton;
     private WelcomePresenter presenter;
