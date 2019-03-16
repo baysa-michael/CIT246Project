@@ -53,7 +53,7 @@ public class LandingRecyclerViewAdapter extends RecyclerView.Adapter<LandingRecy
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        // Retrieve Key Pieces of Information
+        // Formatting Strings
         DateTimeFormatter formatDate = DateTimeFormat.forPattern("yyyy-MM-dd, EEEE");
         DateTimeFormatter formatTime = DateTimeFormat.forPattern("HH:mm");
 
