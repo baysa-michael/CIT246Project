@@ -217,7 +217,6 @@
 
     <Button
         android:id="@+id/createaccountConfirmButton"
-        android:onClick="clickCreateAccount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/general_margin"
@@ -232,7 +231,6 @@
 
     <Button
         android:id="@+id/createaccountCancelButton"
-        android:onClick="clickCreateAccountCancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/large_margin"

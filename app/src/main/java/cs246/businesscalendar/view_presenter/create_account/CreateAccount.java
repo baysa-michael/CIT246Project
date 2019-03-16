@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -14,6 +15,10 @@ import android.widget.Toast;
 import cs246.businesscalendar.R;
 
 public class CreateAccount extends AppCompatActivity implements CreateAccountContract.View {
+    public static final String TAG = "CreateAccount";
+    private Button confirmButton;
+    private Button cancelButton;
+    private CreateAccountPresenter presenter;
     private Spinner timeZoneSpinner;
     private Spinner time1224HSpinner;
     private String username;
@@ -25,6 +30,26 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
+        // Set Buttons
+        confirmButton = findViewById(R.id.createaccountConfirmButton);
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showConfirm();
+            }
+        });
+
+        cancelButton = findViewById(R.id.createaccountCancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showCancel();
+            }
+        });
+
+        // Set Presenter
+        presenter = new CreateAccountPresenter();
 
         // Set Drop-down Lists
         timeZoneSpinner = findViewById(R.id.createaccountTimeZoneSpinner);
@@ -46,14 +71,9 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
     }
 
     public void showConfirm() {
+        // NEED TO INPUT ACTUAL LOGIC HERE **********************************************
 
-    }
 
-    public void showCancel() {
-
-    }
-
-    public void clickCreateAccount(View view) {
         // Gather form information into Edit Texts and place into Strings
         EditText usernameInput = findViewById(R.id.createaccountUsernameEdit);
         username = usernameInput.getText().toString();
@@ -92,11 +112,9 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
         toastSuccessful.show();
 
         // Finish Create New Account Activity
+        finish();    }
+
+    public void showCancel() {
         finish();
     }
-
-    public void clickCreateAccountCancel(View view) {
-        finish();
-    }
-
 }
