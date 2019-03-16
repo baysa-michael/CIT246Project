@@ -19,8 +19,7 @@
         />
 
     <Button
-        android:id="@+id/selectviewweeklyviewButton"
-        android:onClick="clickMonthly"
+        android:id="@+id/selectviewMonthlyViewButton"
         android:text="@string/monthly_view_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -35,7 +34,6 @@
 
     <Button
         android:id="@+id/selectviewWeeklyViewButton"
-        android:onClick="clickWeekly"
         android:text="@string/weekly_view_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -43,14 +41,13 @@
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginEnd="@dimen/general_margin"
         android:textSize="@dimen/button_text"
-        app:layout_constraintTop_toBottomOf="@+id/selectviewweeklyviewButton"
+        app:layout_constraintTop_toBottomOf="@+id/selectviewMonthlyViewButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
 
     <Button
         android:id="@+id/selectviewDailyViewButton"
-        android:onClick="clickDaily"
         android:text="@string/daily_view_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -65,7 +62,6 @@
 
     <Button
         android:id="@+id/selectviewCancelButton"
-        android:onClick="clickCancel"
         android:text="@string/cancel_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
