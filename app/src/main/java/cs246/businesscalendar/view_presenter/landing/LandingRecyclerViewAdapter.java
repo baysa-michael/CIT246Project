@@ -1,10 +1,15 @@
 package cs246.businesscalendar.view_presenter.landing;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.util.List;
 
@@ -18,9 +23,15 @@ public class LandingRecyclerViewAdapter extends RecyclerView.Adapter<LandingRecy
 
     // Provide a reference to the views for each data item
     public static class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView myDate;
+        private TextView myTime;
+        private TextView myTitle;
 
-        public MyViewHolder(View view) {
+        private MyViewHolder(View view) {
             super(view);
+            myDate = view.findViewById(R.id.landingrecyclerowDate);
+            myTime = view.findViewById(R.id.landingrecyclerowTime);
+            myTitle = view.findViewById(R.id.landingrecyclerowTitle);
         }
     }
 
@@ -29,25 +40,33 @@ public class LandingRecyclerViewAdapter extends RecyclerView.Adapter<LandingRecy
         this.context = newContext;
     }
 
-    // Create New Views (invoked by the Layout Manager)
     @Override
-    public LandingRecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+    @NonNull
+    public LandingRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                                       int viewType) {
         // Create a New View from the row.xml layout file
         LayoutInflater myInflater = LayoutInflater.from(context);
         View newView = myInflater.inflate(R.layout.landing_recycle_row, parent, false);
 
-        MyViewHolder viewHolder = new MyViewHolder(newView);
-
-        return viewHolder;
+        return new MyViewHolder(newView);
     }
 
-    // Replace contents of a view (invoked by the Layout Manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // Retrieve Key Pieces of Information
+        DateTimeFormatter formatDate = DateTimeFormat.forPattern("yyyy-MM-dd, EEEE");
+        DateTimeFormatter formatTime = DateTimeFormat.forPattern("HH:mm");
+
+        // Set Time String
+        String appointmentTime = appointments.get(position).getAppointmentStart().
+                toString(formatTime) + " - " +
+                appointments.get(position).getAppointmentEnd().toString(formatTime);
+
         // Retrieve information at a position in the dataset and replace
         // the contents of this view with that data
-        //holder.myView.setText(myDataset.get(position).toString());
+        holder.myDate.setText(appointments.get(position).getAppointmentDate().toString(formatDate));
+        holder.myTime.setText(appointmentTime);
+        holder.myTitle.setText(appointments.get(position).getAppointmentTitle());
     }
 
     @Override
