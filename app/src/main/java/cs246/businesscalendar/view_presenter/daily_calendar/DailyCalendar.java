@@ -1,15 +1,34 @@
 package cs246.businesscalendar.view_presenter.daily_calendar;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.util.List;
 
 import cs246.businesscalendar.R;
+import cs246.businesscalendar.utilities.DailyTimeBlocks;
 
 public class DailyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
     private static final String TAG = "DailyCalendar";
     private DailyCalendarPresenter presenter;
+    private RecyclerView myRecycler;
+    private RecyclerView.Adapter myAdapter;
+    private RecyclerView.LayoutManager myLayoutManager;
+    EditText dateEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +54,48 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
 
         // Set Presenter
         presenter = new DailyCalendarPresenter();
+
+        // Prepare Date Picker
+
+        dateEdit = findViewById(R.id.dailyviewDateEdit);
+        dateEdit.setInputType(InputType.TYPE_NULL);
+        dateEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get the default date as the current date
+                LocalDate currentDate = LocalDate.now();
+                int year = currentDate.getYear();
+                int month = currentDate.getMonthOfYear();
+                int day = currentDate.getDayOfMonth();
+
+                // Create new Date Picker Dialog
+                DatePickerDialog picker = new DatePickerDialog(DailyCalendar.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month,
+                                                  int dayOfMonth) {
+                                LocalDate selectedDate = new LocalDate(year, month, dayOfMonth);
+                                DateTimeFormatter formatTime =
+                                        DateTimeFormat.forPattern("yyyy-MM-dd, EEEE");
+                                dateEdit.setText(selectedDate.toString(formatTime));
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+        });
+
+        // Retrieve Daily Time Slices
+        List<LocalTime> timeBlocks = DailyTimeBlocks.dailyCalendarSetup();
+
+        // Set Recycler View with Layout Manager and Adapter
+        myRecycler = findViewById(R.id.dailyviewRecyclerView);
+        myRecycler.setHasFixedSize(true);
+        myRecycler.addItemDecoration(new DividerItemDecoration(myRecycler.getContext(),
+                DividerItemDecoration.VERTICAL));
+        myLayoutManager = new LinearLayoutManager(this);
+        myRecycler.setLayoutManager(myLayoutManager);
+        myAdapter = new DailyCalendarRecyclerViewAdapter(this, timeBlocks);
+        myRecycler.setAdapter(myAdapter);
     }
 
     public void showReturn() {
