@@ -77,6 +77,11 @@ public class DailyCalendarRecyclerViewAdapter extends RecyclerView.Adapter<Daily
                 holder.appointmentContainer.setBackgroundResource(R.drawable.start_segment);
                 holder.contentBlock.setText(appointments.get(timeSegment.get("position"))
                         .getAppointmentTitle());
+
+                Log.i(TAG, "At Position " + position + ", type returned was " +
+                        timeSegment.get("type") + " and position returned was " +
+                        timeSegment.get("position") + " - Wrote Header:  " +
+                        appointments.get(timeSegment.get("position")).getAppointmentTitle());
                 break;
             case 1:
                 // End of Appointment
@@ -125,12 +130,12 @@ public class DailyCalendarRecyclerViewAdapter extends RecyclerView.Adapter<Daily
                 matchingAppointment.put("position", i);
                 matchingAppointment.put("type", 0);
                 break;
-            } else if (positionTime.equals(testEnd)) {
+            } else if (positionTime.equals(testEnd.minusMinutes(15))) {
                 // Ending Time
                 matchingAppointment.put("position", i);
                 matchingAppointment.put("type", 1);
                 break;
-            } else if (positionTime.isAfter(testStart) && positionTime.isBefore(testEnd)) {
+            } else if (positionTime.isAfter(testStart) && positionTime.isBefore(testEnd.minusMinutes(15))) {
                 // Within Appointment
                 matchingAppointment.put("position", i);
                 matchingAppointment.put("type", 2);
