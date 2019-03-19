@@ -2,6 +2,7 @@ package cs246.businesscalendar.view_presenter.daily_calendar;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,10 +24,12 @@ public class DailyCalendarRecyclerViewAdapter extends RecyclerView.Adapter<Daily
     // Provide a reference to the views for each data item
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView timeBlock;
+        private ConstraintLayout appointmentContainer;
 
         private MyViewHolder(View view) {
             super(view);
             timeBlock = view.findViewById(R.id.dailycalendarrecyclerowQuarter);
+            appointmentContainer = view.findViewById(R.id.dailycalendarrecyclerowAppointmentBlock);
         }
     }
 
@@ -55,6 +58,7 @@ public class DailyCalendarRecyclerViewAdapter extends RecyclerView.Adapter<Daily
         // Retrieve information at a position in the dataset and replace
         // the contents of this view with that data
         holder.timeBlock.setText(timeSlice.get(position).toString(formatTime));
+        holder.appointmentContainer.setBackgroundResource(R.drawable.middle_segment);
     }
 
     @Override

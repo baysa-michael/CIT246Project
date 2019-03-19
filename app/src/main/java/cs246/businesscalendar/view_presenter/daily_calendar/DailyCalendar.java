@@ -1,6 +1,7 @@
 package cs246.businesscalendar.view_presenter.daily_calendar;
 
 import android.app.DatePickerDialog;
+import android.graphics.ColorSpace;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -17,9 +18,11 @@ import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cs246.businesscalendar.R;
+import cs246.businesscalendar.model.ModelAppointment;
 import cs246.businesscalendar.utilities.DailyTimeBlocks;
 
 public class DailyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
@@ -56,7 +59,6 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         presenter = new DailyCalendarPresenter();
 
         // Prepare Date Picker
-
         dateEdit = findViewById(R.id.dailyviewDateEdit);
         dateEdit.setInputType(InputType.TYPE_NULL);
         dateEdit.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +88,9 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
 
         // Retrieve Daily Time Slices
         List<LocalTime> timeBlocks = DailyTimeBlocks.dailyCalendarSetup();
+
+        // Retrieve list of appointments for the day
+        List<ModelAppointment> dailyAppointments = new ArrayList<>();
 
         // Set Recycler View with Layout Manager and Adapter
         myRecycler = findViewById(R.id.dailyviewRecyclerView);
