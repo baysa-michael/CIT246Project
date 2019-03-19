@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -94,7 +95,12 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         // Retrieve list of appointments for the day *********** LINK TO REAL DATA ************
         List<Appointment> dailyAppointments = new ArrayList<>();
         List<Appointment> testAppointments = TestItems.testAppointments();
-
+        for(Appointment thisAppointment : testAppointments) {
+            if (thisAppointment.getAppointmentDate().equals(
+                    new LocalDate(2019, 3, 16))) {
+                dailyAppointments.add(thisAppointment);
+            }
+        }
 
         // ************************************************************************************
 
@@ -107,7 +113,8 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                 DividerItemDecoration.VERTICAL));
         myLayoutManager = new LinearLayoutManager(this);
         myRecycler.setLayoutManager(myLayoutManager);
-        myAdapter = new DailyCalendarRecyclerViewAdapter(this, timeBlocks);
+        myAdapter = new DailyCalendarRecyclerViewAdapter(this, timeBlocks,
+                dailyAppointments);
         myRecycler.setAdapter(myAdapter);
     }
 
