@@ -1,7 +1,6 @@
 package cs246.businesscalendar.view_presenter.daily_calendar;
 
 import android.app.DatePickerDialog;
-import android.graphics.ColorSpace;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -22,8 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cs246.businesscalendar.R;
-import cs246.businesscalendar.model.ModelAppointment;
+import cs246.businesscalendar.model.Appointment;
 import cs246.businesscalendar.utilities.DailyTimeBlocks;
+import cs246.businesscalendar.utilities.TestItems;
 
 public class DailyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
     private static final String TAG = "DailyCalendar";
@@ -86,11 +86,19 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             }
         });
 
+
+        // ******************* MOVE THIS SECTION TO PRESENTER WHEN READY **********************
         // Retrieve Daily Time Slices
         List<LocalTime> timeBlocks = DailyTimeBlocks.dailyCalendarSetup();
 
-        // Retrieve list of appointments for the day
-        List<ModelAppointment> dailyAppointments = new ArrayList<>();
+        // Retrieve list of appointments for the day *********** LINK TO REAL DATA ************
+        List<Appointment> dailyAppointments = new ArrayList<>();
+        List<Appointment> testAppointments = TestItems.testAppointments();
+
+
+        // ************************************************************************************
+
+
 
         // Set Recycler View with Layout Manager and Adapter
         myRecycler = findViewById(R.id.dailyviewRecyclerView);

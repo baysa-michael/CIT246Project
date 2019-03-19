@@ -6,12 +6,12 @@ import org.joda.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs246.businesscalendar.model.ModelAppointment;
+import cs246.businesscalendar.model.Appointment;
 
 public class TestItems {
-    public static List<ModelAppointment> testAppointments() {
-        List<ModelAppointment> testAppointments = new ArrayList<>();
-        testAppointments.add(new ModelAppointment(
+    public static List<Appointment> testAppointments() {
+        List<Appointment> testAppointments = new ArrayList<>();
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 16)
                 , false
                 , new LocalTime(8,0)
@@ -24,7 +24,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 16)
                 , false
                 , new LocalTime(10,0)
@@ -37,7 +37,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 16)
                 , false
                 , new LocalTime(12,0)
@@ -50,7 +50,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 16)
                 , false
                 , new LocalTime(14,0)
@@ -63,7 +63,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 16)
                 , false
                 , new LocalTime(16,0)
@@ -76,7 +76,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 16)
                 , false
                 , new LocalTime(18,0)
@@ -89,7 +89,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 16)
                 , false
                 , new LocalTime(20,0)
@@ -102,7 +102,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 17)
                 , false
                 , new LocalTime(8,0)
@@ -115,7 +115,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 17)
                 , false
                 , new LocalTime(10,0)
@@ -128,7 +128,7 @@ public class TestItems {
                 , null
                 , 0
                 , "0000000000000000000000000000000000000000000000000000000000000000"));
-        testAppointments.add(new ModelAppointment(
+        testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 17)
                 , false
                 , new LocalTime(12,0)

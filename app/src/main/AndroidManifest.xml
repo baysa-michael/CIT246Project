@@ -13,7 +13,7 @@
         <activity android:name=".view_presenter.weekly_calendar.WeeklyCalendar" />
         <activity android:name=".view_presenter.monthly_calendar.MonthlyCalendar" />
         <activity android:name=".view_presenter.select_view.SelectView" />
-        <activity android:name=".view_presenter.appointment.Appointment" />
+        <activity android:name=".view_presenter.modify_appointment.ModifyAppointment" />
         <activity android:name=".view_presenter.add_new.AddNew" />
         <activity android:name=".view_presenter.landing.Landing" />
         <activity android:name=".view_presenter.login.Login">

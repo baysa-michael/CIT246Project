@@ -14,10 +14,10 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.List;
 
 import cs246.businesscalendar.R;
-import cs246.businesscalendar.model.ModelAppointment;
+import cs246.businesscalendar.model.Appointment;
 
 public class LandingRecyclerViewAdapter extends RecyclerView.Adapter<LandingRecyclerViewAdapter.MyViewHolder> {
-    private List<ModelAppointment> appointments;
+    private List<Appointment> appointments;
     private Context context;
 
 
@@ -35,7 +35,7 @@ public class LandingRecyclerViewAdapter extends RecyclerView.Adapter<LandingRecy
         }
     }
 
-    public LandingRecyclerViewAdapter(Context newContext, List<ModelAppointment> newAppointments) {
+    public LandingRecyclerViewAdapter(Context newContext, List<Appointment> newAppointments) {
         this.appointments = newAppointments;
         this.context = newContext;
     }

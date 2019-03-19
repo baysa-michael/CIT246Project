@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import cs246.businesscalendar.R;
 
-import cs246.businesscalendar.view_presenter.appointment.Appointment;
+import cs246.businesscalendar.view_presenter.modify_appointment.ModifyAppointment;
 
 public class AddNew extends AppCompatActivity implements AddNewContract.View {
     private static final String TAG = "AddNew";
@@ -73,7 +73,7 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
     }
 
     public void showAddNewAppointment() {
-        Intent thisIntent = new Intent(this, Appointment.class);
+        Intent thisIntent = new Intent(this, ModifyAppointment.class);
 
         startActivity(thisIntent);
     }

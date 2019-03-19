@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view_presenter.appointment.Appointment">
+    tools:context=".view_presenter.modify_appointment.ModifyAppointment">
 
     <TextView
         android:id="@+id/appointmentTitle"

@@ -12,15 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import cs246.businesscalendar.R;
 
-import cs246.businesscalendar.model.ModelAppointment;
+import cs246.businesscalendar.model.Appointment;
 import cs246.businesscalendar.utilities.TestItems;
 import cs246.businesscalendar.view_presenter.select_view.SelectView;
 import cs246.businesscalendar.view_presenter.add_new.AddNew;
@@ -115,7 +111,7 @@ public class Landing extends AppCompatActivity {
         welcomeText.setText(welcome);
 
         // SET UP TEST LIST OF APPOINTMENTS ************* TO REMOVE *************************
-        List<ModelAppointment> testAppointments = TestItems.testAppointments();
+        List<Appointment> testAppointments = TestItems.testAppointments();
 
         // Set Recycler View with Layout Manager and Adapter
         myRecycler = findViewById(R.id.landingRecyclerView);

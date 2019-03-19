@@ -7,7 +7,7 @@ import org.joda.time.LocalTime;
 
 import java.util.List;
 
-public class ModelAppointment {
+public class Appointment {
     private LocalDate appointmentDate;
     private boolean isAllDay;
     private LocalTime appointmentStart;
@@ -21,7 +21,7 @@ public class ModelAppointment {
     private int appointmentSalt;
     private String appointmentHash;
 
-    public ModelAppointment() {
+    public Appointment() {
         this.appointmentDate = new LocalDate(DateTimeZone.UTC);  // Current Date
         this.isAllDay = true;
         this.appointmentStart = null;
@@ -36,18 +36,18 @@ public class ModelAppointment {
         this.appointmentHash = "0000000000000000000000000000000000000000000000000000000000000000";
     }
 
-    public ModelAppointment(LocalDate appointmentDate,
-                            boolean isAllDay,
-                            LocalTime appointmentStart,
-                            LocalTime appointmentEnd,
-                            String appointmentTitle,
-                            String appointmentDescription,
-                            String appointmentLocation,
-                            String appointmentAttendees,
-                            List<LocalDate> repeatingDates,
-                            List<LocalDateTime> reminderTimes,
-                            int appointmentSalt,
-                            String appointmentHash) {
+    public Appointment(LocalDate appointmentDate,
+                       boolean isAllDay,
+                       LocalTime appointmentStart,
+                       LocalTime appointmentEnd,
+                       String appointmentTitle,
+                       String appointmentDescription,
+                       String appointmentLocation,
+                       String appointmentAttendees,
+                       List<LocalDate> repeatingDates,
+                       List<LocalDateTime> reminderTimes,
+                       int appointmentSalt,
+                       String appointmentHash) {
         this.appointmentDate = appointmentDate;
         this.isAllDay = isAllDay;
         this.appointmentStart = appointmentStart;

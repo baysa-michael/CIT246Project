@@ -1,6 +1,6 @@
-package cs246.businesscalendar.view_presenter.appointment;
+package cs246.businesscalendar.view_presenter.modify_appointment;
 
-public interface AppointmentContract {
+public interface ModifyAppointmentContract {
     interface View {
         void showConfirm();
         void showCancel();

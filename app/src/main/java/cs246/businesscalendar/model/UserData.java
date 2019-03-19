@@ -4,7 +4,7 @@ import org.joda.time.DateTimeZone;
 
 import java.util.List;
 
-public class ModelUserData {
+public class UserData {
     private String username;
     private String hashedPassword;
     private String displayName;
@@ -12,9 +12,9 @@ public class ModelUserData {
     private String phone;
     private DateTimeZone defaultTimeZone;
     private boolean is24H;
-    private List<ModelAppointment> userAppointments;
+    private List<Appointment> userAppointments;
 
-    public ModelUserData() {
+    public UserData() {
         this.username = "";
         this.hashedPassword = "";
         this.displayName = "";
@@ -25,14 +25,14 @@ public class ModelUserData {
         this.userAppointments = null;
     }
 
-    public ModelUserData(String username,
-                         String hashedPassword,
-                         String displayName,
-                         String email,
-                         String phone,
-                         DateTimeZone defaultTimeZone,
-                         boolean is24H,
-                         List<ModelAppointment> userAppointments) {
+    public UserData(String username,
+                    String hashedPassword,
+                    String displayName,
+                    String email,
+                    String phone,
+                    DateTimeZone defaultTimeZone,
+                    boolean is24H,
+                    List<Appointment> userAppointments) {
         this.username = username;
         this.hashedPassword = hashedPassword;
         this.displayName = displayName;
@@ -99,11 +99,11 @@ public class ModelUserData {
         this.is24H = is24H;
     }
 
-    public List<ModelAppointment> getUserAppointments() {
+    public List<Appointment> getUserAppointments() {
         return userAppointments;
     }
 
-    public void setUserAppointments(List<ModelAppointment> userAppointments) {
+    public void setUserAppointments(List<Appointment> userAppointments) {
         this.userAppointments = userAppointments;
     }
 }

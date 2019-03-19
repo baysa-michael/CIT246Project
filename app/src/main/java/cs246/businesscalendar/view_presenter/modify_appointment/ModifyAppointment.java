@@ -1,4 +1,4 @@
-package cs246.businesscalendar.view_presenter.appointment;
+package cs246.businesscalendar.view_presenter.modify_appointment;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,14 +7,14 @@ import android.widget.Button;
 
 import cs246.businesscalendar.R;
 
-public class Appointment extends AppCompatActivity implements AppointmentContract.View {
-    private static final String TAG = "ModelAppointment";
-    private AppointmentPresenter presenter;
+public class ModifyAppointment extends AppCompatActivity implements ModifyAppointmentContract.View {
+    private static final String TAG = "Appointment";
+    private ModifyAppointmentPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointment);
+        setContentView(R.layout.activity_modify_appointment);
 
         // Set Buttons
         Button confirmButton = findViewById(R.id.appointmentConfirmButton);
@@ -34,7 +34,7 @@ public class Appointment extends AppCompatActivity implements AppointmentContrac
         });
 
         // Set Presenter
-        presenter = new AppointmentPresenter();
+        presenter = new ModifyAppointmentPresenter();
     }
 
     public void showConfirm() {
