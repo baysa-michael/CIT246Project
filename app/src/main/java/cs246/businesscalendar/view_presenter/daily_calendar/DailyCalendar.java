@@ -68,16 +68,22 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                 LocalDate.now().getDayOfMonth());
         dateEdit.setText(today.toString("yyyy-MM-dd, EEEE"));
 
+        // Retrieve Default Appointments
+        updateAppointments(today, false);
+
         // Prepare Date Picker
         dateEdit.setInputType(InputType.TYPE_NULL);
         dateEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get the default date as the current date
-                LocalDate currentDate = LocalDate.now();
-                int year = currentDate.getYear();
-                int month = currentDate.getMonthOfYear();
-                int day = currentDate.getDayOfMonth();
+                // Get the current date in the field
+                String retrieveYear = dateEdit.getText().toString().substring(0, 4);
+                String retrieveMonth = dateEdit.getText().toString().substring(5, 7);
+                String retrieveDay = dateEdit.getText().toString().substring(8, 10);
+
+                int year = Integer.parseInt(retrieveYear);
+                int month = Integer.parseInt(retrieveMonth);
+                int day = Integer.parseInt(retrieveDay);
 
                 // Create new Date Picker Dialog
                 DatePickerDialog picker = new DatePickerDialog(DailyCalendar.this,
@@ -85,25 +91,21 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                             @Override
                             public void onDateSet(DatePicker view, int year, int month,
                                                   int dayOfMonth) {
-                                LocalDate selectedDate = new LocalDate(year, month, dayOfMonth);
+                                // Set Selected Date
+                                LocalDate selectedDate = new LocalDate(year, month + 1, dayOfMonth);
+
+                                // Display Formatted Date
                                 DateTimeFormatter formatTime =
                                         DateTimeFormat.forPattern("yyyy-MM-dd, EEEE");
                                 dateEdit.setText(selectedDate.toString(formatTime));
+
+                                // Update Appointments
+                                updateAppointments(selectedDate, false);
                             }
                         }, year, month - 1, day);
                 picker.show();
             }
         });
-
-        // Retrieve Daily Appointments
-        List<Appointment> dailyAppointments = presenter.retrieveAppointmentsByDay(
-                new LocalDate(2019, 3, 16));
-
-        // Set Times in Constraint View
-        display1224Time(false);
-
-        // Add Appointments
-        displayAppointments(dailyAppointments);
     }
 
     public void showReturn() {
@@ -145,6 +147,9 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
     public void displayAppointments(List<Appointment> dailyAppointments) {
         // Get the Appointment Container
         FrameLayout appointmentContainer = findViewById(R.id.dailycalendarAppointmentLayout);
+
+        // Clear all current views
+        appointmentContainer.removeAllViews();
 
         // Add appointments
         for(int i = 0; i < dailyAppointments.size(); i++) {
@@ -208,5 +213,14 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
 
         // Update the view
         appointmentContainer.requestLayout();
+    }
+
+    public void updateAppointments(LocalDate updateDate, boolean is24HTime) {
+        // Set Times in Constraint View
+        display1224Time(is24HTime);
+
+        // Retrieve and Add Daily Appointments
+        List<Appointment> dailyAppointments = presenter.retrieveAppointmentsByDay(updateDate);
+        displayAppointments(dailyAppointments);
     }
 }
