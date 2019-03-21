@@ -35,9 +35,11 @@ public class DailyCalendarRecyclerViewAdapter extends RecyclerView.Adapter<Daily
 
         private MyViewHolder(View view) {
             super(view);
+/*
             timeBlock = view.findViewById(R.id.dailycalendarrecyclerowQuarter);
             appointmentContainer = view.findViewById(R.id.dailycalendarrecyclerowAppointmentBlock);
             contentBlock = view.findViewById(R.id.dailycalendarrecyclerowContent);
+*/
         }
     }
 
@@ -54,7 +56,7 @@ public class DailyCalendarRecyclerViewAdapter extends RecyclerView.Adapter<Daily
                                                                       int viewType) {
         // Create a New View from the row.xml layout file
         LayoutInflater myInflater = LayoutInflater.from(context);
-        View newView = myInflater.inflate(R.layout.daily_calendar_recycle_row, parent,
+        View newView = myInflater.inflate(R.layout.appointment_layout, parent,
                 false);
 
         return new MyViewHolder(newView);
@@ -141,17 +143,8 @@ public class DailyCalendarRecyclerViewAdapter extends RecyclerView.Adapter<Daily
                 matchingAppointment.put("type", 2);
                 break;
             }
-
-            // *** NEED TO ADD LOGIC FOR NOT ADDING AN EXTRA SEGMENT
         }
 
-
-        // TO REMOVE**************
-        String logString = "Input Position:  " + position
-                + " - Position Time:  " + positionTime.toString()
-                + " - Output Position:  " + ((Integer) matchingAppointment.get("position")).toString()
-                + " - Type:  " + ((Integer) matchingAppointment.get("type")).toString();
-        Log.i(TAG, logString);
 
         return matchingAppointment;
     }
