@@ -6,7 +6,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,13 +22,10 @@ import org.joda.time.Minutes;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cs246.businesscalendar.R;
 import cs246.businesscalendar.model.Appointment;
-import cs246.businesscalendar.utilities.DailyTimeBlocks;
-import cs246.businesscalendar.utilities.TestItems;
 
 public class DailyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
     private static final String TAG = "DailyCalendar";
