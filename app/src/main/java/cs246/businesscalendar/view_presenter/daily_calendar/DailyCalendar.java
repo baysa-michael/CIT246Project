@@ -34,12 +34,7 @@ import cs246.businesscalendar.utilities.TestItems;
 public class DailyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
     private static final String TAG = "DailyCalendar";
     private DailyCalendarPresenter presenter;
-/*
-    private RecyclerView myRecycler;
-    private RecyclerView.Adapter myAdapter;
-    private RecyclerView.LayoutManager myLayoutManager;
-*/
-    EditText dateEdit;
+    private EditText dateEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,20 +112,6 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
 
         // Add Appointments
         addAppointments(dailyAppointments);
-
-
-        // Set Recycler View with Layout Manager and Adapter
-/*
-        myRecycler = findViewById(R.id.dailyviewRecyclerView);
-        myRecycler.setHasFixedSize(true);
-        myRecycler.addItemDecoration(new DividerItemDecoration(myRecycler.getContext(),
-                DividerItemDecoration.VERTICAL));
-        myLayoutManager = new FrameLayoutManager(this);
-        myRecycler.setLayoutManager(myLayoutManager);
-        myAdapter = new DailyCalendarRecyclerViewAdapter(this, timeBlocks,
-                dailyAppointments);
-        myRecycler.setAdapter(myAdapter);
-*/
     }
 
     public void showReturn() {
