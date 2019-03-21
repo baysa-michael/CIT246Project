@@ -11,11 +11,18 @@ import cs246.businesscalendar.R;
 import cs246.businesscalendar.view_presenter.create_account.CreateAccount;
 import cs246.businesscalendar.view_presenter.login.Login;
 
+/**
+ * First page that runs when opening the app.
+ * Offers user the ability to create a new account and/or login.
+ */
 
 public class Welcome extends AppCompatActivity implements WelcomeContract.View {
     private static final String TAG = "Welcome";
     private WelcomePresenter presenter;
 
+    /**
+     * @param presenter sets a new presenter when login info has been gathered.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -83,7 +83,7 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
         phone = phoneInput.getText().toString();
 
 
-        // Create Genearal Shared Preferences File
+        // Create General Shared Preferences File
         SharedPreferences myPreferences = this
                 .getSharedPreferences(getString(R.string.general_shared_preferences)
                         ,Context.MODE_PRIVATE);
