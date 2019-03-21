@@ -32,7 +32,7 @@ public class DailyCalendarPresenter implements DailyCalendarContract.Presenter {
      * Retrieve List of Appointments on a Given Day
      *
      * <p>
-     * This method returns a list of appointments given a specific test date.
+     *     This method returns a list of appointments given a specific test date.
      * </p>
      *
      * @param testDate LocalDate formatted date used to retrieve appointments on this date

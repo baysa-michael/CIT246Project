@@ -27,11 +27,32 @@ import java.util.List;
 import cs246.businesscalendar.R;
 import cs246.businesscalendar.model.Appointment;
 
+/**
+ *  View for DailyCalendar Package
+ *  <p>
+ *  This class serves as the view in the MVP model for the DailyCalendar Package, with appropriate
+ *  methods included as a part of this class.
+ *  </p>
+ *
+ * @author Michael Baysa
+ * @version 2019.03.20
+ * @since 1.0
+ */
 public class DailyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
     private static final String TAG = "DailyCalendar";
+    /**
+     * A handle to the presenter for the DailyCalendar Package
+     */
     private DailyCalendarPresenter presenter;
-    private EditText dateEdit;
 
+    /**
+     * Creation Cycle of the DailyCalendar Activity
+     *
+     * <p>
+     *     This method controls the On Create portion of the DailyCalendar Activity Lifecycle
+     * </p>
+     * @param savedInstanceState Instance Identified in On Create state of activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +79,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         presenter = new DailyCalendarPresenter();
 
         // Set Default Date to Today
-        dateEdit = findViewById(R.id.dailyviewDateEdit);
+        EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
         LocalDate today = new LocalDate(LocalDate.now().getYear(),
                 LocalDate.now().getMonthOfYear(),
                 LocalDate.now().getDayOfMonth());
@@ -73,6 +94,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             @Override
             public void onClick(View view) {
                 // Get the current date in the field
+                EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
                 String retrieveYear = dateEdit.getText().toString().substring(0, 4);
                 String retrieveMonth = dateEdit.getText().toString().substring(5, 7);
                 String retrieveDay = dateEdit.getText().toString().substring(8, 10);
@@ -87,6 +109,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                             @Override
                             public void onDateSet(DatePicker view, int year, int month,
                                                   int dayOfMonth) {
+                                EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
                                 // Set Selected Date
                                 LocalDate selectedDate = new LocalDate(year, month + 1, dayOfMonth);
 
@@ -109,9 +132,18 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
     }
 
     public void showAdd() {
+        // ************************* NEED TO IMPLEMENT CODE TO LINK TO MODIFY APPOINTMENT *********
         finish();
     }
 
+    /**
+     * Change the calendar display between 12H and 24H
+     *
+     * <p>
+     *     Based on the boolean parameter, this transitions the calendar display between 12 and 24 H
+     * </p>
+     * @param is24HTime True if time should be displayed in 24H format, false if it should be in 12H
+     */
     public void display1224Time(boolean is24HTime) {
         ConstraintLayout targetConstraint = findViewById(R.id.dailycalendarHourlyLayout);
 
@@ -140,6 +172,15 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         }
     }
 
+    /**
+     * Position and Display Appointments
+     *
+     * <p>
+     *     This method takes a list of appointments and positions them on the calendar according to
+     *     the appointment time.
+     * </p>
+     * @param dailyAppointments List of appointments for a given day
+     */
     public void displayAppointments(List<Appointment> dailyAppointments) {
         // Get the Appointment Container
         FrameLayout appointmentContainer = findViewById(R.id.dailycalendarAppointmentLayout);
@@ -211,6 +252,16 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         appointmentContainer.requestLayout();
     }
 
+    /**
+     * Update calendar display appointments for a given day
+     *
+     * <p>
+     *     This method will take a target date and a 24H time period indicator and will update the
+     *     view with the appropriate calendar display and appointment listing.
+     * </p>
+     * @param updateDate Selected date used to retrieve the appropriate appointment list
+     * @param is24HTime Selection of either 24H time (true) or 12H time (false)
+     */
     public void updateAppointments(LocalDate updateDate, boolean is24HTime) {
         // Set Times in Constraint View
         display1224Time(is24HTime);
