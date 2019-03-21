@@ -61,8 +61,14 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         // Set Presenter
         presenter = new DailyCalendarPresenter();
 
-        // Prepare Date Picker
+        // Set Default Date to Today
         dateEdit = findViewById(R.id.dailyviewDateEdit);
+        LocalDate today = new LocalDate(LocalDate.now().getYear(),
+                LocalDate.now().getMonthOfYear(),
+                LocalDate.now().getDayOfMonth());
+        dateEdit.setText(today.toString("yyyy-MM-dd, EEEE"));
+
+        // Prepare Date Picker
         dateEdit.setInputType(InputType.TYPE_NULL);
         dateEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,29 +95,15 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             }
         });
 
-
-        // ******************* MOVE THIS SECTION TO PRESENTER WHEN READY **********************
-        // Retrieve Daily Time Slices
-        List<LocalTime> timeBlocks = DailyTimeBlocks.dailyCalendarSetup();
-
-        // Retrieve list of appointments for the day *********** LINK TO REAL DATA ************
-        List<Appointment> dailyAppointments = new ArrayList<>();
-        List<Appointment> testAppointments = TestItems.testAppointments();
-        for(Appointment thisAppointment : testAppointments) {
-            if (thisAppointment.getAppointmentDate().equals(
-                    new LocalDate(2019, 3, 16))) {
-                dailyAppointments.add(thisAppointment);
-            }
-        }
-
-        // ************************************************************************************
-
+        // Retrieve Daily Appointments
+        List<Appointment> dailyAppointments = presenter.retrieveAppointmentsByDay(
+                new LocalDate(2019, 3, 16));
 
         // Set Times in Constraint View
-        set1224Time(false);
+        display1224Time(false);
 
         // Add Appointments
-        addAppointments(dailyAppointments);
+        displayAppointments(dailyAppointments);
     }
 
     public void showReturn() {
@@ -122,7 +114,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         finish();
     }
 
-    public void set1224Time(boolean is24HTime) {
+    public void display1224Time(boolean is24HTime) {
         ConstraintLayout targetConstraint = findViewById(R.id.dailycalendarHourlyLayout);
 
         if (is24HTime) {
@@ -150,7 +142,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         }
     }
 
-    public void addAppointments(List<Appointment> dailyAppointments) {
+    public void displayAppointments(List<Appointment> dailyAppointments) {
         // Get the Appointment Container
         FrameLayout appointmentContainer = findViewById(R.id.dailycalendarAppointmentLayout);
 
@@ -210,24 +202,11 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             // Apply the margins
             appointment.requestLayout();
 
-            Log.i(TAG, "New View Created - Minutes:  " + minutes
-            + " - Title:  " + thisAppointment.getAppointmentTitle()
-            + " - Height:  " + pxHeight
-            + " - Top Margin:  " + pxTopMargin
-            + " - Start Margin:  " + pxStartMargin);
-
             // Add the completed view
             appointmentContainer.addView(appointment);
         }
 
         // Update the view
         appointmentContainer.requestLayout();
-
-        Log.i(TAG, "Total Children for AppointmentLayout Constraint View:  " +
-                appointmentContainer.getChildCount());
-        FrameLayout.LayoutParams thisLayout = (FrameLayout.LayoutParams) appointmentContainer.getChildAt(0).getLayoutParams();
-        FrameLayout.LayoutParams thatLayout = (FrameLayout.LayoutParams) appointmentContainer.getChildAt(appointmentContainer.getChildCount() - 1).getLayoutParams();
-        Log.i(TAG, "Top Margin for Child 1:  " + thisLayout.topMargin);
-        Log.i(TAG, "Top Margin for Last Child:  " + thatLayout.topMargin);
     }
 }

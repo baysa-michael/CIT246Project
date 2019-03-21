@@ -8,7 +8,7 @@ import android.widget.Button;
 import cs246.businesscalendar.R;
 import cs246.businesscalendar.view_presenter.daily_calendar.DailyCalendarContract;
 
-public class WeeklyCalendar extends AppCompatActivity implements DailyCalendarContract.View {
+public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarContract.View {
     private static final String TAG = "MonthlyCalendar";
     private WeeklyCalendarPresenter presenter;
 
