@@ -152,12 +152,13 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             // Formatting Strings
             DateTimeFormatter formatTime = DateTimeFormat.forPattern("HH:mm");
 
-            for (int i = 0; i < targetConstraint.getChildCount() ; i++) {
+            for (int i = 0; i < 24 ; i++) {
                 // Construct Time Reference
                 LocalTime insertTime = new LocalTime(i, 0);
 
                 // Get Reference of Child in Calendar Layout
-                ((TextView) targetConstraint.getChildAt(i)).setText(insertTime.toString(formatTime));
+                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 1 : 0)))
+                        .setText(insertTime.toString(formatTime));
             }
         } else {
             // Formatting Strings
@@ -168,7 +169,8 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                 LocalTime insertTime = new LocalTime(i, 0);
 
                 // Get Reference of Child in Calendar Layout
-                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 1 : 0))).setText(insertTime.toString(formatTime));
+                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 1 : 0)))
+                        .setText(insertTime.toString(formatTime));
             }
         }
     }
@@ -234,8 +236,6 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                     startMargin,
                     resource.getDisplayMetrics()
             );
-
-            Log.i(TAG, "Start DP:  " + startMinute);
 
             // Set the Margins and Width
             FrameLayout.MarginLayoutParams layoutParameters = new FrameLayout.MarginLayoutParams(
