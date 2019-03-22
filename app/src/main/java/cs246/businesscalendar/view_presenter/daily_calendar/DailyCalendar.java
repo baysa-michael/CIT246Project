@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -160,14 +161,14 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             }
         } else {
             // Formatting Strings
-            DateTimeFormatter formatTime = DateTimeFormat.forPattern("KK:mm a");
+            DateTimeFormatter formatTime = DateTimeFormat.forPattern("hh:mm a");
 
-            for (int i = 0; i < targetConstraint.getChildCount() ; i++) {
-                // Construct Time Reference
+            for (int i = 0; i < 24; i++) {
+                // Construct Time Reference - Need to skip extra child
                 LocalTime insertTime = new LocalTime(i, 0);
 
                 // Get Reference of Child in Calendar Layout
-                ((TextView) targetConstraint.getChildAt(i)).setText(insertTime.toString(formatTime));
+                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 1 : 0))).setText(insertTime.toString(formatTime));
             }
         }
     }
@@ -227,12 +228,14 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                     startMinute,
                     resource.getDisplayMetrics()
             );
-            int startMargin = 60;
+            int startMargin = 5;
             int pxStartMargin = (int) TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP,
                     startMargin,
                     resource.getDisplayMetrics()
             );
+
+            Log.i(TAG, "Start DP:  " + startMinute);
 
             // Set the Margins and Width
             FrameLayout.MarginLayoutParams layoutParameters = new FrameLayout.MarginLayoutParams(

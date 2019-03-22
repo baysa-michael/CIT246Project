@@ -19,7 +19,7 @@
         />
 
     <TextView
-        android:id="@+id/weeklyviewMonthOf"
+        android:id="@+id/weeklyviewWeekOf"
         android:text="@string/week_of_label"
         android:textSize="@dimen/label_text"
         android:layout_width="wrap_content"
@@ -40,21 +40,279 @@
         android:layout_marginEnd="@dimen/general_margin"
         android:ems="10"
         android:hint="@string/date_hint"
-        app:layout_constraintBaseline_toBaselineOf="@+id/weeklyviewMonthOf"
+        app:layout_constraintBaseline_toBaselineOf="@+id/weeklyviewWeekOf"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- ********** REPLACE WITH RECYCLER VIEW ********* -->
-
-    <android.support.v7.widget.RecyclerView
-        android:background="@drawable/thin_border"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/general_margin"
-        app:layout_constraintTop_toBottomOf="@+id/weeklyviewMonthOf"
+        app:layout_constraintTop_toBottomOf="@+id/weeklyviewWeekOf"
         app:layout_constraintBottom_toTopOf="@+id/weeklyviewReturnButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        >
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+            <!-- Contains Hour Grid for Calendar -->
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/dailycalendarHourlyLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+                <TextView
+                    android:id="@+id/dailycalendarHour0000"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/dailycalendarHour0000fill"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0000fill"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/dailycalendarHour0000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0100"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0000"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0200"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0100"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0300"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0200"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0400"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0300"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0500"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0400"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0600"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0500"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0700"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0600"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0800"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0700"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour0900"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0800"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1000"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour0900"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1100"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1000"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1200"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1100"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1300"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1200"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1400"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1300"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1500"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1400"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1600"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1500"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1700"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1600"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1800"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1700"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour1900"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1800"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour2000"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour1900"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour2100"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour2000"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour2200"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour2100"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+                <TextView
+                    android:id="@+id/dailycalendarHour2300"
+                    android:background="@drawable/top_and_bottom_border"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dailycalendarHour2200"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+            </android.support.constraint.ConstraintLayout>
+
+            <!-- Contains List of Appointments -->
+            <FrameLayout
+                android:id="@+id/dailycalendarAppointmentLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+    </ScrollView>
 
 
     <Button
