@@ -7,7 +7,7 @@
     tools:context=".view_presenter.weekly_calendar.WeeklyCalendar">
 
     <TextView
-        android:id="@+id/weeklyviewTitle"
+        android:id="@+id/weeklycalendarTitle"
         android:text="@string/weekly_view_title"
         android:textSize="@dimen/screen_title"
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
         />
 
     <TextView
-        android:id="@+id/weeklyviewWeekOf"
+        android:id="@+id/weeklycalendarWeekOf"
         android:text="@string/week_of_label"
         android:textSize="@dimen/label_text"
         android:layout_width="wrap_content"
@@ -27,11 +27,11 @@
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/weeklyviewTitle"
+        app:layout_constraintTop_toBottomOf="@id/weeklycalendarTitle"
         />
 
     <EditText
-        android:id="@+id/weeklyviewDateEdit"
+        android:id="@+id/weeklycalendarDateEdit"
         android:inputType="date"
         tools:ignore="Autofill"
         android:textAlignment="center"
@@ -40,15 +40,15 @@
         android:layout_marginEnd="@dimen/general_margin"
         android:ems="10"
         android:hint="@string/date_hint"
-        app:layout_constraintBaseline_toBaselineOf="@+id/weeklyviewWeekOf"
+        app:layout_constraintBaseline_toBaselineOf="@+id/weeklycalendarWeekOf"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/general_margin"
-        app:layout_constraintTop_toBottomOf="@+id/weeklyviewWeekOf"
-        app:layout_constraintBottom_toTopOf="@+id/weeklyviewReturnButton"
+        app:layout_constraintTop_toBottomOf="@+id/weeklycalendarWeekOf"
+        app:layout_constraintBottom_toTopOf="@+id/weeklycalendarReturnButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
@@ -406,7 +406,7 @@
 
 
     <Button
-        android:id="@+id/weeklyviewReturnButton"
+        android:id="@+id/weeklycalendarReturnButton"
         android:text="@string/return_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -418,7 +418,7 @@
         />
 
     <Button
-        android:id="@+id/weeklyviewAddButton"
+        android:id="@+id/weeklycalendarAddButton"
         android:text="@string/add_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"

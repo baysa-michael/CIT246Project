@@ -6,7 +6,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +37,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
         setContentView(R.layout.activity_weekly_calendar);
 
         // Set Buttons
-        Button returnButton = findViewById(R.id.weeklyviewReturnButton);
+        Button returnButton = findViewById(R.id.weeklycalendarReturnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +45,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
             }
         });
 
-        Button addButton = findViewById(R.id.weeklyviewAddButton);
+        Button addButton = findViewById(R.id.weeklycalendarAddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +57,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
         presenter = new WeeklyCalendarPresenter();
 
         // Set Default Date to Today
-        EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
+        EditText dateEdit = findViewById(R.id.weeklycalendarDateEdit);
         LocalDate today = new LocalDate(LocalDate.now().getYear(),
                 LocalDate.now().getMonthOfYear(),
                 LocalDate.now().getDayOfMonth());
@@ -73,7 +72,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
             @Override
             public void onClick(View view) {
                 // Get the current date in the field
-                EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
+                EditText dateEdit = findViewById(R.id.weeklycalendarDateEdit);
                 String retrieveYear = dateEdit.getText().toString().substring(0, 4);
                 String retrieveMonth = dateEdit.getText().toString().substring(5, 7);
                 String retrieveDay = dateEdit.getText().toString().substring(8, 10);
@@ -88,7 +87,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                             @Override
                             public void onDateSet(DatePicker view, int year, int month,
                                                   int dayOfMonth) {
-                                EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
+                                EditText dateEdit = findViewById(R.id.dailycalendarDateEdit);
                                 // Set Selected Date
                                 LocalDate selectedDate = new LocalDate(year, month + 1, dayOfMonth);
 
@@ -207,7 +206,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                         thisAppointment.getAppointmentStart()).getMinutes();
                 int pxTopMargin = (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
-                        startMinute,
+                        startMinute + 60,
                         resource.getDisplayMetrics()
                 );
                 int startMargin = 5;

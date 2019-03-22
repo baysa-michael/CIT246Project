@@ -6,7 +6,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +59,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         setContentView(R.layout.activity_daily_calendar);
 
         // Set Buttons
-        Button returnButton = findViewById(R.id.dailyviewReturnButton);
+        Button returnButton = findViewById(R.id.dailycalendarReturnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +67,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             }
         });
 
-        Button addButton = findViewById(R.id.dailyviewAddButton);
+        Button addButton = findViewById(R.id.dailycalendarAddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +79,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         presenter = new DailyCalendarPresenter();
 
         // Set Default Date to Today
-        EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
+        EditText dateEdit = findViewById(R.id.dailycalendarDateEdit);
         LocalDate today = new LocalDate(LocalDate.now().getYear(),
                 LocalDate.now().getMonthOfYear(),
                 LocalDate.now().getDayOfMonth());
@@ -95,7 +94,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
             @Override
             public void onClick(View view) {
                 // Get the current date in the field
-                EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
+                EditText dateEdit = findViewById(R.id.dailycalendarDateEdit);
                 String retrieveYear = dateEdit.getText().toString().substring(0, 4);
                 String retrieveMonth = dateEdit.getText().toString().substring(5, 7);
                 String retrieveDay = dateEdit.getText().toString().substring(8, 10);
@@ -110,7 +109,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                             @Override
                             public void onDateSet(DatePicker view, int year, int month,
                                                   int dayOfMonth) {
-                                EditText dateEdit = findViewById(R.id.dailyviewDateEdit);
+                                EditText dateEdit = findViewById(R.id.dailycalendarDateEdit);
                                 // Set Selected Date
                                 LocalDate selectedDate = new LocalDate(year, month + 1, dayOfMonth);
 
