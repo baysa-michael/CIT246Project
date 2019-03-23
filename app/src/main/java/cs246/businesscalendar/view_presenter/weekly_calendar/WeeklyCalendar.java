@@ -262,18 +262,12 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                         startMinute + resource.getInteger(R.integer.row_height),
                         resource.getDisplayMetrics()
                 );
-                int startMargin = 5;
-                int pxStartMargin = (int) TypedValue.applyDimension(
-                        TypedValue.COMPLEX_UNIT_DIP,
-                        startMargin,
-                        resource.getDisplayMetrics()
-                );
 
                 // Set the Margins and Width
                 FrameLayout.MarginLayoutParams layoutParameters = new FrameLayout.MarginLayoutParams(
                         FrameLayout.LayoutParams.MATCH_PARENT
                         , pxHeight);
-                layoutParameters.setMargins(pxStartMargin, pxTopMargin, 0, 0);
+                layoutParameters.setMargins(0, pxTopMargin, 0, 0);
                 appointment.setLayoutParams(layoutParameters);
 
                 // Apply the margins
