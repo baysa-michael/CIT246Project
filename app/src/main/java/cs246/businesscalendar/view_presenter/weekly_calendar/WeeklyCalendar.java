@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,9 +88,10 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                             @Override
                             public void onDateSet(DatePicker view, int year, int month,
                                                   int dayOfMonth) {
-                                EditText dateEdit = findViewById(R.id.dailycalendarDateEdit);
+                                EditText dateEdit = findViewById(R.id.weeklycalendarDateEdit);
                                 // Set Selected Date
-                                LocalDate selectedDate = new LocalDate(year, month + 1, dayOfMonth);
+                                LocalDate selectedDate = new LocalDate(year, month + 1,
+                                        dayOfMonth);
 
                                 // Display Formatted Date
                                 DateTimeFormatter formatTime =
@@ -133,7 +135,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                 LocalTime insertTime = new LocalTime(i, 0);
 
                 // Get Reference of Child in Calendar Layout
-                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 3 : 1)))
+                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 2 : 1)))
                         .setText(insertTime.toString(formatTime));
             }
         } else {
@@ -145,7 +147,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                 LocalTime insertTime = new LocalTime(i, 0);
 
                 // Get Reference of Child in Calendar Layout
-                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 3 : 1)))
+                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 2 : 1)))
                         .setText(insertTime.toString(formatTime));
             }
         }
@@ -160,9 +162,10 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
      * </p>
      * @param weeklyAppointments List of List of Appointments for a given week
      */
-    public void displayAppointments(List<List<Appointment>> weeklyAppointments) {
+    public void displayAppointments(List<List<Appointment>> weeklyAppointments,
+                                    LocalDate startDate) {
         // Get the Appointment Container
-        ConstraintLayout weeklyContainer = findViewById(R.id.weeklycalendarHourlyLayoutVertical);
+        ConstraintLayout weeklyContainer = findViewById(R.id.weeklycalendarHourlyLayoutHorizontal);
 
         // Loop for each day of week
         for (int i = 0; i < 7; i++) {
@@ -170,9 +173,61 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
             FrameLayout appointmentContainer = (FrameLayout) weeklyContainer.getChildAt(i);
             appointmentContainer.removeAllViews();
 
+            Log.i(TAG, "Removed all previous views from container " + i);
+
+            // Add the Date field at the top of each day
+            // Create a New View Group
+/*
+            LayoutInflater myDateInflater = LayoutInflater.from(this);
+            View newDateHeaderView = myDateInflater.inflate(R.layout.date_header_layout,
+                    appointmentContainer,false);
+            ViewGroup dateHeader = (ViewGroup) newDateHeaderView;
+*/
+
+            // Add the text for the text view
+/*
+            LocalDate insertDate = startDate.plusDays(i);
+            DateTimeFormatter formatDate = DateTimeFormat.forPattern("ee MMMM, yyyy");
+            DateTimeFormatter formatDayofWeek = DateTimeFormat.forPattern("EEEE");
+            ((TextView) dateHeader.getChildAt(0))
+                    .setText(insertDate.toString(formatDate));
+            ((TextView) dateHeader.getChildAt(1))
+                    .setText(insertDate.toString(formatDayofWeek));
+*/
+
+/*
+            int pxHeightHeader = (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    R.dimen.row_height,
+                    resource.getDisplayMetrics()
+            );
+*/
+
+            // Set the Margins and Width
+/*
+            FrameLayout.MarginLayoutParams layoutParametersHeader =
+                    new FrameLayout.MarginLayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                            pxHeightHeader);
+            layoutParametersHeader.setMargins(0, 0, 0, 0);
+            dateHeader.setLayoutParams(layoutParametersHeader);
+*/
+
+            // Apply the margins
+/*
+            dateHeader.requestLayout();
+*/
+
+            // Add the completed view
+/*
+            appointmentContainer.addView(dateHeader);
+*/
+
             // Add appointments
             for (int j = 0; j < weeklyAppointments.get(i).size(); j++) {
+                Log.i(TAG, "Adding appointment " + j);
                 Appointment thisAppointment = weeklyAppointments.get(i).get(j);
+
+                Log.i(TAG, "Data:  " + thisAppointment.getAppointmentTitle());
 
                 // Create a New View Group
                 LayoutInflater myInflater = LayoutInflater.from(this);
@@ -189,7 +244,6 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                 ((TextView) appointment.getChildAt(1))
                         .setText(thisAppointment.getAppointmentDescription());
 
-
                 // Identify the height to be used for the appointment
                 Resources resource = this.getResources();
                 int minutes = Minutes.minutesBetween(thisAppointment.getAppointmentStart(),
@@ -200,13 +254,12 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                         resource.getDisplayMetrics()
                 );
 
-
                 // Identify the Top and Left margin to be used, and convert to pixels
                 int startMinute = Minutes.minutesBetween(new LocalTime(0, 0),
                         thisAppointment.getAppointmentStart()).getMinutes();
                 int pxTopMargin = (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
-                        startMinute + 60,
+                        startMinute + resource.getInteger(R.integer.row_height),
                         resource.getDisplayMetrics()
                 );
                 int startMargin = 5;
@@ -252,7 +305,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
         // Retrieve and Add Daily Appointments
         List<List<Appointment>> weeklyAppointments = presenter
                 .retrieveAppointmentsByWeek(updateDate);
-        displayAppointments(weeklyAppointments);
+        displayAppointments(weeklyAppointments, presenter.determineStartOfWeek(updateDate));
     }
 }
 

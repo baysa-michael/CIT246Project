@@ -11,7 +11,7 @@ public interface WeeklyCalendarContract {
         void showReturn();
         void showAdd();
         void display1224Time(boolean is24HTime);
-        void displayAppointments(List<List<Appointment>> weeklyAppointments);
+        void displayAppointments(List<List<Appointment>> weeklyAppointments, LocalDate startDate);
         void updateAppointments(LocalDate updateDate, boolean is24HTime);
     }
 
