@@ -14,6 +14,7 @@
     <dimen name="small_margin">12dp</dimen>
     <dimen name="extra_small_margin">5dp</dimen>
     <dimen name="row_height">60dp</dimen>
+    <dimen name="full_day_height">1440dp</dimen>
     <dimen name="day_width">250dp</dimen>
 
 </resources>

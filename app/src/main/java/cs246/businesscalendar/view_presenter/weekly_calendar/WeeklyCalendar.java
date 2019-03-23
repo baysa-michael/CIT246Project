@@ -135,7 +135,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                 LocalTime insertTime = new LocalTime(i, 0);
 
                 // Get Reference of Child in Calendar Layout
-                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 2 : 1)))
+                ((TextView) targetConstraint.getChildAt(i))
                         .setText(insertTime.toString(formatTime));
             }
         } else {
@@ -147,8 +147,9 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                 LocalTime insertTime = new LocalTime(i, 0);
 
                 // Get Reference of Child in Calendar Layout
-                ((TextView) targetConstraint.getChildAt(i + (i > 0 ? 2 : 1)))
+                ((TextView) targetConstraint.getChildAt(i))
                         .setText(insertTime.toString(formatTime));
+                Log.i(TAG, "Updated Time:  " + insertTime.toString(formatTime));
             }
         }
     }

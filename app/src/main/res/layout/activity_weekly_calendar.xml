@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -43,8 +44,8 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/weeklycalendarWeekOf"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ScrollView
-        android:id="@+id/weeklycalendarVerticalScroll"
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/general_margin"
@@ -53,378 +54,435 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
-
-        <!-- Contains Hour Grid for Calendar -->
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/weeklycalendarHourlyLayoutVertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <!-- Top Horizontal Scroll Bar -->
+        <HorizontalScrollView
+            android:id="@+id/weeklycalendarTopHorizontalScroll"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/row_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/weeklycalendarMainHorizontalScroll"
+            app:layout_constraintStart_toEndOf="@id/weeklycalendarSideVerticalScroll"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/weeklycalendarDateRow"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0000"
+            >
+            <FrameLayout
+                android:id="@+id/weeklycalendarDateRowHeader"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toStartOf="@+id/weeklycalendarHour0000fill"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weeklycalendarDateRow" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0000fill"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/weeklycalendarHour0000"
-                app:layout_constraintTop_toBottomOf="@id/weeklycalendarDateRow" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0100"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0000" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0200"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0100" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0300"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0200" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0400"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0300" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0500"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0400" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0600"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0500" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0700"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0600" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0800"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0700" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour0900"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0800" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1000"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0900" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1100"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1000" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1200"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1100" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1300"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1200" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1400"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1300" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1500"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1400" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1600"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1500" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1700"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1600" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1800"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1700" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour1900"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1800" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour2000"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1900" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour2100"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour2000" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour2200"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour2100" />
-
-            <TextView
-                android:id="@+id/weeklycalendarHour2300"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/top_and_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour2200" />
-            <!-- Contains List of Appointments -->
-            <HorizontalScrollView
-                android:id="@+id/weeklycalendarAppointmentLayout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="@dimen/extra_small_margin"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/weeklycalendarHour0000"
-                app:layout_constraintTop_toTopOf="parent">
-                <FrameLayout
+                >
+
+            </FrameLayout>
+        </HorizontalScrollView>
+
+        <!-- Side Vertical Scroll Bar -->
+        <ScrollView
+            android:id="@+id/weeklycalendarSideVerticalScroll"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/weeklycalendarTopHorizontalScroll"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/weeklycalendarMainHorizontalScroll"
+            >
+            <!-- Contains Hour Grid for Calendar -->
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/weeklycalendarHourlyLayoutVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0000"
                     android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0100"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0000"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0200"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0100"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0300"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0300"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0200"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0400"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0400"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0300"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0500"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0500"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0400"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0600"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0600"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0500"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0700"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0700"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0600"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0800"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0800"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0700"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour0900"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour0900"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0800"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1000"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour0900"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1100"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1000"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1200"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1100"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1300"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1300"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1200"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1400"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1400"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1300"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1500"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1500"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1400"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1600"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1600"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1500"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1700"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1700"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1600"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1800"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1800"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1700"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour1900"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour1900"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1800"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour2000"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour2000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour1900"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour2100"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour2100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour2000"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour2200"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour2200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour2100"
+                    app:layout_constraintBottom_toTopOf="@id/weeklycalendarHour2300"
+                    />
+
+                <TextView
+                    android:id="@+id/weeklycalendarHour2300"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/row_height"
+                    android:background="@drawable/top_and_bottom_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklycalendarHour2200"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+        <!-- Main Contents - Vertical and Horizontal Scroll -->
+        <HorizontalScrollView
+            android:id="@+id/weeklycalendarMainHorizontalScroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/weeklycalendarTopHorizontalScroll"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/weeklycalendarSideVerticalScroll"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+            <ScrollView
+                android:id="@+id/weeklycalendarMainVerticalScroll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+                <!-- Contains List of Appointments -->
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/weeklycalendarHourlyLayoutHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/extra_small_margin"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     >
-                    <android.support.constraint.ConstraintLayout
-                        android:id="@+id/weeklycalendarHourlyLayoutHorizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        >
-                        <FrameLayout
-                            android:id="@+id/weeklycalendarAppointmentDay1"
-                            android:layout_width="@dimen/day_width"
-                            android:layout_height="0dp"
-                            android:background="@drawable/thin_border"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            >
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:id="@+id/weeklycalendarAppointmentDay2"
-                            android:layout_width="@dimen/day_width"
-                            android:layout_height="0dp"
-                            android:background="@drawable/thin_border"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay3"
-                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay1"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:id="@+id/weeklycalendarAppointmentDay3"
-                            android:layout_width="@dimen/day_width"
-                            android:layout_height="0dp"
-                            android:background="@drawable/thin_border"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay4"
-                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay2"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:id="@+id/weeklycalendarAppointmentDay4"
-                            android:layout_width="@dimen/day_width"
-                            android:layout_height="0dp"
-                            android:background="@drawable/thin_border"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay5"
-                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay3"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:id="@+id/weeklycalendarAppointmentDay5"
-                            android:layout_width="@dimen/day_width"
-                            android:layout_height="0dp"
-                            android:background="@drawable/thin_border"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay6"
-                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay4"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:id="@+id/weeklycalendarAppointmentDay6"
-                            android:layout_width="@dimen/day_width"
-                            android:layout_height="0dp"
-                            android:background="@drawable/thin_border"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay7"
-                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay5"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:id="@+id/weeklycalendarAppointmentDay7"
-                            android:layout_width="@dimen/day_width"
-                            android:layout_height="0dp"
-                            android:background="@drawable/thin_border"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay6"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                        </FrameLayout>
-                    </android.support.constraint.ConstraintLayout>
                     <FrameLayout
-                        android:id="@+id/weeklycalendarDateRowHeader"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:id="@+id/weeklycalendarAppointmentDay1"
+                        android:layout_width="@dimen/day_width"
+                        android:layout_height="@dimen/full_day_height"
+                        android:background="@drawable/thin_border"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay2"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         >
 
                     </FrameLayout>
-                </FrameLayout>
-            </HorizontalScrollView>
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
 
+                    <FrameLayout
+                        android:id="@+id/weeklycalendarAppointmentDay2"
+                        android:layout_width="@dimen/day_width"
+                        android:layout_height="@dimen/full_day_height"
+                        android:background="@drawable/thin_border"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay3"
+                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay1"
+                        app:layout_constraintTop_toTopOf="parent">
 
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/weeklycalendarAppointmentDay3"
+                        android:layout_width="@dimen/day_width"
+                        android:layout_height="@dimen/full_day_height"
+                        android:background="@drawable/thin_border"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay4"
+                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/weeklycalendarAppointmentDay4"
+                        android:layout_width="@dimen/day_width"
+                        android:layout_height="@dimen/full_day_height"
+                        android:background="@drawable/thin_border"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay5"
+                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay3"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/weeklycalendarAppointmentDay5"
+                        android:layout_width="@dimen/day_width"
+                        android:layout_height="@dimen/full_day_height"
+                        android:background="@drawable/thin_border"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay6"
+                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay4"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/weeklycalendarAppointmentDay6"
+                        android:layout_width="@dimen/day_width"
+                        android:layout_height="@dimen/full_day_height"
+                        android:background="@drawable/thin_border"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay7"
+                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay5"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/weeklycalendarAppointmentDay7"
+                        android:layout_width="@dimen/day_width"
+                        android:layout_height="@dimen/full_day_height"
+                        android:background="@drawable/thin_border"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay6"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </FrameLayout>
+                </android.support.constraint.ConstraintLayout>
+            </ScrollView>
+        </HorizontalScrollView>
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/weeklycalendarReturnButton"
