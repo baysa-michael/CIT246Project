@@ -11,10 +11,13 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.joda.time.LocalDate;
@@ -31,6 +34,14 @@ import cs246.businesscalendar.model.Appointment;
 public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarContract.View {
     private static final String TAG = "MonthlyCalendar";
     private WeeklyCalendarPresenter presenter;
+    private ScrollView sideVerticalScroll;
+    private ScrollView mainVerticalScroll;
+    private HorizontalScrollView topHorizontalScroll;
+    private HorizontalScrollView mainHorizontalScroll;
+    private int sideVerticalScrollPoint;
+    private int topHorizontalScrollPoint;
+    private int mainVerticalScrollPoint;
+    private int mainHorizontalScrollPoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +116,54 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                 picker.show();
             }
         });
+
+        // Link Scroll Views
+        sideVerticalScroll = findViewById(R.id.weeklycalendarSideVerticalScroll);
+        mainVerticalScroll = findViewById(R.id.weeklycalendarMainVerticalScroll);
+        topHorizontalScroll =
+                findViewById(R.id.weeklycalendarTopHorizontalScroll);
+        mainHorizontalScroll =
+                findViewById(R.id.weeklycalendarMainHorizontalScroll);
+
+        // Identify Initial Scroll Points
+        sideVerticalScrollPoint = sideVerticalScroll.getScrollY();
+        mainVerticalScrollPoint = mainVerticalScroll.getScrollY();
+        topHorizontalScrollPoint = topHorizontalScroll.getScrollX();
+        mainHorizontalScrollPoint = mainHorizontalScroll.getScrollX();
+
+        // Add Scroll Listeners
+        sideVerticalScroll.getViewTreeObserver().addOnScrollChangedListener(
+                new ViewTreeObserver.OnScrollChangedListener() {
+                    @Override
+                    public void onScrollChanged() {
+                        verticalScroll(sideVerticalScroll);
+                    }
+                }
+        );
+        mainVerticalScroll.getViewTreeObserver().addOnScrollChangedListener(
+                new ViewTreeObserver.OnScrollChangedListener() {
+                    @Override
+                    public void onScrollChanged() {
+                        verticalScroll(mainVerticalScroll);
+                    }
+                }
+        );
+        topHorizontalScroll.getViewTreeObserver().addOnScrollChangedListener(
+                new ViewTreeObserver.OnScrollChangedListener() {
+                    @Override
+                    public void onScrollChanged() {
+                        horizontalScroll(topHorizontalScroll);
+                    }
+                }
+        );
+        mainHorizontalScroll.getViewTreeObserver().addOnScrollChangedListener(
+                new ViewTreeObserver.OnScrollChangedListener() {
+                    @Override
+                    public void onScrollChanged() {
+                        horizontalScroll(mainHorizontalScroll);
+                    }
+                }
+        );
     }
 
     public void showReturn() {
@@ -262,7 +321,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                         thisAppointment.getAppointmentStart()).getMinutes();
                 int pxTopMargin = (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
-                        startMinute + resource.getInteger(R.integer.row_height),
+                        startMinute,
                         resource.getDisplayMetrics()
                 );
 
@@ -303,6 +362,34 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
         List<List<Appointment>> weeklyAppointments = presenter
                 .retrieveAppointmentsByWeek(updateDate);
         displayAppointments(weeklyAppointments, presenter.determineStartOfWeek(updateDate));
+    }
+
+    public void verticalScroll(ScrollView itemScrolled) {
+        int scrollPoint = itemScrolled.getScrollY();
+
+        if (sideVerticalScrollPoint != scrollPoint) {
+            sideVerticalScroll.setScrollY(scrollPoint);
+            sideVerticalScrollPoint = scrollPoint;
+        }
+
+        if (mainVerticalScrollPoint != scrollPoint) {
+            mainVerticalScroll.setScrollY(scrollPoint);
+            mainVerticalScrollPoint = scrollPoint;
+        }
+    }
+
+    public void horizontalScroll(HorizontalScrollView itemScrolled) {
+        int scrollPoint = itemScrolled.getScrollX();
+
+        if (topHorizontalScrollPoint != scrollPoint) {
+            topHorizontalScroll.setScrollX(scrollPoint);
+            topHorizontalScrollPoint = scrollPoint;
+        }
+
+        if (mainHorizontalScrollPoint != scrollPoint) {
+            mainHorizontalScroll.setScrollX(scrollPoint);
+            mainHorizontalScrollPoint = scrollPoint;
+        }
     }
 }
 
