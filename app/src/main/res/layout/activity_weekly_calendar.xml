@@ -44,15 +44,16 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ScrollView
+        android:id="@+id/weeklycalendarVerticalScroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/general_margin"
-        app:layout_constraintBottom_toTopOf="@+id/weeklycalendarReturnButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weeklycalendarWeekOf"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintBottom_toTopOf="@+id/weeklycalendarReturnButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
         <!-- Contains Hour Grid for Calendar -->
         <android.support.constraint.ConstraintLayout
             android:id="@+id/weeklycalendarHourlyLayoutVertical"
@@ -306,103 +307,123 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/weeklycalendarHour0000"
                 app:layout_constraintTop_toTopOf="parent">
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/weeklycalendarHourlyLayoutHorizontal"
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <FrameLayout
-                        android:id="@+id/weeklycalendarAppointmentDay1"
-                        android:layout_width="@dimen/day_width"
-                        android:layout_height="0dp"
-                        android:background="@drawable/thin_border"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay2"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:id="@+id/weeklycalendarAppointmentDay2"
-                        android:layout_width="@dimen/day_width"
-                        android:layout_height="0dp"
-                        android:background="@drawable/thin_border"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay3"
-                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay1"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:id="@+id/weeklycalendarAppointmentDay3"
-                        android:layout_width="@dimen/day_width"
-                        android:layout_height="0dp"
-                        android:background="@drawable/thin_border"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay4"
-                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay2"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:id="@+id/weeklycalendarAppointmentDay4"
-                        android:layout_width="@dimen/day_width"
-                        android:layout_height="0dp"
-                        android:background="@drawable/thin_border"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay5"
-                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay3"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:id="@+id/weeklycalendarAppointmentDay5"
-                        android:layout_width="@dimen/day_width"
-                        android:layout_height="0dp"
-                        android:background="@drawable/thin_border"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay6"
-                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay4"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:id="@+id/weeklycalendarAppointmentDay6"
-                        android:layout_width="@dimen/day_width"
-                        android:layout_height="0dp"
-                        android:background="@drawable/thin_border"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay7"
-                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay5"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:id="@+id/weeklycalendarAppointmentDay7"
-                        android:layout_width="@dimen/day_width"
-                        android:layout_height="0dp"
-                        android:background="@drawable/thin_border"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/weeklycalendarHourlyLayoutHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay6"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+                        <FrameLayout
+                            android:id="@+id/weeklycalendarAppointmentDay1"
+                            android:layout_width="@dimen/day_width"
+                            android:layout_height="0dp"
+                            android:background="@drawable/thin_border"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/weeklycalendarAppointmentDay2"
+                            android:layout_width="@dimen/day_width"
+                            android:layout_height="0dp"
+                            android:background="@drawable/thin_border"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay3"
+                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay1"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/weeklycalendarAppointmentDay3"
+                            android:layout_width="@dimen/day_width"
+                            android:layout_height="0dp"
+                            android:background="@drawable/thin_border"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay4"
+                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay2"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/weeklycalendarAppointmentDay4"
+                            android:layout_width="@dimen/day_width"
+                            android:layout_height="0dp"
+                            android:background="@drawable/thin_border"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay5"
+                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay3"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/weeklycalendarAppointmentDay5"
+                            android:layout_width="@dimen/day_width"
+                            android:layout_height="0dp"
+                            android:background="@drawable/thin_border"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay6"
+                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay4"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/weeklycalendarAppointmentDay6"
+                            android:layout_width="@dimen/day_width"
+                            android:layout_height="0dp"
+                            android:background="@drawable/thin_border"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/weeklycalendarAppointmentDay7"
+                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay5"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/weeklycalendarAppointmentDay7"
+                            android:layout_width="@dimen/day_width"
+                            android:layout_height="0dp"
+                            android:background="@drawable/thin_border"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/weeklycalendarAppointmentDay6"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </FrameLayout>
+                    </android.support.constraint.ConstraintLayout>
+                    <FrameLayout
+                        android:id="@+id/weeklycalendarDateRowHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        >
 
                     </FrameLayout>
-                </android.support.constraint.ConstraintLayout>
+                </FrameLayout>
             </HorizontalScrollView>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
+
 
 
     <Button

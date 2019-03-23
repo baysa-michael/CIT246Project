@@ -164,28 +164,23 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
      */
     public void displayAppointments(List<List<Appointment>> weeklyAppointments,
                                     LocalDate startDate) {
-        // Get the Appointment Container
+        // Get the Containers
         ConstraintLayout weeklyContainer = findViewById(R.id.weeklycalendarHourlyLayoutHorizontal);
+        FrameLayout dateHeaderContainer = findViewById(R.id.weeklycalendarDateRowHeader);
+
+        // Clear the current header
+        dateHeaderContainer.removeAllViews();
 
         // Loop for each day of week
         for (int i = 0; i < 7; i++) {
-            // Clear all current views
-            FrameLayout appointmentContainer = (FrameLayout) weeklyContainer.getChildAt(i);
-            appointmentContainer.removeAllViews();
-
-            Log.i(TAG, "Removed all previous views from container " + i);
-
             // Add the Date field at the top of each day
             // Create a New View Group
-/*
             LayoutInflater myDateInflater = LayoutInflater.from(this);
             View newDateHeaderView = myDateInflater.inflate(R.layout.date_header_layout,
-                    appointmentContainer,false);
+                    dateHeaderContainer,false);
             ViewGroup dateHeader = (ViewGroup) newDateHeaderView;
-*/
 
             // Add the text for the text view
-/*
             LocalDate insertDate = startDate.plusDays(i);
             DateTimeFormatter formatDate = DateTimeFormat.forPattern("ee MMMM, yyyy");
             DateTimeFormatter formatDayofWeek = DateTimeFormat.forPattern("EEEE");
@@ -193,41 +188,42 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                     .setText(insertDate.toString(formatDate));
             ((TextView) dateHeader.getChildAt(1))
                     .setText(insertDate.toString(formatDayofWeek));
-*/
 
-/*
+            // Identify the height to be used for the header
+            Resources resource = this.getResources();
             int pxHeightHeader = (int) TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP,
-                    R.dimen.row_height,
+                    resource.getInteger(R.integer.row_height),
                     resource.getDisplayMetrics()
             );
-*/
+
+            // Identify the Start margin to place the date header
+            int pxStartMargin = (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    resource.getInteger(R.integer.day_width) * i,
+                    resource.getDisplayMetrics()
+            );
 
             // Set the Margins and Width
-/*
             FrameLayout.MarginLayoutParams layoutParametersHeader =
-                    new FrameLayout.MarginLayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                    new FrameLayout.MarginLayoutParams(resource.getInteger(R.integer.day_width),
                             pxHeightHeader);
-            layoutParametersHeader.setMargins(0, 0, 0, 0);
+            layoutParametersHeader.setMargins(pxStartMargin, 0, 0, 0);
             dateHeader.setLayoutParams(layoutParametersHeader);
-*/
 
             // Apply the margins
-/*
             dateHeader.requestLayout();
-*/
 
             // Add the completed view
-/*
-            appointmentContainer.addView(dateHeader);
-*/
+            dateHeaderContainer.addView(dateHeader);
+
+            // Clear the Appointment Container
+            FrameLayout appointmentContainer = (FrameLayout) weeklyContainer.getChildAt(i);
+            appointmentContainer.removeAllViews();
 
             // Add appointments
             for (int j = 0; j < weeklyAppointments.get(i).size(); j++) {
-                Log.i(TAG, "Adding appointment " + j);
                 Appointment thisAppointment = weeklyAppointments.get(i).get(j);
-
-                Log.i(TAG, "Data:  " + thisAppointment.getAppointmentTitle());
 
                 // Create a New View Group
                 LayoutInflater myInflater = LayoutInflater.from(this);
@@ -245,7 +241,6 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                         .setText(thisAppointment.getAppointmentDescription());
 
                 // Identify the height to be used for the appointment
-                Resources resource = this.getResources();
                 int minutes = Minutes.minutesBetween(thisAppointment.getAppointmentStart(),
                         thisAppointment.getAppointmentEnd()).getMinutes();
                 int pxHeight = (int) TypedValue.applyDimension(
