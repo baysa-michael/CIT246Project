@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/dateheaderlayoutDate"
-        android:textSize="@dimen/small_label_text"
+        android:textSize="@dimen/label_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/small_margin"
+        android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/dateheaderlayoutDayOfWeek"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,10 +20,10 @@
 
     <TextView
         android:id="@+id/dateheaderlayoutDayOfWeek"
-        android:textSize="@dimen/small_label_text"
+        android:textSize="@dimen/label_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
         app:layout_constraintTop_toBottomOf="@id/dateheaderlayoutDate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
