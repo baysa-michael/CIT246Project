@@ -198,6 +198,13 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                     resource.getDisplayMetrics()
             );
 
+            // Identify the width to be used for the header
+            int pxWidthHeader = (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    resource.getInteger(R.integer.day_width),
+                    resource.getDisplayMetrics()
+            );
+
             // Identify the Start margin to place the date header
             int pxStartMargin = (int) TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP,
@@ -207,7 +214,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
 
             // Set the Margins and Width
             FrameLayout.MarginLayoutParams layoutParametersHeader =
-                    new FrameLayout.MarginLayoutParams(resource.getInteger(R.integer.day_width),
+                    new FrameLayout.MarginLayoutParams(pxWidthHeader,
                             pxHeightHeader);
             layoutParametersHeader.setMargins(pxStartMargin, 0, 0, 0);
             dateHeader.setLayoutParams(layoutParametersHeader);
