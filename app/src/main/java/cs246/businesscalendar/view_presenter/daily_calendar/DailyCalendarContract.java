@@ -23,6 +23,7 @@ public interface DailyCalendarContract {
         void showAdd();
         void display1224Time(boolean is24HTime);
         void displayAppointments(List<Appointment> dailyAppointments);
+        void updateCalendar(LocalDate updateDate, boolean is24HTime);
     }
 
     interface Presenter {

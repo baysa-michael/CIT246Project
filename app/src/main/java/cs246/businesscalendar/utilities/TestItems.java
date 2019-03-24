@@ -27,8 +27,8 @@ public class TestItems {
         testAppointments.add(new Appointment(
                 new LocalDate(2019, 3, 16)
                 , false
-                , new LocalTime(10,0)
-                , new LocalTime(11,0)
+                , new LocalTime(10,30)
+                , new LocalTime(11,30)
                 , "Test 2"
                 , ""
                 , ""

@@ -12,7 +12,7 @@ public interface WeeklyCalendarContract {
         void showAdd();
         void display1224Time(boolean is24HTime);
         void displayAppointments(List<List<Appointment>> weeklyAppointments, LocalDate startDate);
-        void updateAppointments(LocalDate updateDate, boolean is24HTime);
+        void updateCalendar(LocalDate updateDate, boolean is24HTime);
     }
 
     interface Presenter {

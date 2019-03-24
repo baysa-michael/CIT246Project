@@ -7,7 +7,7 @@
     tools:context=".view_presenter.monthly_calendar.MonthlyCalendar">
 
     <TextView
-        android:id="@+id/monthlyviewTitle"
+        android:id="@+id/monthlycalendarTitle"
         android:text="@string/monthly_view_title"
         android:textSize="@dimen/screen_title"
         android:layout_width="wrap_content"
@@ -19,19 +19,19 @@
         />
 
     <TextView
-        android:id="@+id/monthlyviewMonthOf"
-        android:text="@string/month_of_label"
+        android:id="@+id/monthlycalendarMonthIncluding"
+        android:text="@string/month_with_label"
         android:textSize="@dimen/label_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/general_margin"
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/monthlyviewTitle"
+        app:layout_constraintTop_toBottomOf="@id/monthlycalendarTitle"
         />
 
     <EditText
-        android:id="@+id/monthlyviewDateEdit"
+        android:id="@+id/monthlycalendarDateEdit"
         android:inputType="date"
         tools:ignore="Autofill"
         android:textAlignment="center"
@@ -40,587 +40,586 @@
         android:layout_marginEnd="@dimen/general_margin"
         android:ems="10"
         android:hint="@string/date_hint"
-        app:layout_constraintBaseline_toBaselineOf="@+id/monthlyviewMonthOf"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- ********** REPLACE WITH RECYCLER VIEW ********* -->
+        app:layout_constraintBaseline_toBaselineOf="@+id/monthlycalendarMonthIncluding"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/monthlyviewCalendar"
+        android:id="@+id/monthlycalendarCalendar"
         android:background="@drawable/thin_border"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/general_margin"
-        app:layout_constraintTop_toBottomOf="@+id/monthlyviewMonthOf"
-        app:layout_constraintBottom_toTopOf="@+id/monthlyviewReturnButton"
+        app:layout_constraintTop_toBottomOf="@+id/monthlycalendarMonthIncluding"
+        app:layout_constraintBottom_toTopOf="@+id/monthlycalendarReturnButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/monthlyviewR1"
+            android:id="@+id/monthlycalendarR1"
             android:background="@drawable/thin_border"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/monthlyviewR2"
+            app:layout_constraintBottom_toTopOf="@+id/monthlycalendarR2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             >
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR1C1"
+                android:id="@+id/monthlycalendarR1C1"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR1C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR1C2"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR1C2"
+                android:id="@+id/monthlycalendarR1C2"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR1C1"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR1C3"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR1C1"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR1C3"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR1C3"
+                android:id="@+id/monthlycalendarR1C3"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR1C2"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR1C4"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR1C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR1C4"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR1C4"
+                android:id="@+id/monthlycalendarR1C4"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR1C3"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR1C5"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR1C3"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR1C5"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR1C5"
+                android:id="@+id/monthlycalendarR1C5"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR1C4"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR1C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR1C4"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR1C6"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR1C6"
+                android:id="@+id/monthlycalendarR1C6"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR1C5"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR1C7"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR1C5"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR1C7"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR1C7"
+                android:id="@+id/monthlycalendarR1C7"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR1C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR1C6"
                 app:layout_constraintEnd_toEndOf="parent"
                 >
 
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/monthlyviewR2"
+            android:id="@+id/monthlycalendarR2"
             android:background="@drawable/thin_border"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/monthlyviewR1"
-            app:layout_constraintBottom_toTopOf="@+id/monthlyviewR3"
+            app:layout_constraintTop_toBottomOf="@+id/monthlycalendarR1"
+            app:layout_constraintBottom_toTopOf="@+id/monthlycalendarR3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             >
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR2C1"
+                android:id="@+id/monthlycalendarR2C1"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR2C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR2C2"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR2C2"
+                android:id="@+id/monthlycalendarR2C2"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR2C1"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR2C3"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR2C1"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR2C3"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR2C3"
+                android:id="@+id/monthlycalendarR2C3"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR2C2"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR2C4"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR2C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR2C4"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR2C4"
+                android:id="@+id/monthlycalendarR2C4"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR2C3"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR2C5"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR2C3"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR2C5"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR2C5"
+                android:id="@+id/monthlycalendarR2C5"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR2C4"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR2C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR2C4"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR2C6"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR2C6"
+                android:id="@+id/monthlycalendarR2C6"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR2C5"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR2C7"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR2C5"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR2C7"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR2C7"
+                android:id="@+id/monthlycalendarR2C7"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR2C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR2C6"
                 app:layout_constraintEnd_toEndOf="parent"
                 >
 
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/monthlyviewR3"
+            android:id="@+id/monthlycalendarR3"
             android:background="@drawable/thin_border"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/monthlyviewR2"
-            app:layout_constraintBottom_toTopOf="@+id/monthlyviewR4"
+            app:layout_constraintTop_toBottomOf="@+id/monthlycalendarR2"
+            app:layout_constraintBottom_toTopOf="@+id/monthlycalendarR4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             >
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR3C1"
+                android:id="@+id/monthlycalendarR3C1"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR3C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR3C2"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR3C2"
+                android:id="@+id/monthlycalendarR3C2"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR3C1"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR3C3"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR3C1"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR3C3"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR3C3"
+                android:id="@+id/monthlycalendarR3C3"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR3C2"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR3C4"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR3C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR3C4"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR3C4"
+                android:id="@+id/monthlycalendarR3C4"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR3C3"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR3C5"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR3C3"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR3C5"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR3C5"
+                android:id="@+id/monthlycalendarR3C5"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR3C4"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR3C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR3C4"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR3C6"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR3C6"
+                android:id="@+id/monthlycalendarR3C6"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR3C5"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR3C7"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR3C5"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR3C7"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR3C7"
+                android:id="@+id/monthlycalendarR3C7"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR3C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR3C6"
                 app:layout_constraintEnd_toEndOf="parent"
                 >
 
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/monthlyviewR4"
+            android:id="@+id/monthlycalendarR4"
             android:background="@drawable/thin_border"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/monthlyviewR3"
-            app:layout_constraintBottom_toTopOf="@+id/monthlyviewR5"
+            app:layout_constraintTop_toBottomOf="@+id/monthlycalendarR3"
+            app:layout_constraintBottom_toTopOf="@+id/monthlycalendarR5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             >
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR4C1"
+                android:id="@+id/monthlycalendarR4C1"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR4C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR4C2"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR4C2"
+                android:id="@+id/monthlycalendarR4C2"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR4C1"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR4C3"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR4C1"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR4C3"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR4C3"
+                android:id="@+id/monthlycalendarR4C3"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR4C2"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR4C4"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR4C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR4C4"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR4C4"
+                android:id="@+id/monthlycalendarR4C4"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR4C3"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR4C5"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR4C3"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR4C5"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR4C5"
+                android:id="@+id/monthlycalendarR4C5"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR4C4"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR4C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR4C4"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR4C6"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR4C6"
+                android:id="@+id/monthlycalendarR4C6"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR4C5"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR4C7"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR4C5"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR4C7"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR4C7"
+                android:id="@+id/monthlycalendarR4C7"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR4C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR4C6"
                 app:layout_constraintEnd_toEndOf="parent"
                 >
 
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/monthlyviewR5"
+            android:id="@+id/monthlycalendarR5"
             android:background="@drawable/thin_border"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/monthlyviewR4"
-            app:layout_constraintBottom_toTopOf="@+id/monthlyviewR6"
+            app:layout_constraintTop_toBottomOf="@+id/monthlycalendarR4"
+            app:layout_constraintBottom_toTopOf="@+id/monthlycalendarR6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             >
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR5C1"
+                android:id="@+id/monthlycalendarR5C1"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR5C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR5C2"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR5C2"
+                android:id="@+id/monthlycalendarR5C2"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR5C1"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR5C3"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR5C1"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR5C3"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR5C3"
+                android:id="@+id/monthlycalendarR5C3"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR5C2"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR5C4"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR5C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR5C4"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR5C4"
+                android:id="@+id/monthlycalendarR5C4"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR5C3"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR5C5"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR5C3"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR5C5"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR5C5"
+                android:id="@+id/monthlycalendarR5C5"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR5C4"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR5C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR5C4"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR5C6"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR5C6"
+                android:id="@+id/monthlycalendarR5C6"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR5C5"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR5C7"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR5C5"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR5C7"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR5C7"
+                android:id="@+id/monthlycalendarR5C7"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR5C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR5C6"
                 app:layout_constraintEnd_toEndOf="parent"
                 >
 
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/monthlyviewR6"
+            android:id="@+id/monthlycalendarR6"
             android:background="@drawable/thin_border"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/monthlyviewR5"
+            app:layout_constraintTop_toBottomOf="@+id/monthlycalendarR5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             >
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR6C1"
+                android:id="@+id/monthlycalendarR6C1"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR6C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR6C2"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR6C2"
+                android:id="@+id/monthlycalendarR6C2"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR6C1"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR6C3"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR6C1"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR6C3"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR6C3"
+                android:id="@+id/monthlycalendarR6C3"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR6C2"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR6C4"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR6C2"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR6C4"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR6C4"
+                android:id="@+id/monthlycalendarR6C4"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR6C3"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR6C5"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR6C3"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR6C5"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR6C5"
+                android:id="@+id/monthlycalendarR6C5"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR6C4"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR6C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR6C4"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR6C6"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR6C6"
+                android:id="@+id/monthlycalendarR6C6"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR6C5"
-                app:layout_constraintEnd_toStartOf="@+id/monthlyviewR6C7"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR6C5"
+                app:layout_constraintEnd_toStartOf="@+id/monthlycalendarR6C7"
                 >
 
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/monthlyviewR6C7"
+                android:id="@+id/monthlycalendarR6C7"
                 android:background="@drawable/thin_border"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/monthlyviewR6C6"
+                app:layout_constraintStart_toEndOf="@+id/monthlycalendarR6C6"
                 app:layout_constraintEnd_toEndOf="parent"
                 >
 
@@ -630,7 +629,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <Button
-        android:id="@+id/monthlyviewReturnButton"
+        android:id="@+id/monthlycalendarReturnButton"
         android:text="@string/return_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -642,7 +641,7 @@
         />
 
     <Button
-        android:id="@+id/monthlyviewAddButton"
+        android:id="@+id/monthlycalendarAddButton"
         android:text="@string/add_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"

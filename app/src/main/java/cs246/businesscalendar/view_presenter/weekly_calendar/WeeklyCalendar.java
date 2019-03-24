@@ -76,7 +76,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
         dateEdit.setText(today.toString("yyyy-MM-dd, EEEE"));
 
         // Retrieve Default Appointments
-        updateAppointments(today, false);
+        updateCalendar(today, false);
 
         // Prepare Date Picker
         dateEdit.setInputType(InputType.TYPE_NULL);
@@ -110,7 +110,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
                                 dateEdit.setText(selectedDate.toString(formatTime));
 
                                 // Update Appointments
-                                updateAppointments(selectedDate, false);
+                                updateCalendar(selectedDate, false);
                             }
                         }, year, month - 1, day);
                 picker.show();
@@ -354,7 +354,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
      * @param updateDate Selected date used to retrieve the appropriate appointment list
      * @param is24HTime Selection of either 24H time (true) or 12H time (false)
      */
-    public void updateAppointments(LocalDate updateDate, boolean is24HTime) {
+    public void updateCalendar(LocalDate updateDate, boolean is24HTime) {
         // Set Times in Constraint View
         display1224Time(is24HTime);
 

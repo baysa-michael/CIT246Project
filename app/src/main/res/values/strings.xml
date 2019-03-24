@@ -37,7 +37,7 @@
     <string name="attendees_label">ATTENDEES:</string>
     <string name="recurrence_label">RECURRENCE:</string>
     <string name="reminder_label">REMINDER:</string>
-    <string name="month_of_label">MONTH OF:</string>
+    <string name="month_with_label">MONTH WITH:</string>
     <string name="week_of_label">WEEK OF:</string>
     <string name="calendar_date_label">CALENDAR DATE:</string>
 
