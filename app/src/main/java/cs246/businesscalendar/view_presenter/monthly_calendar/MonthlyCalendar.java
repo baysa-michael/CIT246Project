@@ -103,6 +103,17 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
     }
 
     public void updateCalendar(LocalDate testDate) {
+        // Determine the day of week of the first day of the month
+        LocalDate startOfMonth = new LocalDate(testDate.getYear(), testDate.getMonthOfYear(), 1);
+        int startOfMonthDayOfWeek = startOfMonth.getDayOfWeek();
+
+        // Determine the number of days in the month
+
+
+        // For each day of the month, inflate a Monthly View Cell
+        // Populate each view cell with the Day of Week, Day of Month,
+        // Appointment Count, Task Count, and Goal Count
+
 
     }
 }

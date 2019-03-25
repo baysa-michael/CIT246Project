@@ -4,6 +4,7 @@
     <dimen name="screen_title">36sp</dimen>
     <dimen name="button_text">24sp</dimen>
     <dimen name="label_text">20sp</dimen>
+    <dimen name="medium_label_text">16sp</dimen>
     <dimen name="small_label_text">12sp</dimen>
     <dimen name="description_text">10sp</dimen>
 
