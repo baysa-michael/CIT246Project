@@ -1,17 +1,26 @@
 package cs246.businesscalendar.view_presenter.monthly_calendar;
 
 import android.app.DatePickerDialog;
+import android.content.res.Resources;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
+import org.joda.time.Minutes;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -127,8 +136,7 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
 
         // Determine the number of days in the month
         LocalDate endOfMonth = startOfMonth.dayOfMonth().withMaximumValue();
-        int daysInMonth = Days.daysBetween(startOfMonth, endOfMonth).getDays();
-
+        int daysInMonth = Days.daysBetween(startOfMonth, endOfMonth).getDays() + 1;
 
         // Get handle on Monthly Calendar
         ConstraintLayout monthlyCalendar = findViewById(R.id.monthlycalendarCalendar);
@@ -140,7 +148,71 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
 
         // Loop through calendar and add daily information as appropriate
         for (int i = 0; i < daysInMonth; i++) {
+            // Identify the Date of the Cell
+            LocalDate insertDate = startOfMonth.plusDays(i);
+
             // Inflate Monthly View Cell
+            // Create a New View Group
+            LayoutInflater myInflater = LayoutInflater.from(this);
+            View newView = myInflater.inflate(R.layout.monthly_view_cell, dayOfWeek,
+                    false);
+            ViewGroup dayDetails = (ViewGroup) newView;
+
+            // Add the ID for the view group
+            dayDetails.setId(i);
+
+            // Prepare Date Formats
+            DateTimeFormatter formatDayOfWeek = DateTimeFormat.forPattern("EE");
+            DateTimeFormatter formatDayOfMonth = DateTimeFormat.forPattern("dd");
+
+            // Prepare Data for Insert
+            String appointmentCount;
+            if (!monthlyData.containsKey("Appointments") ||
+                    monthlyData.get("Appointments").get(i).get() < 1) {
+                appointmentCount = "";
+            } else {
+                appointmentCount = "A: " + monthlyData.get("Appointments").get(i).get();
+            }
+            String taskCount;
+            if (!monthlyData.containsKey("Tasks") || monthlyData.get("Tasks").get(i).get() < 1) {
+                taskCount = "";
+            } else {
+                taskCount = "T: " + monthlyData.get("Tasks").get(i).get();
+            }
+            String goalCount;
+            if (!monthlyData.containsKey("Goals") || monthlyData.get("Goals").get(i).get() < 1) {
+                goalCount = "";
+            } else {
+                goalCount = "G: " + monthlyData.get("Goals").get(i).get();
+            }
+
+            // Add the text for the text view
+            // Day of Week
+            ((TextView) dayDetails.getChildAt(0))
+                    .setText(insertDate.toString(formatDayOfWeek));
+            // Day of Month
+            ((TextView) dayDetails.getChildAt(1))
+                    .setText(insertDate.toString(formatDayOfMonth));
+            // Appointments
+            ((TextView) dayDetails.getChildAt(2)).setText(appointmentCount);
+            // Tasks
+            ((TextView) dayDetails.getChildAt(3)).setText(taskCount);
+            // Goals
+            ((TextView) dayDetails.getChildAt(4)).setText(goalCount);
+
+            // Set the Margins and Width
+            ConstraintLayout.MarginLayoutParams layoutParameters =
+                    new ConstraintLayout.MarginLayoutParams(
+                    ConstraintLayout.LayoutParams.MATCH_PARENT
+                    , ConstraintLayout.LayoutParams.MATCH_PARENT);
+            layoutParameters.setMargins(0, 0, 0, 0);
+            dayDetails.setLayoutParams(layoutParameters);
+
+            // Apply the margins
+            dayDetails.requestLayout();
+
+            // Add the completed view
+            dayOfWeek.addView(dayDetails);
 
 
             // Increment dayOfWeek Cursor, wrap to 1 when it increments to 7

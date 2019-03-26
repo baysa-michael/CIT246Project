@@ -28,7 +28,7 @@ public class MonthlyCalendarPresenter implements MonthlyCalendarContract.Present
         LocalDate endOfMonth = startOfMonth.dayOfMonth().withMaximumValue();
 
         // Determine the number of days in the month
-        int daysInMonth = Days.daysBetween(startOfMonth, endOfMonth).getDays();
+        int daysInMonth = Days.daysBetween(startOfMonth, endOfMonth).getDays() + 1;
 
         // Retrieve list of appointments from database
         // ******************* REPLACE WITH ACTUAL DATA WHEN SET UP ********************
@@ -45,7 +45,7 @@ public class MonthlyCalendarPresenter implements MonthlyCalendarContract.Present
             if (thisAppointment.getAppointmentDate().getYear() == testDate.getYear() &&
             thisAppointment.getAppointmentDate().getMonthOfYear() == testDate.getMonthOfYear()) {
                 appointmentCount.get(thisAppointment.getAppointmentDate().
-                        getDayOfMonth()).incrementAndGet();
+                        getDayOfMonth() - 1).incrementAndGet();
             }
         }
 
