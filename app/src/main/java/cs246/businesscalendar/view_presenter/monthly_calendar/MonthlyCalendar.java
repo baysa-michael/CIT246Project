@@ -1,6 +1,7 @@
 package cs246.businesscalendar.view_presenter.monthly_calendar;
 
 import android.app.DatePickerDialog;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -9,9 +10,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import cs246.businesscalendar.R;
 
@@ -103,17 +109,70 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
     }
 
     public void updateCalendar(LocalDate testDate) {
+        // Retrieve lists of counts of appointments, tasks, and goals
+        Map<String, List<AtomicInteger>> monthlyData = presenter.retrieveBasicMonthlyInfo(testDate);
+
+        // Clear Calendar
+        clearCalendar();
+
+        // Display the daily information
+        displayDays(testDate, monthlyData);
+    }
+
+    public void displayDays(LocalDate testDate, Map<String, List<AtomicInteger>> monthlyData) {
         // Determine the day of week of the first day of the month
-        LocalDate startOfMonth = new LocalDate(testDate.getYear(), testDate.getMonthOfYear(), 1);
-        int startOfMonthDayOfWeek = startOfMonth.getDayOfWeek();
+        LocalDate startOfMonth = new LocalDate(testDate.getYear(), testDate.getMonthOfYear(),
+                1);
+        int dayOfWeekCursor = startOfMonth.getDayOfWeek() - 1;
 
         // Determine the number of days in the month
+        LocalDate endOfMonth = startOfMonth.dayOfMonth().withMaximumValue();
+        int daysInMonth = Days.daysBetween(startOfMonth, endOfMonth).getDays();
 
 
-        // For each day of the month, inflate a Monthly View Cell
-        // Populate each view cell with the Day of Week, Day of Month,
-        // Appointment Count, Task Count, and Goal Count
+        // Get handle on Monthly Calendar
+        ConstraintLayout monthlyCalendar = findViewById(R.id.monthlycalendarCalendar);
+
+        // Set Weekly Cursor and initial handles on appropriate constraint layouts
+        int weekCursor = 0;
+        ConstraintLayout weekOfMonth = (ConstraintLayout) monthlyCalendar.getChildAt(weekCursor);
+        ConstraintLayout dayOfWeek = (ConstraintLayout) weekOfMonth.getChildAt(dayOfWeekCursor);
+
+        // Loop through calendar and add daily information as appropriate
+        for (int i = 0; i < daysInMonth; i++) {
+            // Inflate Monthly View Cell
 
 
+            // Increment dayOfWeek Cursor, wrap to 1 when it increments to 7
+            if (dayOfWeekCursor == 6) {
+                // Update Cursors
+                dayOfWeekCursor = 0;
+                weekCursor++;
+
+                // Update Handles
+                weekOfMonth = (ConstraintLayout) monthlyCalendar.getChildAt(weekCursor);
+                dayOfWeek = (ConstraintLayout) weekOfMonth.getChildAt(dayOfWeekCursor);
+            } else {
+                dayOfWeekCursor++;
+                dayOfWeek = (ConstraintLayout) weekOfMonth.getChildAt(dayOfWeekCursor);
+            }
+        }
+
+    }
+
+    public void clearCalendar() {
+        // Get handle on Monthly Calendar
+        ConstraintLayout monthlyCalendar = findViewById(R.id.monthlycalendarCalendar);
+
+        // Clear inner content of each day on the calendar
+        for (int i = 0; i < 6; i++) {
+            // Get handle on week of month
+            ConstraintLayout weekOfMonth = (ConstraintLayout) monthlyCalendar.getChildAt(i);
+
+            for (int j = 0; j < 7; j++) {
+                // Clear Daily Contents
+                ((ConstraintLayout) weekOfMonth.getChildAt(j)).removeAllViews();
+            }
+        }
     }
 }
