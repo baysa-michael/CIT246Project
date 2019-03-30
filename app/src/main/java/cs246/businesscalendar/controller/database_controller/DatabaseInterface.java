@@ -7,6 +7,8 @@ import java.util.List;
 import cs246.businesscalendar.model.Appointment;
 
 public interface DatabaseInterface {
+    void initializeDatabase();
+
     boolean createNewAccount(String username, String passwordHash, String displayName, String email,
                              String phone, int timeZoneOffset, boolean is24H);
 
