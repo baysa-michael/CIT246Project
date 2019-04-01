@@ -9,11 +9,8 @@ import cs246.businesscalendar.model.Appointment;
 public interface DatabaseInterface {
     void initializeDatabase();
 
-    boolean createNewAccount(String username, String passwordHash, String displayName, String email,
+    boolean createOrUpdateAccount(String userID, String displayName, String email,
                              String phone, int timeZoneOffset, boolean is24H);
-
-    boolean modifyAccount(String username, String passwordHash, String displayName, String email,
-                          String phone, int timeZoneOffset, boolean is24H);
 
     List<Appointment> getUserAppointments(String username, LocalDate startDate, LocalDate endDate);
 
