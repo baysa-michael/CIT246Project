@@ -56,24 +56,27 @@ public class FirestoreController implements DatabaseInterface {
     }
 
     @Override
-    public List<Appointment> getUserAppointments(String username, LocalDate startDate,
-                                                 LocalDate endDate){
-
-        List<Appointment> appointmentList = new ArrayList<>();
-        return appointmentList;
-    }
-
-    @Override
-    public boolean addUserAppointment(String username, Appointment newAppointment){
+    public boolean addUserAppointment(String userID, Appointment newAppointment){
+        database.collection("users").document(userID)
+                .collection("appointments").document("1")
+                .set(newAppointment);
 
         return true;
     }
 
     @Override
     public boolean modifyUserAppointment(String username, String appointmentHash,
-                                  Appointment updatedAppointment){
+                                         Appointment updatedAppointment){
 
         return true;
+    }
+
+    @Override
+    public List<Appointment> getUserAppointments(String username, LocalDate startDate,
+                                                 LocalDate endDate){
+
+        List<Appointment> appointmentList = new ArrayList<>();
+        return appointmentList;
     }
 
     @Override

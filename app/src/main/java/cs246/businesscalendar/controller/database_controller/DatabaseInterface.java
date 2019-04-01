@@ -12,14 +12,11 @@ public interface DatabaseInterface {
     boolean createOrUpdateAccount(String userID, String displayName, String email,
                              String phone, int timeZoneOffset, boolean is24H);
 
-    List<Appointment> getUserAppointments(String username, LocalDate startDate, LocalDate endDate);
-
-    // Stretch to implement database tasks for user Tasks and Goals
-
-    boolean addUserAppointment(String username, Appointment newAppointment);
+    boolean addUserAppointment(String userID, Appointment newAppointment);
 
     boolean modifyUserAppointment(String username, String appointmentHash,
                                   Appointment updatedAppointment);
+    List<Appointment> getUserAppointments(String username, LocalDate startDate, LocalDate endDate);
 
     boolean deleteUserAppointment(String username, String appointmentHash);
 }

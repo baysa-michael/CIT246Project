@@ -70,7 +70,7 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
     }
 
-    public boolean isAllDay() {
+    public boolean getIsAllDay() {
         return isAllDay;
     }
 
