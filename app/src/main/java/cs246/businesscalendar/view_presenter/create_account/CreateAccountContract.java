@@ -9,5 +9,6 @@ public interface CreateAccountContract {
     interface Presenter {
         void handleClickConfirm();
         void handleClickCancel();
+        boolean validatePasswordRequirements(String password);
     }
 }

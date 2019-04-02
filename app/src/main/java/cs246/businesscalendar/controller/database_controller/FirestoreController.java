@@ -24,7 +24,7 @@ public class FirestoreController implements DatabaseInterface {
     private Context thisContext;
     private static final String TAG = "FirebaseController";
 
-    public void initializeDatabase(Context newContext) {
+    public FirestoreController(Context newContext) {
         database = FirebaseFirestore.getInstance();
         thisContext = newContext;
     }

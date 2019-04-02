@@ -77,12 +77,12 @@
         android:id="@+id/createaccountPasswordRequirementsText"
         android:text="@string/password_requirements_text"
         android:textSize="@dimen/small_label_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginStart="@dimen/general_margin"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/general_margin"
         app:layout_constraintTop_toBottomOf="@+id/createaccountPasswordLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
     <TextView
@@ -196,17 +196,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_margin"
         android:layout_marginStart="@dimen/general_margin"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createaccount1224HLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
     <Button
         android:id="@+id/createaccountConfirmButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/general_margin"
-        android:layout_marginStart="@dimen/general_margin"
-        android:layout_marginEnd="@dimen/general_margin"
+        android:layout_margin="@dimen/general_margin"
         android:text="@string/confirm_button"
         android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toTopOf="@+id/createaccountCancelButton"

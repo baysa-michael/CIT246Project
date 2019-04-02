@@ -42,7 +42,7 @@
 
 
     <!-- MESSAGES STRINGS -->
-    <string name="password_requirements_text">Password must be a minimum of 14 characters</string>
+    <string name="password_requirements_text">Password must be a minimum of 14 characters with at least 1 capital letter and 1 number</string>
     <string name="required_text">* = Required</string>
 
 
