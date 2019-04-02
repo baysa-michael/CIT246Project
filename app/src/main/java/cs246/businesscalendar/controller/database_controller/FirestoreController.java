@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.joda.time.LocalDate;
@@ -58,30 +59,41 @@ public class FirestoreController implements DatabaseInterface {
     @Override
     public boolean addUserAppointment(String userID, Appointment newAppointment){
         database.collection("users").document(userID)
-                .collection("appointments").document("1")
+                .collection("appointments")
+                .document(newAppointment.getAppointmentHash())
                 .set(newAppointment);
-
         return true;
     }
 
     @Override
-    public boolean modifyUserAppointment(String username, String appointmentHash,
+    public boolean modifyUserAppointment(String userID, String appointmentHash,
                                          Appointment updatedAppointment){
+        database.collection("users").document(userID)
+                .collection("appointments").document(appointmentHash)
+                .set(updatedAppointment);
 
         return true;
     }
 
     @Override
-    public List<Appointment> getUserAppointments(String username, LocalDate startDate,
+    public boolean deleteUserAppointment(String userID, String appointmentHash){
+        database.collection("users").document(userID)
+                .collection("appointments").document(appointmentHash)
+                .delete();
+
+        return true;
+    }
+
+    @Override
+    public List<Appointment> getUserAppointments(String userID, LocalDate startDate,
                                                  LocalDate endDate){
+        CollectionReference appointmentsCollection = database.collection("users")
+                .document(userID).collection("appointments");
+
+        
+
 
         List<Appointment> appointmentList = new ArrayList<>();
         return appointmentList;
-    }
-
-    @Override
-    public boolean deleteUserAppointment(String username, String appointmentHash){
-
-        return true;
     }
 }

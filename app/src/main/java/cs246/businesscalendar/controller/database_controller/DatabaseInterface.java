@@ -14,9 +14,10 @@ public interface DatabaseInterface {
 
     boolean addUserAppointment(String userID, Appointment newAppointment);
 
-    boolean modifyUserAppointment(String username, String appointmentHash,
+    boolean modifyUserAppointment(String userID, String appointmentHash,
                                   Appointment updatedAppointment);
-    List<Appointment> getUserAppointments(String username, LocalDate startDate, LocalDate endDate);
 
-    boolean deleteUserAppointment(String username, String appointmentHash);
+    boolean deleteUserAppointment(String userID, String appointmentHash);
+
+    List<Appointment> getUserAppointments(String userID, LocalDate startDate, LocalDate endDate);
 }
