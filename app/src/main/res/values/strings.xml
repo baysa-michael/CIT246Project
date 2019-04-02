@@ -20,13 +20,12 @@
 
 
     <!-- LABEL STRINGS -->
-    <string name="username_label">USERNAME:</string>
-    <string name="password_label">PASSWORD:</string>
-    <string name="display_name_label">DISPLAY NAME:</string>
-    <string name="email_label">E-MAIL:</string>
+    <string name="email_label">E-MAIL *:</string>
+    <string name="password_label">PASSWORD *:</string>
+    <string name="display_name_label">DISPLAY NAME *:</string>
     <string name="phone_label">PHONE:</string>
-    <string name="time_zone_label">TIME ZONE:</string>
-    <string name="time_1224H_label">12 / 24 H:</string>
+    <string name="time_zone_label">TIME ZONE *:</string>
+    <string name="time_1224H_label">12 / 24 H *:</string>
     <string name="date_label">DATE*:</string>
     <string name="all_day_label">ALL DAY?:</string>
     <string name="start_time_label">START TIME*:</string>
@@ -44,6 +43,7 @@
 
     <!-- MESSAGES STRINGS -->
     <string name="password_requirements_text">Password must be a minimum of 14 characters</string>
+    <string name="required_text">* = Required</string>
 
 
     <!-- HINT STRINGS -->

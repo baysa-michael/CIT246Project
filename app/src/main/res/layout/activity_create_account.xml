@@ -19,30 +19,32 @@
         />
 
     <TextView
-        android:id="@+id/createaccountUsernameLabel"
-        android:text="@string/username_label"
+        android:id="@+id/createaccountEmailLabel"
+        android:text="@string/email_label"
         android:textSize="@dimen/label_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/general_margin"
         android:layout_marginStart="@dimen/general_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createaccountTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/createaccountTitle"
+        />
 
     <EditText
-        android:id="@+id/createaccountUsernameEdit"
-        android:hint="@string/username_hint"
+        android:id="@+id/createaccountEmailEdit"
+        android:hint="@string/email_hint"
         tools:ignore="Autofill"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/general_margin"
-        android:layout_marginEnd="@dimen/general_margin"
+        android:inputType="textEmailAddress"
         android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/createaccountUsernameLabel"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/createaccountEmailLabel"
         app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
-    />
+        />
 
     <TextView
         android:id="@+id/createaccountPasswordLabel"
@@ -53,7 +55,7 @@
         android:layout_marginTop="@dimen/general_margin"
         android:layout_marginStart="@dimen/general_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createaccountUsernameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/createaccountEmailLabel"
         />
 
     <EditText
@@ -111,34 +113,6 @@
         />
 
     <TextView
-        android:id="@+id/createaccountEmailLabel"
-        android:text="@string/email_label"
-        android:textSize="@dimen/label_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/general_margin"
-        android:layout_marginStart="@dimen/general_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createaccountDisplayNameLabel"
-        />
-
-    <EditText
-        android:id="@+id/createaccountEmailEdit"
-        android:hint="@string/email_hint"
-        tools:ignore="Autofill"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_marginStart="@dimen/general_margin"
-        android:layout_marginTop="@dimen/general_margin"
-        android:layout_marginEnd="@dimen/general_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBaseline_toBaselineOf="@+id/createaccountEmailLabel"
-        app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
-        />
-
-    <TextView
         android:id="@+id/createaccountPhoneLabel"
         android:text="@string/phone_label"
         android:textSize="@dimen/label_text"
@@ -147,7 +121,7 @@
         android:layout_marginTop="@dimen/general_margin"
         android:layout_marginStart="@dimen/general_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createaccountEmailLabel"
+        app:layout_constraintTop_toBottomOf="@+id/createaccountDisplayNameLabel"
         />
 
     <EditText
@@ -214,6 +188,17 @@
         app:layout_constraintStart_toEndOf="@+id/createaccountDisplayNameLabel"
         />
 
+    <TextView
+        android:id="@+id/createaccountRequiredText"
+        android:text="@string/required_text"
+        android:textSize="@dimen/small_label_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createaccount1224HLabel"
+        />
 
     <Button
         android:id="@+id/createaccountConfirmButton"

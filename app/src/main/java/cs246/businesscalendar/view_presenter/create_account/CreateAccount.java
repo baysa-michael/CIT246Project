@@ -35,7 +35,6 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
     private CreateAccountPresenter presenter;
     private Spinner timeZoneSpinner;
     private Spinner time1224HSpinner;
-    private String username;
     private String displayName;
     private String email;
     private String phone;
