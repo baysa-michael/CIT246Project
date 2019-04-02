@@ -1,7 +1,9 @@
 package cs246.businesscalendar.controller.database_controller;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -19,11 +21,12 @@ import cs246.businesscalendar.model.Appointment;
 
 public class FirestoreController implements DatabaseInterface {
     private FirebaseFirestore database;
+    private Context thisContext;
     private static final String TAG = "FirebaseController";
 
-    @Override
-    public void initializeDatabase() {
+    public void initializeDatabase(Context newContext) {
         database = FirebaseFirestore.getInstance();
+        thisContext = newContext;
     }
 
     @Override
@@ -43,13 +46,13 @@ public class FirestoreController implements DatabaseInterface {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "Successful Update");
+                        sendUserMessage("Account Successfully Updated");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener(){
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.d(TAG, "Failed Update");
+                        sendUserMessage("ERROR:  Account Update Failed");
                     }
                 });
 
@@ -61,7 +64,19 @@ public class FirestoreController implements DatabaseInterface {
         database.collection("users").document(userID)
                 .collection("appointments")
                 .document(newAppointment.getAppointmentHash())
-                .set(newAppointment);
+                .set(newAppointment)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        sendUserMessage("Appointment Successfully Added");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener(){
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        sendUserMessage("ERROR:  Unable to Add Appointment");
+                    }
+                });
         return true;
     }
 
@@ -70,7 +85,19 @@ public class FirestoreController implements DatabaseInterface {
                                          Appointment updatedAppointment){
         database.collection("users").document(userID)
                 .collection("appointments").document(appointmentHash)
-                .set(updatedAppointment);
+                .set(updatedAppointment)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        sendUserMessage("Appointment Successfully Modified");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener(){
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        sendUserMessage("ERROR:  Unable to Modify Appointment");
+                    }
+                });
 
         return true;
     }
@@ -79,7 +106,19 @@ public class FirestoreController implements DatabaseInterface {
     public boolean deleteUserAppointment(String userID, String appointmentHash){
         database.collection("users").document(userID)
                 .collection("appointments").document(appointmentHash)
-                .delete();
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        sendUserMessage("Appointment Successfully Deleted");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener(){
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        sendUserMessage("ERROR:  Unable to Delete Appointment");
+                    }
+                });
 
         return true;
     }
@@ -90,10 +129,18 @@ public class FirestoreController implements DatabaseInterface {
         CollectionReference appointmentsCollection = database.collection("users")
                 .document(userID).collection("appointments");
 
-        
+
 
 
         List<Appointment> appointmentList = new ArrayList<>();
         return appointmentList;
+    }
+
+    private void sendUserMessage(String toastMessage) {
+        int toastDuration = Toast.LENGTH_SHORT;
+
+        Toast messageToast = Toast.makeText(thisContext, toastMessage, toastDuration);
+        messageToast.setGravity(Gravity.CENTER, 0, 0);
+        messageToast.show();
     }
 }
