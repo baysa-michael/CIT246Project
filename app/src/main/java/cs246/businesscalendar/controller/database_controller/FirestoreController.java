@@ -1,12 +1,9 @@
 package cs246.businesscalendar.controller.database_controller;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.Gravity;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -21,18 +18,17 @@ import cs246.businesscalendar.model.Appointment;
 
 public class FirestoreController implements DatabaseInterface {
     private FirebaseFirestore database;
-    private Context thisContext;
+    private FirestoreListenerInterface listener;
     private static final String TAG = "FirebaseController";
 
-    public FirestoreController(Context newContext) {
+    public FirestoreController(FirestoreListenerInterface newListener) {
         database = FirebaseFirestore.getInstance();
-        thisContext = newContext;
+        listener = newListener;
     }
 
     @Override
-    public boolean createOrUpdateAccount(String userID, String displayName, String email,
+    public boolean createOrUpdateAccount(String userID, String email, String displayName,
                              String phone, int timeZoneOffset, boolean is24H) {
-        boolean isSuccessful;
         Map<String, Object> accountData = new HashMap<>();
         accountData.put("userID", userID);
         accountData.put("displayName", displayName);
@@ -43,16 +39,17 @@ public class FirestoreController implements DatabaseInterface {
 
         database.collection("users").document(userID)
                 .set(accountData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                // Note - Void is used when setting a document as nothing is returned
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        sendUserMessage("Account Successfully Updated");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener(){
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        sendUserMessage("ERROR:  Account Update Failed");
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // Run the Success Tasks in the UI
+                            listener.onWriteReadSuccess();
+                        } else {
+                            // Run the Failure Tasks in the UI
+                            listener.onWriteReadFailure();
+                        }
                     }
                 });
 
@@ -65,16 +62,17 @@ public class FirestoreController implements DatabaseInterface {
                 .collection("appointments")
                 .document(newAppointment.getAppointmentHash())
                 .set(newAppointment)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                // Note - Void is used when setting a document as nothing is returned
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        sendUserMessage("Appointment Successfully Added");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener(){
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        sendUserMessage("ERROR:  Unable to Add Appointment");
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // Run the Success Tasks in the UI
+                            listener.onWriteReadSuccess();
+                        } else {
+                            // Run the Failure Tasks in the UI
+                            listener.onWriteReadFailure();
+                        }
                     }
                 });
         return true;
@@ -86,16 +84,17 @@ public class FirestoreController implements DatabaseInterface {
         database.collection("users").document(userID)
                 .collection("appointments").document(appointmentHash)
                 .set(updatedAppointment)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                // Note - Void is used when setting a document as nothing is returned
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        sendUserMessage("Appointment Successfully Modified");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener(){
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        sendUserMessage("ERROR:  Unable to Modify Appointment");
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // Run the Success Tasks in the UI
+                            listener.onWriteReadSuccess();
+                        } else {
+                            // Run the Failure Tasks in the UI
+                            listener.onWriteReadFailure();
+                        }
                     }
                 });
 
@@ -107,16 +106,17 @@ public class FirestoreController implements DatabaseInterface {
         database.collection("users").document(userID)
                 .collection("appointments").document(appointmentHash)
                 .delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                // Note - Void is used when setting a document as nothing is returned
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        sendUserMessage("Appointment Successfully Deleted");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener(){
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        sendUserMessage("ERROR:  Unable to Delete Appointment");
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // Run the Success Tasks in the UI
+                            listener.onWriteReadSuccess();
+                        } else {
+                            // Run the Failure Tasks in the UI
+                            listener.onWriteReadFailure();
+                        }
                     }
                 });
 
@@ -129,18 +129,25 @@ public class FirestoreController implements DatabaseInterface {
         CollectionReference appointmentsCollection = database.collection("users")
                 .document(userID).collection("appointments");
 
-
+/*
+        appointmentsCollection.whereGreaterThanOrEqualTo()
+                // Note - Void is used when setting a document as nothing is returned
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            // Run the Success Tasks in the UI
+                            listener.onWriteReadSuccess();
+                        } else {
+                            // Run the Failure Tasks in the UI
+                            listener.onWriteReadFailure();
+                        }
+                    }
+                });
+*/
 
 
         List<Appointment> appointmentList = new ArrayList<>();
         return appointmentList;
-    }
-
-    private void sendUserMessage(String toastMessage) {
-        int toastDuration = Toast.LENGTH_SHORT;
-
-        Toast messageToast = Toast.makeText(thisContext, toastMessage, toastDuration);
-        messageToast.setGravity(Gravity.CENTER, 0, 0);
-        messageToast.show();
     }
 }

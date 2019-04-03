@@ -7,8 +7,12 @@ public interface CreateAccountContract {
     }
 
     interface Presenter {
-        void handleClickConfirm();
-        void handleClickCancel();
         boolean validatePasswordRequirements(String password);
+        void createNewAccount(String email, String password);
+        void addNewAccountData(String email, String displayName, String phone,
+                                 int timeZoneOffset, boolean is24H);
+        boolean isUserSignedIn();
+        void signOutUser();
+        int getTimeZoneOffset(String spinnerValue);
     }
 }
