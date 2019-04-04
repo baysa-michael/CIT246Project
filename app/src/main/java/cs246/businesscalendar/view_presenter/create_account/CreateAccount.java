@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -115,6 +116,8 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
     public void onAuthSuccess() {
         // If successful, add the user information to the database
 
+        Log.i(TAG, "Started Auth Success");
+
         // Retrieve Information
         EditText emailInput = findViewById(R.id.createaccountEmailEdit);
         String email = emailInput.getText().toString();
@@ -130,16 +133,25 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
             is24H = true;
         }
 
+        Log.i(TAG, "Values for Auth Success Set");
+
         presenter.addNewAccountData(email, displayName, phone, offset, is24H);
+
+        Log.i(TAG, "After Auth Success");
+
     }
 
     @Override
     public void onAuthFailure() {
+        Log.i(TAG, "Inform User of Auth Failure");
+
         informUser("ERROR:  Unable to Add User");
     }
 
     @Override
-    public void onWriteReadSuccess() {
+    public void onReadWriteSuccess() {
+        Log.i(TAG, "Inform User of Read Write Success");
+
         informUser("Successfully Added User and Logged In");
 
         // Users to this point are successfully logged in and will move to the landing page
@@ -149,7 +161,9 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
     }
 
     @Override
-    public void onWriteReadFailure() {
+    public void onReadWriteFailure() {
+        Log.i(TAG, "Inform User of Write Read Failure");
+
         informUser("ERROR:  User Data Not Saved");
     }
 

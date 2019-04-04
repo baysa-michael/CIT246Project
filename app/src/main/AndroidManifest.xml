@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cs246.businesscalendar">
 
     <application
@@ -9,6 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- Federated Sign In Activity for Firbase Auth -->
+        <!--
+        <activity
+            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            tools:replace="android:launchMode"  />
+        -->
+
+        <!-- Activities in Application -->
         <activity android:name=".view_presenter.daily_calendar.DailyCalendar" />
         <activity android:name=".view_presenter.weekly_calendar.WeeklyCalendar" />
         <activity android:name=".view_presenter.monthly_calendar.MonthlyCalendar" />

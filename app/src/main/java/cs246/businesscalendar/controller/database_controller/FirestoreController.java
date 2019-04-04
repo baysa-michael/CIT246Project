@@ -1,6 +1,7 @@
 package cs246.businesscalendar.controller.database_controller;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,9 +18,9 @@ import java.util.Map;
 import cs246.businesscalendar.model.Appointment;
 
 public class FirestoreController implements DatabaseInterface {
+    private static final String TAG = "FirestoreController";
     private FirebaseFirestore database;
     private FirestoreListenerInterface listener;
-    private static final String TAG = "FirebaseController";
 
     public FirestoreController(FirestoreListenerInterface newListener) {
         database = FirebaseFirestore.getInstance();
@@ -44,11 +45,15 @@ public class FirestoreController implements DatabaseInterface {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            Log.i(TAG, "New User Data Added to Firestore");
+
                             // Run the Success Tasks in the UI
-                            listener.onWriteReadSuccess();
+                            listener.onReadWriteSuccess();
                         } else {
+                            Log.i(TAG, "Unable to add new user data to Firestore");
+
                             // Run the Failure Tasks in the UI
-                            listener.onWriteReadFailure();
+                            listener.onReadWriteFailure();
                         }
                     }
                 });
@@ -68,10 +73,10 @@ public class FirestoreController implements DatabaseInterface {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             // Run the Success Tasks in the UI
-                            listener.onWriteReadSuccess();
+                            listener.onReadWriteSuccess();
                         } else {
                             // Run the Failure Tasks in the UI
-                            listener.onWriteReadFailure();
+                            listener.onReadWriteFailure();
                         }
                     }
                 });
@@ -90,10 +95,10 @@ public class FirestoreController implements DatabaseInterface {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             // Run the Success Tasks in the UI
-                            listener.onWriteReadSuccess();
+                            listener.onReadWriteSuccess();
                         } else {
                             // Run the Failure Tasks in the UI
-                            listener.onWriteReadFailure();
+                            listener.onReadWriteFailure();
                         }
                     }
                 });
@@ -112,10 +117,10 @@ public class FirestoreController implements DatabaseInterface {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             // Run the Success Tasks in the UI
-                            listener.onWriteReadSuccess();
+                            listener.onReadWriteSuccess();
                         } else {
                             // Run the Failure Tasks in the UI
-                            listener.onWriteReadFailure();
+                            listener.onReadWriteFailure();
                         }
                     }
                 });
@@ -137,10 +142,10 @@ public class FirestoreController implements DatabaseInterface {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             // Run the Success Tasks in the UI
-                            listener.onWriteReadSuccess();
+                            listener.onReadWriteSuccess();
                         } else {
                             // Run the Failure Tasks in the UI
-                            listener.onWriteReadFailure();
+                            listener.onReadWriteFailure();
                         }
                     }
                 });
