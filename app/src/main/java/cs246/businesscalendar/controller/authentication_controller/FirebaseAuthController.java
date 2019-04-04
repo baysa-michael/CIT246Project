@@ -32,13 +32,9 @@ public class FirebaseAuthController implements AuthenticationInterface {
                             // Update the Current User
                             currentUser = authenticator.getCurrentUser();
 
-                            Log.i(TAG, "New User Added by FirebaseAuth");
-
                             // Run the Success Tasks in the UI
                             listener.onAuthSuccess();
                         } else {
-                            Log.i(TAG, "ERROR:  Did not add user to FirebaseAuth");
-
                             // Run the Failure Tasks in the UI
                             listener.onAuthFailure();
                         }

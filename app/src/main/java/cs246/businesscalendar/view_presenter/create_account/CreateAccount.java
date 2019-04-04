@@ -1,8 +1,6 @@
 package cs246.businesscalendar.view_presenter.create_account;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,6 +24,7 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
     private CreateAccountPresenter presenter;
     private Spinner timeZoneSpinner;
     private Spinner time1224HSpinner;
+    private ProgressBar indeterminateProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,10 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
         // Apply the adapter to the appropriate spinner
         timeZoneSpinner.setAdapter(timeZoneAdapter);
         time1224HSpinner.setAdapter(time1224HAdapter);
+
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar = findViewById(R.id.createaccountIndeterminateProgress);
+        indeterminateProgressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -101,11 +105,11 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
             return;
         }
 
+        // Start Indeterminate Progress Bar
+        indeterminateProgressBar.setVisibility(View.VISIBLE);
+
         // Add user to the authenticator and database
         presenter.createNewAccount(email, password);
-
-        // Finish Create New Account Activity
-        finish();
     }
 
     public void showCancel() {
@@ -116,8 +120,6 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
     public void onAuthSuccess() {
         // If successful, add the user information to the database
 
-        Log.i(TAG, "Started Auth Success");
-
         // Retrieve Information
         EditText emailInput = findViewById(R.id.createaccountEmailEdit);
         String email = emailInput.getText().toString();
@@ -127,30 +129,30 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
         String phone = phoneInput.getText().toString();
 
         // Get Spinner Values
-        int offset = presenter.getTimeZoneOffset(timeZoneSpinner.getSelectedItem().toString());
+        String spinnerString = timeZoneSpinner.getSelectedItem().toString();
+        int offset = presenter.getTimeZoneOffset(spinnerString);
         boolean is24H = false;
         if (time1224HSpinner.getSelectedItem().toString().equals("24H")) {
             is24H = true;
         }
 
-        Log.i(TAG, "Values for Auth Success Set");
-
+        // Add New Account Data to Database
         presenter.addNewAccountData(email, displayName, phone, offset, is24H);
-
-        Log.i(TAG, "After Auth Success");
 
     }
 
     @Override
     public void onAuthFailure() {
-        Log.i(TAG, "Inform User of Auth Failure");
+        // Start Indeterminate Progress Bar
+        indeterminateProgressBar.setVisibility(View.GONE);
 
         informUser("ERROR:  Unable to Add User");
     }
 
     @Override
     public void onReadWriteSuccess() {
-        Log.i(TAG, "Inform User of Read Write Success");
+        // Start Indeterminate Progress Bar
+        indeterminateProgressBar.setVisibility(View.GONE);
 
         informUser("Successfully Added User and Logged In");
 
@@ -158,11 +160,15 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
         Intent thisIntent = new Intent(this, Landing.class);
 
         startActivity(thisIntent);
+
+        // Finish Create New Account Activity
+        finish();
     }
 
     @Override
     public void onReadWriteFailure() {
-        Log.i(TAG, "Inform User of Write Read Failure");
+        // Start Indeterminate Progress Bar
+        indeterminateProgressBar.setVisibility(View.GONE);
 
         informUser("ERROR:  User Data Not Saved");
     }

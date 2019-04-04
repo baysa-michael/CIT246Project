@@ -3,12 +3,16 @@ package cs246.businesscalendar.view_presenter.create_account;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
 import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthListenerInterface;
 import cs246.businesscalendar.controller.database_controller.FirestoreController;
 import cs246.businesscalendar.controller.database_controller.FirestoreListenerInterface;
 
 public class CreateAccountPresenter implements CreateAccountContract.Presenter {
+    private static final String TAG = "CreateAccountPresenter";
     private FirebaseAuthController authenticator;
     private FirestoreController database;
 
@@ -50,7 +54,28 @@ public class CreateAccountPresenter implements CreateAccountContract.Presenter {
 
     @Override
     public int getTimeZoneOffset(String spinnerValue) {
+        // Find the time offset in the string
+        Pattern offsetPattern = Pattern.compile("([+-]\\s\\d?\\d)");
+        Matcher thisMatch = offsetPattern.matcher(spinnerValue);
 
-        return 1;
+        // Extract the offset from the pattern
+        if (thisMatch.find()) {
+            String offsetBlock = thisMatch.group(0);
+            // Determine if offset is positive or negative
+            boolean isPositive = offsetBlock.substring(0, 1).equals("+");
+
+            // Extract Offset Number
+            int returnNumber = Integer.parseInt(offsetBlock.substring(2));
+
+            if (!isPositive) {
+                returnNumber *= -1;
+            }
+
+            return returnNumber;
+        } else {
+            // Default Return Value
+            return 0;
+        }
+
     }
 }

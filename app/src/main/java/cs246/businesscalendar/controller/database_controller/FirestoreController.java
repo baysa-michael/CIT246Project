@@ -45,13 +45,9 @@ public class FirestoreController implements DatabaseInterface {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Log.i(TAG, "New User Data Added to Firestore");
-
                             // Run the Success Tasks in the UI
                             listener.onReadWriteSuccess();
                         } else {
-                            Log.i(TAG, "Unable to add new user data to Firestore");
-
                             // Run the Failure Tasks in the UI
                             listener.onReadWriteFailure();
                         }
