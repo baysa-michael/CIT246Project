@@ -9,7 +9,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     private static final String TAG = "LoginPresenter";
     private FirebaseAuthController authenticator;
 
-    public LoginPresenter(Context thisContext) {
+    LoginPresenter(Context thisContext) {
         authenticator = new FirebaseAuthController((FirebaseAuthListenerInterface) thisContext);
     }
 
@@ -18,19 +18,8 @@ public class LoginPresenter implements LoginContract.Presenter {
         return authenticator.isUserSignedIn();
     }
 
-    public boolean login(String email, String password) {
-        // Confirm Username and Password are not empty strings
-        if (email == null || email.isEmpty() ||
-        password == null || password.isEmpty()) {
-            // Send false back to the view
-            return false;
-        }
-
-        // ADD LOGIC FOR LOGIN HERE ***************
-        return true;
-    }
-
-    public void handleClickCancel() {
-
+    @Override
+    public void login(String email, String password) {
+        authenticator.authenticateUser(email, password);
     }
 }

@@ -8,7 +8,7 @@ import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthL
 public class WelcomePresenter implements WelcomeContract.Presenter {
     private FirebaseAuthController authenticator;
 
-    public WelcomePresenter(Context thisContext){
+    WelcomePresenter(Context thisContext){
         authenticator = new FirebaseAuthController((FirebaseAuthListenerInterface) thisContext);
     }
 

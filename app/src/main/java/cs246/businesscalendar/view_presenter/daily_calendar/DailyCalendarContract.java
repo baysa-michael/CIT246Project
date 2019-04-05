@@ -17,7 +17,7 @@ import cs246.businesscalendar.model.Appointment;
  * @version 2019.03.20
  * @since 1.0
  */
-public interface DailyCalendarContract {
+interface DailyCalendarContract {
     interface View {
         void showReturn();
         void showAdd();

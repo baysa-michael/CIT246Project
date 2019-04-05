@@ -47,8 +47,24 @@ public class FirebaseAuthController implements AuthenticationInterface {
 
     @Override
     public boolean authenticateUser(String email, String password) {
-        //authenticator
+        authenticator.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            // Update the Current User
+                            currentUser = authenticator.getCurrentUser();
 
+                            // Run the Success Tasks in the UI
+                            listener.onAuthSuccess();
+                        } else {
+                            // Run the Failure Tasks in the UI
+                            listener.onAuthFailure();
+                        }
+                    }
+                });
+
+        // Default return for this interface - Work is done by listener calls
         return true;
     }
 

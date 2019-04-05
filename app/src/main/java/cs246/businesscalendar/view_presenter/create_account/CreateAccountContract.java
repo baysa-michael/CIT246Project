@@ -1,9 +1,10 @@
 package cs246.businesscalendar.view_presenter.create_account;
 
-public interface CreateAccountContract {
+interface CreateAccountContract {
     interface View {
         void showConfirm();
         void showCancel();
+        void informUser(String message);
     }
 
     interface Presenter {

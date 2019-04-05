@@ -6,7 +6,7 @@ import java.util.List;
 
 import cs246.businesscalendar.model.Appointment;
 
-public interface DatabaseInterface {
+interface DatabaseInterface {
     boolean createOrUpdateAccount(String userID, String email, String displayName,
                              String phone, int timeZoneOffset, boolean is24H);
 

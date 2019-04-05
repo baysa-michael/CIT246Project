@@ -1,6 +1,6 @@
 package cs246.businesscalendar.view_presenter.landing;
 
-public interface LandingContract {
+interface LandingContract {
     interface View {
         void showSchedule();
         void showTasks();

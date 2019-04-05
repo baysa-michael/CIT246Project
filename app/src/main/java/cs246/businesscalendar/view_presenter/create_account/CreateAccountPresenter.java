@@ -15,7 +15,7 @@ public class CreateAccountPresenter implements CreateAccountContract.Presenter {
     private FirebaseAuthController authenticator;
     private FirestoreController database;
 
-    public CreateAccountPresenter(Context thisContext){
+    CreateAccountPresenter(Context thisContext){
         authenticator = new FirebaseAuthController((FirebaseAuthListenerInterface) thisContext);
         database = new FirestoreController((FirestoreListenerInterface) thisContext);
     }

@@ -1,6 +1,6 @@
 package cs246.businesscalendar.view_presenter.landing;
 
-public class LandingPresenter implements LandingContract {
+class LandingPresenter implements LandingContract {
     public void handleClickSchedule() {
 
     }

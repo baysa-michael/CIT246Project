@@ -1,6 +1,6 @@
 package cs246.businesscalendar.view_presenter.add_new;
 
-public interface AddNewContract {
+interface AddNewContract {
     interface View {
         void showAddNewAppointment();
         void showAddNewTask();

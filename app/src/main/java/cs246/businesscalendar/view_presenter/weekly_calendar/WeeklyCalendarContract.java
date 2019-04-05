@@ -6,7 +6,7 @@ import java.util.List;
 
 import cs246.businesscalendar.model.Appointment;
 
-public interface WeeklyCalendarContract {
+interface WeeklyCalendarContract {
     interface View {
         void showReturn();
         void showAdd();

@@ -1,6 +1,6 @@
 package cs246.businesscalendar.view_presenter.select_view;
 
-public interface SelectViewContract {
+interface SelectViewContract {
     interface View {
         void showMonthlyView();
         void showWeeklyView();

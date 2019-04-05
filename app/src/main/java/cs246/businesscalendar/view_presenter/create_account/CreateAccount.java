@@ -142,7 +142,7 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
 
     @Override
     public void onAuthFailure() {
-        // Start Indeterminate Progress Bar
+        // End Indeterminate Progress Bar
         indeterminateProgressBar.setVisibility(View.GONE);
 
         informUser("ERROR:  Unable to Add User");
@@ -150,7 +150,7 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
 
     @Override
     public void onReadWriteSuccess() {
-        // Start Indeterminate Progress Bar
+        // End Indeterminate Progress Bar
         indeterminateProgressBar.setVisibility(View.GONE);
 
         informUser("Successfully Added User and Logged In");
@@ -172,12 +172,11 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
         informUser("ERROR:  User Data Not Saved");
     }
 
-
+    @Override
     public void informUser(String message) {
         int duration = Toast.LENGTH_SHORT;
         Toast toastSuccessful = Toast.makeText(this, message, duration);
         toastSuccessful.setGravity(Gravity.CENTER, 0, 0);
         toastSuccessful.show();
     }
-
 }
