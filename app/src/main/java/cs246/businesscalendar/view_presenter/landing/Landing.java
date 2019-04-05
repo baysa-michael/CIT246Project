@@ -8,20 +8,24 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import cs246.businesscalendar.R;
 
+import cs246.businesscalendar.controller.database_controller.FirestoreListenerInterface;
 import cs246.businesscalendar.model.Appointment;
 import cs246.businesscalendar.utilities.TestItems;
 import cs246.businesscalendar.view_presenter.select_view.SelectView;
 import cs246.businesscalendar.view_presenter.add_new.AddNew;
 
-public class Landing extends AppCompatActivity {
+public class Landing extends AppCompatActivity implements LandingContract.View,
+        FirestoreListenerInterface {
     private static final String TAG = "Landing";
     private LandingPresenter presenter;
     private RecyclerView myRecycler;
@@ -99,7 +103,7 @@ public class Landing extends AppCompatActivity {
         });
 
         // Set Presenter
-        presenter = new LandingPresenter();
+        presenter = new LandingPresenter(this);
 
         // Obtain Display Name in Shared Preferences
         SharedPreferences myPreferences = this.getSharedPreferences(
@@ -124,6 +128,15 @@ public class Landing extends AppCompatActivity {
         myRecycler.setAdapter(myAdapter);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Check to see if user already signed in - If not, exit the activity
+        if (!presenter.isUserSignedIn()) {
+            finish();
+        }
+    }
     public void showSchedule() {
 
     }
@@ -157,6 +170,29 @@ public class Landing extends AppCompatActivity {
     }
 
     public void showLogout() {
+        // Inform the User
+        informUser("Logging Out User");
+
+        // Sign out the user and exit the activity
+        presenter.signOutUser();
         finish();
+    }
+
+    @Override
+    public void onReadWriteSuccess() {
+
+    }
+
+    @Override
+    public void onReadWriteFailure() {
+
+    }
+
+    @Override
+    public void informUser(String message) {
+        int duration = Toast.LENGTH_SHORT;
+        Toast toastSuccessful = Toast.makeText(this, message, duration);
+        toastSuccessful.setGravity(Gravity.CENTER, 0, 0);
+        toastSuccessful.show();
     }
 }

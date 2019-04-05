@@ -10,9 +10,12 @@ interface LandingContract {
         void showSearch();
         void showSettings();
         void showLogout();
+        void informUser(String message);
     }
 
     interface Presenter {
+        boolean isUserSignedIn();
+        void signOutUser();
         void handleClickSchedule();
         void handleClickTasks();
         void handleClickGoals();
