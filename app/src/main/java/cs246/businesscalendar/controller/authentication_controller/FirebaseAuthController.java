@@ -15,6 +15,13 @@ public class FirebaseAuthController implements AuthenticationInterface {
     private FirebaseUser currentUser;
     private FirebaseAuthListenerInterface listener;
 
+    public FirebaseAuthController() {
+        // Initialize Firebase Auth
+        authenticator = FirebaseAuth.getInstance();
+        currentUser = authenticator.getCurrentUser();
+        listener = null;
+    }
+
     public FirebaseAuthController(FirebaseAuthListenerInterface newListener) {
         // Initialize Firebase Auth
         authenticator = FirebaseAuth.getInstance();

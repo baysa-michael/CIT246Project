@@ -12,7 +12,7 @@ class LandingPresenter implements LandingContract.Presenter {
     private FirestoreController database;
 
     LandingPresenter(Context newContext) {
-        authenticator = new FirebaseAuthController((FirebaseAuthListenerInterface) newContext);
+        authenticator = new FirebaseAuthController();
         database = new FirestoreController((FirestoreListenerInterface) newContext);
     }
 

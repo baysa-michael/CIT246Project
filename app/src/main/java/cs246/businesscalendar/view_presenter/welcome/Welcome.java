@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import cs246.businesscalendar.R;
 
+import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthListenerInterface;
 import cs246.businesscalendar.view_presenter.create_account.CreateAccount;
 import cs246.businesscalendar.view_presenter.landing.Landing;
 import cs246.businesscalendar.view_presenter.login.Login;
@@ -44,7 +45,7 @@ public class Welcome extends AppCompatActivity implements WelcomeContract.View {
         });
 
         // Set Presenter
-        presenter = new WelcomePresenter(this);
+        presenter = new WelcomePresenter();
     }
 
     @Override
