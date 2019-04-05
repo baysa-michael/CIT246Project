@@ -83,7 +83,6 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
         if (presenter.isUserSignedIn()) {
             presenter.signOutUser();
         }
-
     }
 
     public void showConfirm() {

@@ -9,6 +9,7 @@ import android.widget.Button;
 import cs246.businesscalendar.R;
 
 import cs246.businesscalendar.view_presenter.create_account.CreateAccount;
+import cs246.businesscalendar.view_presenter.landing.Landing;
 import cs246.businesscalendar.view_presenter.login.Login;
 
 /**
@@ -20,9 +21,6 @@ public class Welcome extends AppCompatActivity implements WelcomeContract.View {
     private static final String TAG = "Welcome";
     private WelcomePresenter presenter;
 
-    /**
-     * @param presenter sets a new presenter when login info has been gathered.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +44,19 @@ public class Welcome extends AppCompatActivity implements WelcomeContract.View {
         });
 
         // Set Presenter
-        presenter = new WelcomePresenter();
+        presenter = new WelcomePresenter(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Check to see if user is already logged on - If so, pass intent to the Landing activity
+        if (presenter.isUserSignedIn()) {
+            Intent thisIntent = new Intent(this, Landing.class);
+
+            startActivity(thisIntent);
+        }
     }
 
     public void showCreateAccount() {

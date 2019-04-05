@@ -20,8 +20,10 @@
 
 
     <!-- LABEL STRINGS -->
-    <string name="email_label">E-MAIL *:</string>
-    <string name="password_label">PASSWORD *:</string>
+    <string name="email_label_required">E-MAIL *:</string>
+    <string name="password_label_required">PASSWORD *:</string>
+    <string name="email_label">E-MAIL:</string>
+    <string name="password_label">PASSWORD:</string>
     <string name="display_name_label">DISPLAY NAME *:</string>
     <string name="phone_label">PHONE:</string>
     <string name="time_zone_label">TIME ZONE *:</string>
@@ -47,7 +49,6 @@
 
 
     <!-- HINT STRINGS -->
-    <string name="username_hint">Enter Username</string>
     <string name="password_hint">Enter Password</string>
     <string name="display_name_hint">Enter Display Name</string>
     <string name="email_hint">Enter E-Mail</string>

@@ -7,7 +7,8 @@ public interface LoginContract {
     }
 
     interface Presenter {
-        boolean handleClickLogin(String username, String password);
+        boolean isUserSignedIn();
+        boolean login(String username, String password);
         void handleClickCancel();
     }
 }

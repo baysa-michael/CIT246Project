@@ -1,7 +1,6 @@
 package cs246.businesscalendar.view_presenter.create_account;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

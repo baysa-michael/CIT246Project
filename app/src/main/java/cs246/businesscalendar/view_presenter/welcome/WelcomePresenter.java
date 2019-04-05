@@ -1,11 +1,19 @@
 package cs246.businesscalendar.view_presenter.welcome;
 
-public class WelcomePresenter implements WelcomeContract.Presenter {
-    public void handleClickCreateAccount() {
+import android.content.Context;
 
+import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
+import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthListenerInterface;
+
+public class WelcomePresenter implements WelcomeContract.Presenter {
+    private FirebaseAuthController authenticator;
+
+    public WelcomePresenter(Context thisContext){
+        authenticator = new FirebaseAuthController((FirebaseAuthListenerInterface) thisContext);
     }
 
-    public void handleClickLogin() {
-
+    @Override
+    public boolean isUserSignedIn() {
+        return authenticator.isUserSignedIn();
     }
 }

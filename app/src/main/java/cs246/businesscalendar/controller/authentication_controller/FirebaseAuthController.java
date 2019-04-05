@@ -47,6 +47,7 @@ public class FirebaseAuthController implements AuthenticationInterface {
 
     @Override
     public boolean authenticateUser(String email, String password) {
+        //authenticator
 
         return true;
     }

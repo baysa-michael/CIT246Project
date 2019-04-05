@@ -7,7 +7,6 @@ public interface WelcomeContract {
     }
 
     interface Presenter {
-        void handleClickCreateAccount();
-        void handleClickLogin();
+        boolean isUserSignedIn();
     }
 }
