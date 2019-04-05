@@ -138,15 +138,18 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
         }
     }
     public void showSchedule() {
-
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
     public void showTasks() {
-
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
     public void showGoals() {
-
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
     public void showAddNew() {
@@ -162,11 +165,13 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
     }
 
     public void showSearch() {
-        finish();
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
     public void showSettings() {
-        finish();
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
     public void showLogout() {
