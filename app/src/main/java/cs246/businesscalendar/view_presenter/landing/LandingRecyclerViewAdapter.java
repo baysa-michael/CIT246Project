@@ -22,7 +22,7 @@ public class LandingRecyclerViewAdapter extends RecyclerView.Adapter<LandingRecy
 
 
     // Provide a reference to the views for each data item
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView myDate;
         private TextView myTime;
         private TextView myTitle;
@@ -35,7 +35,7 @@ public class LandingRecyclerViewAdapter extends RecyclerView.Adapter<LandingRecy
         }
     }
 
-    public LandingRecyclerViewAdapter(Context newContext, List<Appointment> newAppointments) {
+    LandingRecyclerViewAdapter(Context newContext, List<Appointment> newAppointments) {
         this.appointments = newAppointments;
         this.context = newContext;
     }
@@ -58,15 +58,15 @@ public class LandingRecyclerViewAdapter extends RecyclerView.Adapter<LandingRecy
         DateTimeFormatter formatTime = DateTimeFormat.forPattern("HH:mm");
 
         // Set Time String
-        String appointmentTime = appointments.get(position).getAppointmentStart().
+        String appointmentTime = appointments.get(position).getStart().
                 toString(formatTime) + " - " +
-                appointments.get(position).getAppointmentEnd().toString(formatTime);
+                appointments.get(position).getEnd().toString(formatTime);
 
         // Retrieve information at a position in the dataset and replace
         // the contents of this view with that data
-        holder.myDate.setText(appointments.get(position).getAppointmentDate().toString(formatDate));
+        holder.myDate.setText(appointments.get(position).getDate().toString(formatDate));
         holder.myTime.setText(appointmentTime);
-        holder.myTitle.setText(appointments.get(position).getAppointmentTitle());
+        holder.myTitle.setText(appointments.get(position).getTitle());
     }
 
     @Override

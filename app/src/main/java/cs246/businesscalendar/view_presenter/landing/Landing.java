@@ -135,6 +135,9 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
         // Check to see if user already signed in - If not, exit the activity
         if (!presenter.isUserSignedIn()) {
             finish();
+        } else {
+            // Load User Data Into Shared Preferences
+
         }
     }
     public void showSchedule() {

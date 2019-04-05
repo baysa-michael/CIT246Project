@@ -45,7 +45,7 @@ public class DailyCalendarPresenter implements DailyCalendarContract.Presenter {
         //  *********** LINK TO REAL DATA WHEN READY ************
         List<Appointment> testAppointments = TestItems.testAppointments();
         for(Appointment thisAppointment : testAppointments) {
-            if (thisAppointment.getAppointmentDate().equals(
+            if (thisAppointment.getDate().equals(
                     testDate)) {
                 dailyAppointments.add(thisAppointment);
             }

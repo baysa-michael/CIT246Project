@@ -2,75 +2,60 @@ package cs246.businesscalendar.model;
 
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 
-import java.util.List;
-
 public class Appointment {
-    private LocalDate appointmentDate;
+    private LocalDate date;
     private boolean isAllDay;
-    private LocalTime appointmentStart;
-    private LocalTime appointmentEnd;
-    private String appointmentTitle;
-    private String appointmentDescription;
-    private String appointmentLocation;
-    private String appointmentAttendees;
-    private List<LocalDate> repeatingDates;
-    private List<LocalDateTime> reminderTimes;
-    private int appointmentSalt;
-    private String appointmentHash;
+    private LocalTime start;
+    private LocalTime end;
+    private String title;
+    private String description;
+    private String location;
+    private String attendees;
+    private String hash;
 
     public Appointment() {
-        this.appointmentDate = new LocalDate(DateTimeZone.UTC);  // Current Date
+        this.date = new LocalDate(DateTimeZone.UTC);  // Current Date
         this.isAllDay = true;
-        this.appointmentStart = null;
-        this.appointmentEnd = null;
-        this.appointmentTitle = "N/A";
-        this.appointmentDescription = "";
-        this.appointmentLocation = "";
-        this.appointmentAttendees = "";
-        this.repeatingDates = null;
-        this.reminderTimes = null;
-        this.appointmentSalt = 0;
-        this.appointmentHash = "0000000000000000000000000000000000000000000000000000000000000000";
+        this.start = null;
+        this.end = null;
+        this.title = "N/A";
+        this.description = "";
+        this.location = "";
+        this.attendees = "";
+        this.hash = "0000000000000000000000000000000000000000000000000000000000000000";
     }
 
-    public Appointment(LocalDate appointmentDate,
+    public Appointment(LocalDate date,
                        boolean isAllDay,
-                       LocalTime appointmentStart,
-                       LocalTime appointmentEnd,
-                       String appointmentTitle,
-                       String appointmentDescription,
-                       String appointmentLocation,
-                       String appointmentAttendees,
-                       List<LocalDate> repeatingDates,
-                       List<LocalDateTime> reminderTimes,
-                       int appointmentSalt,
-                       String appointmentHash) {
-        this.appointmentDate = appointmentDate;
+                       LocalTime start,
+                       LocalTime end,
+                       String title,
+                       String description,
+                       String location,
+                       String attendees,
+                       String hash) {
+        this.date = date;
         this.isAllDay = isAllDay;
-        this.appointmentStart = appointmentStart;
-        this.appointmentEnd = appointmentEnd;
-        this.appointmentTitle = appointmentTitle;
-        this.appointmentDescription = appointmentDescription;
-        this.appointmentLocation = appointmentLocation;
-        this.appointmentAttendees = appointmentAttendees;
-        this.repeatingDates = repeatingDates;
-        this.reminderTimes = reminderTimes;
-        this.appointmentSalt = appointmentSalt;
-        this.appointmentHash = appointmentHash;
+        this.start = start;
+        this.end = end;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.attendees = attendees;
+        this.hash = hash;
     }
 
-    public LocalDate getAppointmentDate() {
-        return appointmentDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setAppointmentDate(LocalDate appointmentDate) {
-        this.appointmentDate = appointmentDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public boolean getIsAllDay() {
+    public boolean isAllDay() {
         return isAllDay;
     }
 
@@ -78,83 +63,59 @@ public class Appointment {
         isAllDay = allDay;
     }
 
-    public LocalTime getAppointmentStart() {
-        return appointmentStart;
+    public LocalTime getStart() {
+        return start;
     }
 
-    public void setAppointmentStart(LocalTime appointmentStart) {
-        this.appointmentStart = appointmentStart;
+    public void setStart(LocalTime start) {
+        this.start = start;
     }
 
-    public LocalTime getAppointmentEnd() {
-        return appointmentEnd;
+    public LocalTime getEnd() {
+        return end;
     }
 
-    public void setAppointmentEnd(LocalTime appointmentEnd) {
-        this.appointmentEnd = appointmentEnd;
+    public void setEnd(LocalTime end) {
+        this.end = end;
     }
 
-    public String getAppointmentTitle() {
-        return appointmentTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setAppointmentTitle(String appointmentTitle) {
-        this.appointmentTitle = appointmentTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getAppointmentDescription() {
-        return appointmentDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAppointmentDescription(String appointmentDescription) {
-        this.appointmentDescription = appointmentDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getAppointmentLocation() {
-        return appointmentLocation;
+    public String getLocation() {
+        return location;
     }
 
-    public void setAppointmentLocation(String appointmentLocation) {
-        this.appointmentLocation = appointmentLocation;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getAppointmentAttendees() {
-        return appointmentAttendees;
+    public String getAttendees() {
+        return attendees;
     }
 
-    public void setAppointmentAttendees(String appointmentAttendees) {
-        this.appointmentAttendees = appointmentAttendees;
+    public void setAttendees(String attendees) {
+        this.attendees = attendees;
     }
 
-    public List<LocalDate> getRepeatingDates() {
-        return repeatingDates;
+    public String getHash() {
+        return hash;
     }
 
-    public void setRepeatingDates(List<LocalDate> repeatingDates) {
-        this.repeatingDates = repeatingDates;
-    }
-
-    public List<LocalDateTime> getReminderTimes() {
-        return reminderTimes;
-    }
-
-    public void setReminderTimes(List<LocalDateTime> reminderTimes) {
-        this.reminderTimes = reminderTimes;
-    }
-
-    public int getAppointmentSalt() {
-        return appointmentSalt;
-    }
-
-    public void setAppointmentSalt(int appointmentSalt) {
-        this.appointmentSalt = appointmentSalt;
-    }
-
-    public String getAppointmentHash() {
-        return appointmentHash;
-    }
-
-    public void setAppointmentHash(String appointmentHash) {
-        this.appointmentHash = appointmentHash;
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 }

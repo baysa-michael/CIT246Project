@@ -6,7 +6,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -263,14 +262,14 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
 
                 // Add the text for the text view
                 ((TextView) appointment.getChildAt(0))
-                        .setText(thisAppointment.getAppointmentTitle());
+                        .setText(thisAppointment.getTitle());
                 ((TextView) appointment.getChildAt(1))
-                        .setText(thisAppointment.getAppointmentDescription());
+                        .setText(thisAppointment.getDescription());
 
                 // Identify the height to be used for the appointment
                 Resources resource = this.getResources();
-                int minutes = Minutes.minutesBetween(thisAppointment.getAppointmentStart(),
-                        thisAppointment.getAppointmentEnd()).getMinutes();
+                int minutes = Minutes.minutesBetween(thisAppointment.getStart(),
+                        thisAppointment.getEnd()).getMinutes();
                 int pxHeight = (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
                         minutes,
@@ -279,7 +278,7 @@ public class WeeklyCalendar extends AppCompatActivity implements WeeklyCalendarC
 
                 // Identify the Top and Left margin to be used, and convert to pixels
                 int startMinute = Minutes.minutesBetween(new LocalTime(0, 0),
-                        thisAppointment.getAppointmentStart()).getMinutes();
+                        thisAppointment.getStart()).getMinutes();
                 int pxTopMargin = (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
                         startMinute,

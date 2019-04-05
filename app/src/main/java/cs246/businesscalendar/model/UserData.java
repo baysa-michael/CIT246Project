@@ -1,7 +1,5 @@
 package cs246.businesscalendar.model;
 
-import org.joda.time.DateTimeZone;
-
 import java.util.List;
 
 public class UserData {
@@ -10,7 +8,7 @@ public class UserData {
     private String displayName;
     private String email;
     private String phone;
-    private DateTimeZone defaultTimeZone;
+    private int timeZoneOffset;
     private boolean is24H;
     private List<Appointment> userAppointments;
 
@@ -20,7 +18,7 @@ public class UserData {
         this.displayName = "";
         this.email = "";
         this.phone = "";
-        this.defaultTimeZone = DateTimeZone.UTC;
+        this.timeZoneOffset = 0;
         this.is24H = false;
         this.userAppointments = null;
     }
@@ -30,7 +28,7 @@ public class UserData {
                     String displayName,
                     String email,
                     String phone,
-                    DateTimeZone defaultTimeZone,
+                    int timeZoneOffset,
                     boolean is24H,
                     List<Appointment> userAppointments) {
         this.username = username;
@@ -38,7 +36,7 @@ public class UserData {
         this.displayName = displayName;
         this.email = email;
         this.phone = phone;
-        this.defaultTimeZone = defaultTimeZone;
+        this.timeZoneOffset = timeZoneOffset;
         this.is24H = is24H;
         this.userAppointments = userAppointments;
     }
@@ -83,12 +81,12 @@ public class UserData {
         this.phone = phone;
     }
 
-    public DateTimeZone getDefaultTimeZone() {
-        return defaultTimeZone;
+    public int getTimeZoneOffset() {
+        return timeZoneOffset;
     }
 
-    public void setDefaultTimeZone(DateTimeZone defaultTimeZone) {
-        this.defaultTimeZone = defaultTimeZone;
+    public void setDefaultTimeZone(int defaultTimeZone) {
+        this.timeZoneOffset = defaultTimeZone;
     }
 
     public boolean isIs24H() {

@@ -7,7 +7,7 @@
     tools:context=".view_presenter.modify_appointment.ModifyAppointment">
 
     <TextView
-        android:id="@+id/appointmentTitle"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_margin"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toTopOf="@+id/appointmentConfirmButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appointmentTitle"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintVertical_bias="0.0"
         >
 
@@ -219,50 +219,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesLabel" />
 
-            <TextView
-                android:id="@+id/appointmentRecurrenceLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginTop="@dimen/general_margin"
-                android:text="@string/recurrence_label"
-                android:textSize="@dimen/label_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesEdit" />
-
-            <Spinner
-                android:id="@+id/appointmentRecurrenceSpinner"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/general_margin"
-                android:layout_marginTop="@dimen/general_margin"
-                android:layout_marginEnd="@dimen/general_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/appointmentRecurrenceLabel"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentAttendeesEdit" />
-
-            <TextView
-                android:id="@+id/appointmentReminderLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginTop="@dimen/general_margin"
-                android:text="@string/reminder_label"
-                android:textSize="@dimen/label_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentRecurrenceLabel" />
-
-            <Spinner
-                android:id="@+id/appointmentReminderSpinner"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/general_margin"
-                android:layout_marginTop="@dimen/general_margin"
-                android:layout_marginEnd="@dimen/general_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/appointmentReminderLabel"
-                app:layout_constraintTop_toBottomOf="@+id/appointmentRecurrenceLabel" />
-
+            <!-- Functions to Add - Recurrence and Reminder -->
 
         </android.support.constraint.ConstraintLayout>
 

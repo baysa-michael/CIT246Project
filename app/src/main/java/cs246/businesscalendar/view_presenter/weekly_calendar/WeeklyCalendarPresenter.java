@@ -44,7 +44,7 @@ public class WeeklyCalendarPresenter implements WeeklyCalendarContract.Presenter
         List<Appointment> testAppointments = TestItems.testAppointments();
         for(Appointment thisAppointment : testAppointments) {
             int daysBetween = Days.daysBetween(startDate, thisAppointment
-                    .getAppointmentDate()).getDays();
+                    .getDate()).getDays();
             if (daysBetween < 7 && daysBetween >= 0) {
                 weeklyAppointments.get(daysBetween).add(thisAppointment);
             }

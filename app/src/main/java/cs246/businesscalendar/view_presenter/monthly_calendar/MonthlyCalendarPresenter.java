@@ -21,7 +21,7 @@ public class MonthlyCalendarPresenter implements MonthlyCalendarContract.Present
 
     }
 
-    public Map<String, List<AtomicInteger>> retrieveBasicMonthlyInfo(LocalDate testDate) {
+    Map<String, List<AtomicInteger>> retrieveBasicMonthlyInfo(LocalDate testDate) {
         // Determine the Start and End of the Month
         LocalDate startOfMonth = new LocalDate(testDate.getYear(), testDate.getMonthOfYear(),
                 1);
@@ -42,9 +42,9 @@ public class MonthlyCalendarPresenter implements MonthlyCalendarContract.Present
 
         // Loop through each appointment and increment the Appointment Count
         for (Appointment thisAppointment : appointments) {
-            if (thisAppointment.getAppointmentDate().getYear() == testDate.getYear() &&
-            thisAppointment.getAppointmentDate().getMonthOfYear() == testDate.getMonthOfYear()) {
-                appointmentCount.get(thisAppointment.getAppointmentDate().
+            if (thisAppointment.getDate().getYear() == testDate.getYear() &&
+            thisAppointment.getDate().getMonthOfYear() == testDate.getMonthOfYear()) {
+                appointmentCount.get(thisAppointment.getDate().
                         getDayOfMonth() - 1).incrementAndGet();
             }
         }

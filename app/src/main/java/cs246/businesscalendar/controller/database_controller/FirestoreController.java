@@ -1,7 +1,6 @@
 package cs246.businesscalendar.controller.database_controller;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,7 +60,7 @@ public class FirestoreController implements DatabaseInterface {
     public boolean addUserAppointment(String userID, Appointment newAppointment){
         database.collection("users").document(userID)
                 .collection("appointments")
-                .document(newAppointment.getAppointmentHash())
+                .document(newAppointment.getHash())
                 .set(newAppointment)
                 // Note - Void is used when setting a document as nothing is returned
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
