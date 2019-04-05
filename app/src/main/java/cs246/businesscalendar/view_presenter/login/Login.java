@@ -13,7 +13,6 @@ import android.widget.Toast;
 import cs246.businesscalendar.R;
 
 import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthListenerInterface;
-import cs246.businesscalendar.view_presenter.create_account.CreateAccount;
 import cs246.businesscalendar.view_presenter.landing.Landing;
 
 public class Login extends AppCompatActivity implements LoginContract.View,
@@ -94,10 +93,15 @@ public class Login extends AppCompatActivity implements LoginContract.View,
         // End Indeterminate Progress Bar
         indeterminateProgressBar.setVisibility(View.GONE);
 
-        // Inform the User and then move to the Landing Page
+        // Inform the User
         informUser("Successfully Logged In");
 
-        Intent thisIntent = new Intent(this, CreateAccount.class);
+        // Clear fields
+        ((EditText) findViewById(R.id.loginEmailEdit)).getText().clear();
+        ((EditText) findViewById(R.id.loginPasswordEdit)).getText().clear();
+
+        // Move to the Landing Page
+        Intent thisIntent = new Intent(this, Landing.class);
 
         startActivity(thisIntent);
     }

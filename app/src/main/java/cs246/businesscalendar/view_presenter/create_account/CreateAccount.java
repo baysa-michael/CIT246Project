@@ -155,6 +155,14 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
 
         informUser("Successfully Added User and Logged In");
 
+        // Clear Input Fields
+        ((EditText) findViewById(R.id.createaccountEmailEdit)).getText().clear();
+        ((EditText) findViewById(R.id.createaccountPasswordEdit)).getText().clear();
+        ((EditText) findViewById(R.id.createaccountDisplayNameEdit)).getText().clear();
+        ((EditText) findViewById(R.id.createaccountPhoneEdit)).getText().clear();
+        timeZoneSpinner.setSelection(0);
+        time1224HSpinner.setSelection(0);
+
         // Users to this point are successfully logged in and will move to the landing page
         Intent thisIntent = new Intent(this, Landing.class);
 
