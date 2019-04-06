@@ -118,4 +118,6 @@ public class Appointment {
     public void setHash(String hash) {
         this.hash = hash;
     }
+
+
 }

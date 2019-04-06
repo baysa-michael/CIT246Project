@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 import cs246.businesscalendar.model.UserData;
 
 interface LandingContract {
@@ -18,6 +19,7 @@ interface LandingContract {
         void showSettings();
         void showLogout();
         void informUser(String message);
+        void startActivity(Class<?> activityClass);
     }
 
     interface Presenter {
@@ -26,6 +28,6 @@ interface LandingContract {
         void getUserData();
         void getUserAppointments();
         void updateSharedPreferences(Context context, UserData loadedUser);
-        void saveAppointments(Context context, List<Appointment> userAppointments);
+        List<Appointment> convertToAppointments(List<ParcelableAppointment> downloadList);
     }
 }

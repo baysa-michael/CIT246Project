@@ -37,6 +37,16 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
         presenter = new ModifyAppointmentPresenter();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Check to see if user already signed in - If not, exit the activity
+        if (!presenter.isUserSignedIn()) {
+            finish();
+        }
+    }
+
     public void showConfirm() {
         finish();
     }

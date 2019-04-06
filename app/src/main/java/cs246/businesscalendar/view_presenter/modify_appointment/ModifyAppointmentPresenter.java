@@ -1,12 +1,16 @@
 package cs246.businesscalendar.view_presenter.modify_appointment;
 
-public class ModifyAppointmentPresenter implements ModifyAppointmentContract.Presenter {
-    public void handleClickConfirm() {
+import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
 
+class ModifyAppointmentPresenter implements ModifyAppointmentContract.Presenter {
+    private FirebaseAuthController authenticator;
+
+    ModifyAppointmentPresenter() {
+        authenticator = new FirebaseAuthController();
     }
 
-    public void handleClickCancel() {
-
+    @Override
+    public boolean isUserSignedIn() {
+        return authenticator.isUserSignedIn();
     }
-
 }

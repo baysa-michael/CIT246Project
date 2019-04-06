@@ -8,7 +8,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import cs246.businesscalendar.model.Appointment;
-import cs246.businesscalendar.model.FirestoreAppointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 import cs246.businesscalendar.model.UserData;
 
 public class FirestoreController implements DatabaseInterface {
@@ -167,16 +166,12 @@ public class FirestoreController implements DatabaseInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            List<Appointment> downloadedAppointments = new ArrayList<>();
+                            List<ParcelableAppointment> downloadedAppointments = new ArrayList<>();
                             if (task.getResult() != null) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    // Import document into a Firestore Appointment
-                                    FirestoreAppointment downloadFSA =
-                                            document.toObject(FirestoreAppointment.class);
-
                                     // Translate to Appointment and Add to List
-                                    downloadedAppointments.add(FirestoreAppointment
-                                            .fromFirestoreAppointment(downloadFSA));
+                                    downloadedAppointments
+                                            .add(document.toObject(ParcelableAppointment.class));
                                 }
                             }
 

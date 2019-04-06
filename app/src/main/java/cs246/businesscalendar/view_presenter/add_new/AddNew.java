@@ -75,6 +75,16 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Check to see if user already signed in - If not, exit the activity
+        if (!presenter.isUserSignedIn()) {
+            finish();
+        }
+    }
+
+    @Override
     public void showAddNewAppointment() {
         Intent thisIntent = new Intent(this, ModifyAppointment.class);
 

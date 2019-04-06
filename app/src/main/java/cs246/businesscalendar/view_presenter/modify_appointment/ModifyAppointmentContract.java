@@ -7,7 +7,6 @@ interface ModifyAppointmentContract {
     }
 
     interface Presenter {
-        void handleClickConfirm();
-        void handleClickCancel();
+        boolean isUserSignedIn();
     }
 }

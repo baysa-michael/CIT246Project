@@ -3,9 +3,7 @@ package cs246.businesscalendar.view_presenter.landing;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import cs246.businesscalendar.R;
@@ -14,6 +12,7 @@ import cs246.businesscalendar.controller.database_controller.FirestoreController
 import cs246.businesscalendar.controller.database_controller.FirestoreGetAppointmentsListenerInterface;
 import cs246.businesscalendar.controller.database_controller.FirestoreGetUserListenerInterface;
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 import cs246.businesscalendar.model.UserData;
 
 class LandingPresenter implements LandingContract.Presenter {
@@ -76,6 +75,7 @@ class LandingPresenter implements LandingContract.Presenter {
         infoEditor.apply();
     }
 
+/*
     @Override
     public void saveAppointments(Context context, List<Appointment> userAppointments) {
         // Target Directory and File
@@ -101,5 +101,18 @@ class LandingPresenter implements LandingContract.Presenter {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+*/
+
+    @Override
+    public List<Appointment> convertToAppointments(List<ParcelableAppointment> downloadList) {
+        List<Appointment> appointments = new ArrayList<>();
+
+        // Convert the Parcelable Appointments to Appointments
+        for (ParcelableAppointment baseAppointment : downloadList) {
+            appointments.add(ParcelableAppointment.fromParcelableAppointment(baseAppointment));
+        }
+
+        return appointments;
     }
 }

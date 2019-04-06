@@ -3,6 +3,8 @@ package cs246.businesscalendar.view_presenter.landing;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -24,6 +26,7 @@ import cs246.businesscalendar.controller.database_controller.FirestoreAddUserLis
 import cs246.businesscalendar.controller.database_controller.FirestoreGetAppointmentsListenerInterface;
 import cs246.businesscalendar.controller.database_controller.FirestoreGetUserListenerInterface;
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 import cs246.businesscalendar.model.UserData;
 import cs246.businesscalendar.utilities.TestItems;
 import cs246.businesscalendar.view_presenter.select_view.SelectView;
@@ -36,6 +39,10 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
     private RecyclerView.Adapter myAdapter;
     private ProgressBar indeterminateProgressBar;
     private List<Appointment> appointments;
+    private List<ParcelableAppointment> parcelableAppointments;
+
+    // Request Codes
+    private static final int GENERAL_REQUEST_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +117,9 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
         // Set Presenter
         presenter = new LandingPresenter(this);
 
-        // Initialize the Appointment List
+        // Initialize the Appointment Lists
         appointments = new ArrayList<>();
+        parcelableAppointments = new ArrayList<>();
 
         // Set Recycler View with Layout Manager
         RecyclerView myRecycler = findViewById(R.id.landingRecyclerView);
@@ -143,6 +151,18 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
             presenter.getUserData();
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Start Indeterminate Progress Bar
+        indeterminateProgressBar.setVisibility(View.VISIBLE);
+
+        // Load User Data Into Shared Preferences
+        presenter.getUserData();
+    }
+
     @Override
     public void showSchedule() {
         // NOT YET IMPLEMENTED
@@ -163,16 +183,12 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
 
     @Override
     public void showAddNew() {
-        Intent thisIntent = new Intent(this, AddNew.class);
-
-        startActivity(thisIntent);
+        startActivity(AddNew.class);
     }
 
     @Override
     public void showSelectView() {
-        Intent thisIntent = new Intent(this, SelectView.class);
-
-        startActivity(thisIntent);
+        startActivity(SelectView.class);
     }
 
     @Override
@@ -220,18 +236,17 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
     }
 
     @Override
-    public void onGetAppointmentsSuccess(List<Appointment> downloadedAppointments) {
+    public void onGetAppointmentsSuccess(List<ParcelableAppointment> downloadedAppointments) {
         // Clear any old data in the appointments
+        parcelableAppointments.clear();
         appointments.clear();
 
         // Load the new appointments
-        appointments.addAll(downloadedAppointments);
+        parcelableAppointments.addAll(downloadedAppointments);
+        appointments.addAll(presenter.convertToAppointments(parcelableAppointments));
 
         // Notify the adapter
         myAdapter.notifyDataSetChanged();
-
-        // Save the list data to an internal file
-        presenter.saveAppointments(this, downloadedAppointments);
 
         // Set Indeterminate Progress Bar to Gone
         indeterminateProgressBar.setVisibility(View.GONE);
@@ -252,5 +267,44 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
         Toast toastSuccessful = Toast.makeText(this, message, duration);
         toastSuccessful.setGravity(Gravity.CENTER, 0, 0);
         toastSuccessful.show();
+    }
+
+    @Override
+    public void startActivity(Class<?> activityClass) {
+        Intent thisIntent = new Intent(this, activityClass);
+        thisIntent.putParcelableArrayListExtra("appointments",
+                (ArrayList<ParcelableAppointment>) parcelableAppointments);
+        startActivityForResult(thisIntent, GENERAL_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Test to make sure the proper request code is received
+        if (requestCode == GENERAL_REQUEST_CODE) {
+            // Make sure that the request return results are OK
+            if (resultCode == RESULT_OK) {
+                // Retrieve the updated appointments
+                if (data != null) {
+                    // Clear any old data in the appointments
+                    parcelableAppointments.clear();
+                    appointments.clear();
+
+
+                    // Load the new appointments
+                    parcelableAppointments.addAll(new ArrayList<>(data.<ParcelableAppointment>
+                            getParcelableArrayListExtra("appointment")));
+                    appointments.addAll(presenter.convertToAppointments(parcelableAppointments));
+
+                    // Notify the adapter
+                    myAdapter.notifyDataSetChanged();
+
+                    // Set Indeterminate Progress Bar to Gone
+                    indeterminateProgressBar.setVisibility(View.GONE);
+                }
+
+            }
+        }
     }
 }

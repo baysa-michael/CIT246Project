@@ -1,9 +1,12 @@
 package cs246.businesscalendar.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
-public class FirestoreAppointment {
+public class ParcelableAppointment implements Parcelable {
     private int year;
     private int month;
     private int day;
@@ -18,22 +21,22 @@ public class FirestoreAppointment {
     private String attendees;
     private String hash;
 
-    public FirestoreAppointment() {
+    public ParcelableAppointment() {
     }
 
-    public FirestoreAppointment(int year,
-                                int month,
-                                int day,
-                                boolean isAllDay,
-                                int startHour,
-                                int startMinute,
-                                int endHour,
-                                int endMinute,
-                                String title,
-                                String description,
-                                String location,
-                                String attendees,
-                                String hash) {
+    public ParcelableAppointment(int year,
+                                 int month,
+                                 int day,
+                                 boolean isAllDay,
+                                 int startHour,
+                                 int startMinute,
+                                 int endHour,
+                                 int endMinute,
+                                 String title,
+                                 String description,
+                                 String location,
+                                 String attendees,
+                                 String hash) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -153,8 +156,8 @@ public class FirestoreAppointment {
         this.hash = hash;
     }
 
-    public static FirestoreAppointment fromAppointment(Appointment baseAppointment) {
-        return new FirestoreAppointment(
+    public static ParcelableAppointment fromAppointment(Appointment baseAppointment) {
+        return new ParcelableAppointment(
                 baseAppointment.getDate().getYear(),
                 baseAppointment.getDate().getMonthOfYear(),
                 baseAppointment.getDate().getDayOfMonth(),
@@ -171,7 +174,7 @@ public class FirestoreAppointment {
         );
     }
 
-    public static Appointment fromFirestoreAppointment(FirestoreAppointment baseAppointment) {
+    public static Appointment fromParcelableAppointment(ParcelableAppointment baseAppointment) {
         return new Appointment(
                 new LocalDate(
                         baseAppointment.getYear(),
@@ -194,4 +197,61 @@ public class FirestoreAppointment {
                 baseAppointment.getHash()
         );
     }
+
+
+    // Implement Parcelable Code
+    // Constructor for Parcelable
+    private ParcelableAppointment(Parcel in) {
+        // ***NOTE:  This is highly dependent on the order to which a parcel is written
+        year = in.readInt();
+        month = in.readInt();
+        day = in.readInt();
+        isAllDay = in.readByte() != 0;
+        startHour = in.readInt();
+        startMinute = in.readInt();
+        endHour = in.readInt();
+        endMinute = in.readInt();
+        title = in.readString();
+        description = in.readString();
+        location = in.readString();
+        attendees = in.readString();
+        hash = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        // Write Key Variables
+        out.writeInt(year);
+        out.writeInt(month);
+        out.writeInt(day);
+        out.writeByte((byte) (isAllDay ? 1 : 0));
+        out.writeInt(startHour);
+        out.writeInt(startMinute);
+        out.writeInt(endHour);
+        out.writeInt(endMinute);
+        out.writeString(title);
+        out.writeString(description);
+        out.writeString(location);
+        out.writeString(attendees);
+        out.writeString(hash);
+    }
+
+    public static final Parcelable.Creator<ParcelableAppointment> CREATOR =
+            new Parcelable.Creator<ParcelableAppointment>() {
+                // Create from Parcelable Constructor
+                @Override
+                public ParcelableAppointment createFromParcel(Parcel in) {
+                    return new ParcelableAppointment(in);
+                }
+
+                @Override
+                public ParcelableAppointment[] newArray(int size) {
+                    return new ParcelableAppointment[size];
+                }
+            };
 }

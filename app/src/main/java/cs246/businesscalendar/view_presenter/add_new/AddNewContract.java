@@ -12,5 +12,6 @@ interface AddNewContract {
     }
 
     interface Presenter {
+        boolean isUserSignedIn();
     }
 }
