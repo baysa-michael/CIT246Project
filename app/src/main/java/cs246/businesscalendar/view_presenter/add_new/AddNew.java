@@ -146,7 +146,6 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
         finish();
     }
 
-
     @Override
     public void informUser(String message) {
         int duration = Toast.LENGTH_SHORT;

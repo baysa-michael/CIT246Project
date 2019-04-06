@@ -111,7 +111,8 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                                                   int dayOfMonth) {
                                 EditText dateEdit = findViewById(R.id.dailycalendarDateEdit);
                                 // Set Selected Date
-                                LocalDate selectedDate = new LocalDate(year, month + 1, dayOfMonth);
+                                LocalDate selectedDate = new LocalDate(year, month + 1,
+                                        dayOfMonth);
 
                                 // Display Formatted Date
                                 DateTimeFormatter formatTime =
