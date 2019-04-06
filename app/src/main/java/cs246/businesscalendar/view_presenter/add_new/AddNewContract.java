@@ -9,6 +9,7 @@ interface AddNewContract {
         void showCreateGroup();
         void showCancel();
         void informUser(String message);
+        void moveToNextActivity(Class<?> activityClass);
     }
 
     interface Presenter {

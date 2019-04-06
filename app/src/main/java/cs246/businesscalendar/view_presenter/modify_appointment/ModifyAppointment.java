@@ -1,15 +1,24 @@
 package cs246.businesscalendar.view_presenter.modify_appointment;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cs246.businesscalendar.R;
+import cs246.businesscalendar.model.ParcelableAppointment;
 
 public class ModifyAppointment extends AppCompatActivity implements ModifyAppointmentContract.View {
     private static final String TAG = "Appointment";
     private ModifyAppointmentPresenter presenter;
+    private List<ParcelableAppointment> parcelableAppointments;
+
+    // Request Codes
+    private static final int GENERAL_REQUEST_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,9 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
 
         // Set Presenter
         presenter = new ModifyAppointmentPresenter();
+
+        // Load Activity List
+        parcelableAppointments = getIntent().getParcelableArrayListExtra("appointments");
     }
 
     @Override
@@ -47,7 +59,21 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Prepare Return Intent
+        Intent returnIntent = new Intent();
+        returnIntent.putParcelableArrayListExtra("appointments",
+                (ArrayList<ParcelableAppointment>) parcelableAppointments);
+        returnIntent.putExtra("code", GENERAL_REQUEST_CODE);
+        setResult(RESULT_OK, returnIntent);
+    }
+
     public void showConfirm() {
+
+
         finish();
     }
 

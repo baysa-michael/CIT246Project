@@ -1,9 +1,6 @@
 package cs246.businesscalendar.view_presenter.landing;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,13 +19,11 @@ import java.util.List;
 
 import cs246.businesscalendar.R;
 
-import cs246.businesscalendar.controller.database_controller.FirestoreAddUserListenerInterface;
 import cs246.businesscalendar.controller.database_controller.FirestoreGetAppointmentsListenerInterface;
 import cs246.businesscalendar.controller.database_controller.FirestoreGetUserListenerInterface;
 import cs246.businesscalendar.model.Appointment;
 import cs246.businesscalendar.model.ParcelableAppointment;
 import cs246.businesscalendar.model.UserData;
-import cs246.businesscalendar.utilities.TestItems;
 import cs246.businesscalendar.view_presenter.select_view.SelectView;
 import cs246.businesscalendar.view_presenter.add_new.AddNew;
 
@@ -183,12 +178,12 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
 
     @Override
     public void showAddNew() {
-        startActivity(AddNew.class);
+        moveToNextActivity(AddNew.class);
     }
 
     @Override
     public void showSelectView() {
-        startActivity(SelectView.class);
+        moveToNextActivity(SelectView.class);
     }
 
     @Override
@@ -270,7 +265,8 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
     }
 
     @Override
-    public void startActivity(Class<?> activityClass) {
+    public void moveToNextActivity(Class<?> activityClass) {
+        // Start Activity, Passing Appointments, and Requesting Result
         Intent thisIntent = new Intent(this, activityClass);
         thisIntent.putParcelableArrayListExtra("appointments",
                 (ArrayList<ParcelableAppointment>) parcelableAppointments);
@@ -287,10 +283,12 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
             if (resultCode == RESULT_OK) {
                 // Retrieve the updated appointments
                 if (data != null) {
+                    // Set Indeterminate Progress Bar to Visible
+                    indeterminateProgressBar.setVisibility(View.VISIBLE);
+
                     // Clear any old data in the appointments
                     parcelableAppointments.clear();
                     appointments.clear();
-
 
                     // Load the new appointments
                     parcelableAppointments.addAll(new ArrayList<>(data.<ParcelableAppointment>
@@ -303,7 +301,6 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
                     // Set Indeterminate Progress Bar to Gone
                     indeterminateProgressBar.setVisibility(View.GONE);
                 }
-
             }
         }
     }

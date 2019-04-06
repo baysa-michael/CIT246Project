@@ -19,7 +19,7 @@ interface LandingContract {
         void showSettings();
         void showLogout();
         void informUser(String message);
-        void startActivity(Class<?> activityClass);
+        void moveToNextActivity(Class<?> activityClass);
     }
 
     interface Presenter {
