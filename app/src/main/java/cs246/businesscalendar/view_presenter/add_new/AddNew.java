@@ -3,8 +3,10 @@ package cs246.businesscalendar.view_presenter.add_new;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import cs246.businesscalendar.R;
 
@@ -72,29 +74,48 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
         presenter = new AddNewPresenter();
     }
 
+    @Override
     public void showAddNewAppointment() {
         Intent thisIntent = new Intent(this, ModifyAppointment.class);
 
         startActivity(thisIntent);
     }
 
+    @Override
     public void showAddNewTask() {
-        finish();
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showAddNewGoal() {
-        finish();
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showJoinGroup() {
-        finish();
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showCreateGroup() {
-        finish();
+        // NOT YET IMPLEMENTED
+        informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showCancel() {
         finish();
+    }
+
+
+    @Override
+    public void informUser(String message) {
+        int duration = Toast.LENGTH_SHORT;
+        Toast toastSuccessful = Toast.makeText(this, message, duration);
+        toastSuccessful.setGravity(Gravity.CENTER, 0, 0);
+        toastSuccessful.show();
     }
 }

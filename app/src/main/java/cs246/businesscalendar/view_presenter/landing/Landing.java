@@ -143,43 +143,51 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
             presenter.getUserData();
         }
     }
+    @Override
     public void showSchedule() {
         // NOT YET IMPLEMENTED
         informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showTasks() {
         // NOT YET IMPLEMENTED
         informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showGoals() {
         // NOT YET IMPLEMENTED
         informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showAddNew() {
         Intent thisIntent = new Intent(this, AddNew.class);
 
         startActivity(thisIntent);
     }
 
+    @Override
     public void showSelectView() {
         Intent thisIntent = new Intent(this, SelectView.class);
 
         startActivity(thisIntent);
     }
 
+    @Override
     public void showSearch() {
         // NOT YET IMPLEMENTED
         informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showSettings() {
         // NOT YET IMPLEMENTED
         informUser("NOTICE:  Feature has not yet been implemented");
     }
 
+    @Override
     public void showLogout() {
         // Inform the User
         informUser("Logging Out User");

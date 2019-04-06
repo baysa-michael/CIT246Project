@@ -11,8 +11,8 @@ import java.util.List;
 import cs246.businesscalendar.R;
 import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
 import cs246.businesscalendar.controller.database_controller.FirestoreController;
-import cs246.businesscalendar.controller.database_controller.FirestoreAddUserListenerInterface;
 import cs246.businesscalendar.controller.database_controller.FirestoreGetAppointmentsListenerInterface;
+import cs246.businesscalendar.controller.database_controller.FirestoreGetUserListenerInterface;
 import cs246.businesscalendar.model.Appointment;
 import cs246.businesscalendar.model.UserData;
 
@@ -23,7 +23,7 @@ class LandingPresenter implements LandingContract.Presenter {
 
     LandingPresenter(Context newContext) {
         authenticator = new FirebaseAuthController();
-        databaseUser = new FirestoreController((FirestoreAddUserListenerInterface) newContext);
+        databaseUser = new FirestoreController((FirestoreGetUserListenerInterface) newContext);
         databaseAppointments = new FirestoreController((FirestoreGetAppointmentsListenerInterface)
                 newContext);
     }

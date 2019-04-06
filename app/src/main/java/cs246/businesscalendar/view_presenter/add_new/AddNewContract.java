@@ -8,14 +8,9 @@ interface AddNewContract {
         void showJoinGroup();
         void showCreateGroup();
         void showCancel();
+        void informUser(String message);
     }
 
     interface Presenter {
-        void handleClickAddNewAppointment();
-        void handleClickAddNewTask();
-        void handleClickAddNewGoal();
-        void handleClickJoinGroup();
-        void handleClickCreateGroup();
-        void handleClickCancel();
     }
 }
