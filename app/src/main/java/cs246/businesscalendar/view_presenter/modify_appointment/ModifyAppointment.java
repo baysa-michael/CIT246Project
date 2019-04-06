@@ -345,10 +345,7 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
         );
 
         // Add the appointment to the database
-
-
-        // End Activity
-        finish();
+        presenter.addNewAppointment(newAppointment);
     }
 
     public void showCancel() {
@@ -359,6 +356,13 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
     public void onAddAppointmentSuccess(ParcelableAppointment newAppointment) {
         // Add the parcelable appointment to the list
         parcelableAppointments.add(newAppointment);
+
+        // Clear Non-Time Fields
+        ((CheckBox) findViewById(R.id.appointmentAllDayCheckbox)).setChecked(false);
+        ((EditText) findViewById(R.id.appointmentTitleEdit)).getText().clear();
+        ((EditText) findViewById(R.id.appointmentDescriptionEdit)).getText().clear();
+        ((EditText) findViewById(R.id.appointmentLocationEdit)).getText().clear();
+        ((EditText) findViewById(R.id.appointmentAttendeesEdit)).getText().clear();
 
         // Set Indeterminate Progress Bar to Gone
         indeterminateProgressBar.setVisibility(View.GONE);
