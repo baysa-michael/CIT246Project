@@ -3,9 +3,8 @@ package cs246.businesscalendar.view_presenter.landing;
 import android.content.Context;
 
 import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
-import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthListenerInterface;
 import cs246.businesscalendar.controller.database_controller.FirestoreController;
-import cs246.businesscalendar.controller.database_controller.FirestoreListenerInterface;
+import cs246.businesscalendar.controller.database_controller.FirestoreAddUserListenerInterface;
 
 class LandingPresenter implements LandingContract.Presenter {
     private FirebaseAuthController authenticator;
@@ -13,7 +12,7 @@ class LandingPresenter implements LandingContract.Presenter {
 
     LandingPresenter(Context newContext) {
         authenticator = new FirebaseAuthController();
-        database = new FirestoreController((FirestoreListenerInterface) newContext);
+        database = new FirestoreController((FirestoreAddUserListenerInterface) newContext);
     }
 
     @Override

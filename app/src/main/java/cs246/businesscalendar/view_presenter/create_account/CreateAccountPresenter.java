@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
 import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthListenerInterface;
 import cs246.businesscalendar.controller.database_controller.FirestoreController;
-import cs246.businesscalendar.controller.database_controller.FirestoreListenerInterface;
+import cs246.businesscalendar.controller.database_controller.FirestoreAddUserListenerInterface;
 
 public class CreateAccountPresenter implements CreateAccountContract.Presenter {
     private static final String TAG = "CreateAccountPresenter";
@@ -17,7 +17,7 @@ public class CreateAccountPresenter implements CreateAccountContract.Presenter {
 
     CreateAccountPresenter(Context newContext){
         authenticator = new FirebaseAuthController((FirebaseAuthListenerInterface) newContext);
-        database = new FirestoreController((FirestoreListenerInterface) newContext);
+        database = new FirestoreController((FirestoreAddUserListenerInterface) newContext);
     }
 
 

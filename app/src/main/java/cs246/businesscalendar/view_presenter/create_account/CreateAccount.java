@@ -3,7 +3,6 @@ package cs246.businesscalendar.view_presenter.create_account;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,11 +14,11 @@ import android.widget.Toast;
 
 import cs246.businesscalendar.R;
 import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthListenerInterface;
-import cs246.businesscalendar.controller.database_controller.FirestoreListenerInterface;
+import cs246.businesscalendar.controller.database_controller.FirestoreAddUserListenerInterface;
 import cs246.businesscalendar.view_presenter.landing.Landing;
 
 public class CreateAccount extends AppCompatActivity implements CreateAccountContract.View,
-FirebaseAuthListenerInterface, FirestoreListenerInterface {
+FirebaseAuthListenerInterface, FirestoreAddUserListenerInterface {
     private static final String TAG = "CreateAccount";
     private CreateAccountPresenter presenter;
     private Spinner timeZoneSpinner;
@@ -149,7 +148,7 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
     }
 
     @Override
-    public void onReadWriteSuccess() {
+    public void onAddUserSuccess() {
         // End Indeterminate Progress Bar
         indeterminateProgressBar.setVisibility(View.GONE);
 
@@ -173,7 +172,7 @@ FirebaseAuthListenerInterface, FirestoreListenerInterface {
     }
 
     @Override
-    public void onReadWriteFailure() {
+    public void onAddUserFailure() {
         // Start Indeterminate Progress Bar
         indeterminateProgressBar.setVisibility(View.GONE);
 

@@ -5,17 +5,20 @@ import org.joda.time.LocalDate;
 import java.util.List;
 
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.UserData;
 
 interface DatabaseInterface {
-    boolean createOrUpdateAccount(String userID, String email, String displayName,
+    void createOrUpdateAccount(String userID, String email, String displayName,
                              String phone, int timeZoneOffset, boolean is24H);
 
-    boolean addUserAppointment(String userID, Appointment newAppointment);
+    void getUserData(String userID);
 
-    boolean modifyUserAppointment(String userID, String appointmentHash,
+    void addUserAppointment(String userID, Appointment newAppointment);
+
+    void modifyUserAppointment(String userID, String appointmentHash,
                                   Appointment updatedAppointment);
 
-    boolean deleteUserAppointment(String userID, String appointmentHash);
+    void deleteUserAppointment(String userID, String appointmentHash);
 
-    List<Appointment> getUserAppointments(String userID, LocalDate startDate, LocalDate endDate);
+    void getUserAppointments(String userID, LocalDate startDate, LocalDate endDate);
 }

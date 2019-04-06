@@ -1,52 +1,42 @@
 package cs246.businesscalendar.model;
 
-import java.util.List;
-
 public class UserData {
-    private String username;
+    private String email;
     private String hashedPassword;
     private String displayName;
-    private String email;
     private String phone;
     private int timeZoneOffset;
     private boolean is24H;
-    private List<Appointment> userAppointments;
 
     public UserData() {
-        this.username = "";
+        this.email = "";
         this.hashedPassword = "";
         this.displayName = "";
-        this.email = "";
         this.phone = "";
         this.timeZoneOffset = 0;
         this.is24H = false;
-        this.userAppointments = null;
     }
 
-    public UserData(String username,
+    public UserData(String email,
                     String hashedPassword,
                     String displayName,
-                    String email,
                     String phone,
                     int timeZoneOffset,
-                    boolean is24H,
-                    List<Appointment> userAppointments) {
-        this.username = username;
+                    boolean is24H) {
+        this.email = email;
         this.hashedPassword = hashedPassword;
         this.displayName = displayName;
-        this.email = email;
         this.phone = phone;
         this.timeZoneOffset = timeZoneOffset;
         this.is24H = is24H;
-        this.userAppointments = userAppointments;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getHashedPassword() {
@@ -63,14 +53,6 @@ public class UserData {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPhone() {
@@ -97,11 +79,4 @@ public class UserData {
         this.is24H = is24H;
     }
 
-    public List<Appointment> getUserAppointments() {
-        return userAppointments;
-    }
-
-    public void setUserAppointments(List<Appointment> userAppointments) {
-        this.userAppointments = userAppointments;
-    }
 }

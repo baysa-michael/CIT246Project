@@ -18,14 +18,14 @@ import java.util.List;
 
 import cs246.businesscalendar.R;
 
-import cs246.businesscalendar.controller.database_controller.FirestoreListenerInterface;
+import cs246.businesscalendar.controller.database_controller.FirestoreAddUserListenerInterface;
 import cs246.businesscalendar.model.Appointment;
 import cs246.businesscalendar.utilities.TestItems;
 import cs246.businesscalendar.view_presenter.select_view.SelectView;
 import cs246.businesscalendar.view_presenter.add_new.AddNew;
 
 public class Landing extends AppCompatActivity implements LandingContract.View,
-        FirestoreListenerInterface {
+        FirestoreAddUserListenerInterface {
     private static final String TAG = "Landing";
     private LandingPresenter presenter;
     private RecyclerView myRecycler;
@@ -187,12 +187,12 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
     }
 
     @Override
-    public void onReadWriteSuccess() {
+    public void onAddUserSuccess() {
 
     }
 
     @Override
-    public void onReadWriteFailure() {
+    public void onAddUserFailure() {
 
     }
 
