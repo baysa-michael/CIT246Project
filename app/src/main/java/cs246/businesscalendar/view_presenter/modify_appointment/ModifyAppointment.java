@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -25,15 +26,18 @@ import java.util.List;
 import java.util.Random;
 
 import cs246.businesscalendar.R;
+import cs246.businesscalendar.controller.database_controller.FirestoreAddAppointmentListenerInterface;
 import cs246.businesscalendar.model.ParcelableAppointment;
 import cs246.businesscalendar.utilities.Hashing;
 import cs246.businesscalendar.view_presenter.daily_calendar.DailyCalendar;
 
-public class ModifyAppointment extends AppCompatActivity implements ModifyAppointmentContract.View {
+public class ModifyAppointment extends AppCompatActivity implements ModifyAppointmentContract.View,
+        FirestoreAddAppointmentListenerInterface {
     private static final String TAG = "Appointment";
     private ModifyAppointmentPresenter presenter;
     private List<ParcelableAppointment> parcelableAppointments;
     private ParcelableAppointment targetAppointment;
+    private ProgressBar indeterminateProgressBar;
 
     // Request Codes
     private static final int GENERAL_REQUEST_CODE = 0;
@@ -61,7 +65,7 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
         });
 
         // Set Presenter
-        presenter = new ModifyAppointmentPresenter();
+        presenter = new ModifyAppointmentPresenter(this);
 
         // Load Activity List
         parcelableAppointments = getIntent().getParcelableArrayListExtra("appointments");
@@ -84,6 +88,10 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
                 return;
             }
         }
+
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar = findViewById(R.id.appointmentIndeterminateProgress);
+        indeterminateProgressBar.setVisibility(View.GONE);
 
         // Load Appointment Data if exists
         EditText dateEdit = findViewById(R.id.appointmentDateEdit);
@@ -256,6 +264,9 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
     }
 
     public void showConfirm() {
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar.setVisibility(View.VISIBLE);
+
         // Gather User Input
         EditText dateEdit = findViewById(R.id.appointmentDateEdit);
         String retrieveYear = dateEdit.getText().toString().substring(0, 4);
@@ -333,9 +344,6 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
                 hash
         );
 
-        // Add the parcelable appointment to the list
-        parcelableAppointments.add(newAppointment);
-
         // Add the appointment to the database
 
 
@@ -345,6 +353,27 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
 
     public void showCancel() {
         finish();
+    }
+
+    @Override
+    public void onAddAppointmentSuccess(ParcelableAppointment newAppointment) {
+        // Add the parcelable appointment to the list
+        parcelableAppointments.add(newAppointment);
+
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar.setVisibility(View.GONE);
+
+        // Inform the user
+        informUser("Successfully Added Appointment");
+    }
+
+    @Override
+    public void onAddAppointmentFailure() {
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar.setVisibility(View.GONE);
+
+        // Inform the user
+        informUser("ERROR:  Unable to Add Appointment");
     }
 
     @Override

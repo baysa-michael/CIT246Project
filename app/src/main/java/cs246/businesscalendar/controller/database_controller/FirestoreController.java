@@ -1,5 +1,6 @@
 package cs246.businesscalendar.controller.database_controller;
 
+import android.os.Parcel;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -91,7 +92,7 @@ public class FirestoreController implements DatabaseInterface {
     }
 
     @Override
-    public void addUserAppointment(String userID, Appointment newAppointment){
+    public void addUserAppointment(String userID, final ParcelableAppointment newAppointment){
         database.collection("users").document(userID)
                 .collection("appointments")
                 .document(newAppointment.getHash())
@@ -103,7 +104,7 @@ public class FirestoreController implements DatabaseInterface {
                         if (task.isSuccessful()) {
                             // Run the Success Tasks in the UI
                             ((FirestoreAddAppointmentListenerInterface) listener)
-                                    .onAddAppointmentSuccess();
+                                    .onAddAppointmentSuccess(newAppointment);
                         } else {
                             // Run the Failure Tasks in the UI
                             ((FirestoreAddAppointmentListenerInterface) listener)

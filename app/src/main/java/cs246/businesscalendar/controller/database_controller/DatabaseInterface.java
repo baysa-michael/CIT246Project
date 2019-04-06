@@ -1,11 +1,7 @@
 package cs246.businesscalendar.controller.database_controller;
 
-import org.joda.time.LocalDate;
-
-import java.util.List;
-
 import cs246.businesscalendar.model.Appointment;
-import cs246.businesscalendar.model.UserData;
+import cs246.businesscalendar.model.ParcelableAppointment;
 
 interface DatabaseInterface {
     void createOrUpdateAccount(String userID, String email, String displayName,
@@ -13,7 +9,7 @@ interface DatabaseInterface {
 
     void getUserData(String userID);
 
-    void addUserAppointment(String userID, Appointment newAppointment);
+    void addUserAppointment(String userID, ParcelableAppointment newAppointment);
 
     void modifyUserAppointment(String userID, String appointmentHash,
                                   Appointment updatedAppointment);
