@@ -6,12 +6,10 @@ interface SelectViewContract {
         void showWeeklyView();
         void showDailyView();
         void showCancel();
+        void moveToNextActivity(Class<?> activityClass);
     }
 
     interface Presenter {
-        void handleClickMonthlyView();
-        void handleClickWeeklyView();
-        void handleClickDailyView();
-        void handleClickCancel();
+        boolean isUserSignedIn();
     }
 }

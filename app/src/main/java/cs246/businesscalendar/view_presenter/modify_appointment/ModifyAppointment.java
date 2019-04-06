@@ -369,6 +369,8 @@ public class ModifyAppointment extends AppCompatActivity implements ModifyAppoin
 
         // Inform the user
         informUser("Successfully Added Appointment");
+
+        finish();
     }
 
     @Override

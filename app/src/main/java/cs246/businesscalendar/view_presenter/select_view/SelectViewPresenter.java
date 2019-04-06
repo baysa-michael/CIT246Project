@@ -1,19 +1,16 @@
 package cs246.businesscalendar.view_presenter.select_view;
 
+import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
+
 public class SelectViewPresenter implements SelectViewContract.Presenter {
-    public void handleClickMonthlyView() {
+    private FirebaseAuthController authenticator;
 
+    SelectViewPresenter() {
+        authenticator = new FirebaseAuthController();
     }
 
-    public void handleClickWeeklyView() {
-
-    }
-
-    public void handleClickDailyView() {
-
-    }
-
-    public void handleClickCancel() {
-
+    @Override
+    public boolean isUserSignedIn() {
+        return authenticator.isUserSignedIn();
     }
 }
