@@ -5,6 +5,7 @@ import org.joda.time.LocalDate;
 import java.util.List;
 
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 
 interface WeeklyCalendarContract {
     interface View {
@@ -16,9 +17,10 @@ interface WeeklyCalendarContract {
     }
 
     interface Presenter {
-        void handleClickReturn();
-        void handleClickAdd();
-        List<List<Appointment>> retrieveAppointmentsByWeek(LocalDate testDate);
+        boolean isUserSignedIn();
+        List<List<Appointment>> retrieveAppointmentsByWeek(List<Appointment> testAppointments,
+                                                           LocalDate testDate);
         LocalDate determineStartOfWeek(LocalDate testDate);
+        List<Appointment> convertParcelableAppointments(List<ParcelableAppointment> initialList);
     }
 }

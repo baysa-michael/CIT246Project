@@ -1,6 +1,7 @@
 package cs246.businesscalendar.view_presenter.monthly_calendar;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -24,15 +25,22 @@ import org.joda.time.Minutes;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import cs246.businesscalendar.R;
+import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 
 public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalendarContract.View {
     private static final String TAG = "MonthlyCalendar";
     private MonthlyCalendarPresenter presenter;
+    private List<ParcelableAppointment> parcelableAppointments;
+
+    // Request Codes
+    private static final int GENERAL_REQUEST_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +73,9 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
                 LocalDate.now().getMonthOfYear(),
                 LocalDate.now().getDayOfMonth());
         dateEdit.setText(today.toString("yyyy-MM-dd, EEEE"));
+
+        // Load Activity List
+        parcelableAppointments = getIntent().getParcelableArrayListExtra("appointments");
 
         // Retrieve Default Appointments
         updateCalendar(today);
@@ -109,6 +120,28 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Check to see if user already signed in - If not, exit the activity
+        if (!presenter.isUserSignedIn()) {
+            finish();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Prepare Return Intent
+        Intent returnIntent = new Intent();
+        returnIntent.putParcelableArrayListExtra("appointments",
+                (ArrayList<ParcelableAppointment>) parcelableAppointments);
+        returnIntent.putExtra("code", GENERAL_REQUEST_CODE);
+        setResult(RESULT_OK, returnIntent);
+    }
+
     public void showReturn() {
         finish();
     }
@@ -119,7 +152,10 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
 
     public void updateCalendar(LocalDate testDate) {
         // Retrieve lists of counts of appointments, tasks, and goals
-        Map<String, List<AtomicInteger>> monthlyData = presenter.retrieveBasicMonthlyInfo(testDate);
+        List<Appointment> convertedAppointments =
+                presenter.convertParcelableAppointments(parcelableAppointments);
+        Map<String, List<AtomicInteger>> monthlyData =
+                presenter.retrieveBasicMonthlyInfo(convertedAppointments, testDate);
 
         // Clear Calendar
         clearCalendar();
@@ -214,7 +250,6 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
             // Add the completed view
             dayOfWeek.addView(dayDetails);
 
-
             // Increment dayOfWeek Cursor, wrap to 1 when it increments to 7
             if (dayOfWeekCursor == 6) {
                 // Update Cursors
@@ -229,7 +264,6 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
                 dayOfWeek = (ConstraintLayout) weekOfMonth.getChildAt(dayOfWeekCursor);
             }
         }
-
     }
 
     public void clearCalendar() {

@@ -1,6 +1,7 @@
 package cs246.businesscalendar.view_presenter.daily_calendar;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -22,10 +23,12 @@ import org.joda.time.Minutes;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cs246.businesscalendar.R;
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 
 /**
  *  View for DailyCalendar Package
@@ -44,6 +47,10 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
      * A handle to the presenter for the DailyCalendar Package
      */
     private DailyCalendarPresenter presenter;
+    private List<ParcelableAppointment> parcelableAppointments;
+
+    // Request Codes
+    private static final int GENERAL_REQUEST_CODE = 0;
 
     /**
      * Creation Cycle of the DailyCalendar Activity
@@ -84,6 +91,9 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                 LocalDate.now().getMonthOfYear(),
                 LocalDate.now().getDayOfMonth());
         dateEdit.setText(today.toString("yyyy-MM-dd, EEEE"));
+
+        // Load Activity List
+        parcelableAppointments = getIntent().getParcelableArrayListExtra("appointments");
 
         // Retrieve Default Appointments
         updateCalendar(today, false);
@@ -126,6 +136,28 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
                 picker.show();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Check to see if user already signed in - If not, exit the activity
+        if (!presenter.isUserSignedIn()) {
+            finish();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Prepare Return Intent
+        Intent returnIntent = new Intent();
+        returnIntent.putParcelableArrayListExtra("appointments",
+                (ArrayList<ParcelableAppointment>) parcelableAppointments);
+        returnIntent.putExtra("code", GENERAL_REQUEST_CODE);
+        setResult(RESULT_OK, returnIntent);
     }
 
     public void showReturn() {
@@ -270,7 +302,10 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         display1224Time(is24HTime);
 
         // Retrieve and Add Daily Appointments
-        List<Appointment> dailyAppointments = presenter.retrieveAppointmentsByDay(updateDate);
+        List<Appointment> convertedAppointments =
+                presenter.convertParcelableAppointments(parcelableAppointments);
+        List<Appointment> dailyAppointments =
+                presenter.retrieveAppointmentsByDay(convertedAppointments, updateDate);
         displayAppointments(dailyAppointments);
     }
 }

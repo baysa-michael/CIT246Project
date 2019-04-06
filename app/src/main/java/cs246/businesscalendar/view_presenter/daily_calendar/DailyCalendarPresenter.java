@@ -1,11 +1,15 @@
 package cs246.businesscalendar.view_presenter.daily_calendar;
 
+import android.os.Parcelable;
+
 import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 import cs246.businesscalendar.utilities.TestItems;
 
 /**
@@ -20,12 +24,15 @@ import cs246.businesscalendar.utilities.TestItems;
  * @since 1.0
  */
 public class DailyCalendarPresenter implements DailyCalendarContract.Presenter {
-    public void handleClickReturn() {
+    private FirebaseAuthController authenticator;
 
+    DailyCalendarPresenter() {
+        authenticator = new FirebaseAuthController();
     }
 
-    public void handleClickAdd() {
-
+    @Override
+    public boolean isUserSignedIn() {
+        return authenticator.isUserSignedIn();
     }
 
     /**
@@ -38,12 +45,12 @@ public class DailyCalendarPresenter implements DailyCalendarContract.Presenter {
      * @param testDate LocalDate formatted date used to retrieve appointments on this date
      * @return Returns a List<Appointment> of appointments on a given day
      */
-    public List<Appointment> retrieveAppointmentsByDay(LocalDate testDate) {
+    @Override
+    public List<Appointment> retrieveAppointmentsByDay(List<Appointment> testAppointments,
+                                                       LocalDate testDate) {
         // Retrieve list of appointments for the day
         List<Appointment> dailyAppointments = new ArrayList<>();
 
-        //  *********** LINK TO REAL DATA WHEN READY ************
-        List<Appointment> testAppointments = TestItems.testAppointments();
         for(Appointment thisAppointment : testAppointments) {
             if (thisAppointment.getDate().equals(
                     testDate)) {
@@ -52,5 +59,17 @@ public class DailyCalendarPresenter implements DailyCalendarContract.Presenter {
         }
 
         return dailyAppointments;
+    }
+
+    @Override
+    public List<Appointment> convertParcelableAppointments(List<ParcelableAppointment> initialList) {
+        List<Appointment> convertedAppointments = new ArrayList<>();
+
+        // Convert each appointment
+        for (ParcelableAppointment input : initialList) {
+            convertedAppointments.add(ParcelableAppointment.fromParcelableAppointment(input));
+        }
+
+        return convertedAppointments;
     }
 }

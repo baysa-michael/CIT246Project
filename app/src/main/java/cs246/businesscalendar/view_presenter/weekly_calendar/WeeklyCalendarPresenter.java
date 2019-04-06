@@ -6,16 +6,21 @@ import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs246.businesscalendar.controller.authentication_controller.FirebaseAuthController;
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 import cs246.businesscalendar.utilities.TestItems;
 
 public class WeeklyCalendarPresenter implements WeeklyCalendarContract.Presenter {
-    public void handleClickReturn() {
+    private FirebaseAuthController authenticator;
 
+    WeeklyCalendarPresenter() {
+        authenticator = new FirebaseAuthController();
     }
 
-    public void handleClickAdd() {
-
+    @Override
+    public boolean isUserSignedIn() {
+        return authenticator.isUserSignedIn();
     }
 
     /**
@@ -28,7 +33,9 @@ public class WeeklyCalendarPresenter implements WeeklyCalendarContract.Presenter
      * @param testDate LocalDate formatted date used to retrieve appointments on this date
      * @return Returns a List<List<Appointment>> of appointments in a given week
      */
-    public List<List<Appointment>> retrieveAppointmentsByWeek(LocalDate testDate) {
+    @Override
+    public List<List<Appointment>> retrieveAppointmentsByWeek(List<Appointment> testAppointments,
+                                                              LocalDate testDate) {
         // Determine start of the week
         LocalDate startDate = determineStartOfWeek(testDate);
 
@@ -40,8 +47,6 @@ public class WeeklyCalendarPresenter implements WeeklyCalendarContract.Presenter
             weeklyAppointments.add(new ArrayList<Appointment>());
         }
 
-        //  *********** LINK TO REAL DATA WHEN READY ************
-        List<Appointment> testAppointments = TestItems.testAppointments();
         for(Appointment thisAppointment : testAppointments) {
             int daysBetween = Days.daysBetween(startDate, thisAppointment
                     .getDate()).getDays();
@@ -64,6 +69,7 @@ public class WeeklyCalendarPresenter implements WeeklyCalendarContract.Presenter
      * @param testDate Date to use when identifying start of week
      * @return LocalDate representing the start of the week
      */
+    @Override
     public LocalDate determineStartOfWeek(LocalDate testDate) {
         // Get day of week start based on test date
         // Should only return a 1 through 7
@@ -93,5 +99,17 @@ public class WeeklyCalendarPresenter implements WeeklyCalendarContract.Presenter
         }
 
         return returnDate;
+    }
+
+    @Override
+    public List<Appointment> convertParcelableAppointments(List<ParcelableAppointment> initialList) {
+        List<Appointment> convertedAppointments = new ArrayList<>();
+
+        // Convert each appointment
+        for (ParcelableAppointment input : initialList) {
+            convertedAppointments.add(ParcelableAppointment.fromParcelableAppointment(input));
+        }
+
+        return convertedAppointments;
     }
 }

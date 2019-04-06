@@ -5,6 +5,7 @@ import org.joda.time.LocalDate;
 import java.util.List;
 
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.ParcelableAppointment;
 
 /**
  *  Contract for DailyCalendar Package
@@ -27,8 +28,9 @@ interface DailyCalendarContract {
     }
 
     interface Presenter {
-        void handleClickReturn();
-        void handleClickAdd();
-        List<Appointment> retrieveAppointmentsByDay(LocalDate testDate);
+        boolean isUserSignedIn();
+        List<Appointment> retrieveAppointmentsByDay(List<Appointment> testAppointments,
+                                                    LocalDate testDate);
+        List<Appointment> convertParcelableAppointments(List<ParcelableAppointment> initialList);
     }
 }
