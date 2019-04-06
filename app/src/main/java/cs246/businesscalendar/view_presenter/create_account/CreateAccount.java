@@ -108,6 +108,9 @@ FirebaseAuthListenerInterface, FirestoreAddUserListenerInterface {
 
         // Add user to the authenticator and database
         presenter.createNewAccount(email, password);
+
+        // Finish Create New Account Activity
+        finish();
     }
 
     public void showCancel() {
@@ -166,9 +169,6 @@ FirebaseAuthListenerInterface, FirestoreAddUserListenerInterface {
         Intent thisIntent = new Intent(this, Landing.class);
 
         startActivity(thisIntent);
-
-        // Finish Create New Account Activity
-        finish();
     }
 
     @Override

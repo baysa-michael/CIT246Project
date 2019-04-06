@@ -1,5 +1,12 @@
 package cs246.businesscalendar.view_presenter.landing;
 
+import android.content.Context;
+
+import java.util.List;
+
+import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.UserData;
+
 interface LandingContract {
     interface View {
         void showSchedule();
@@ -16,12 +23,9 @@ interface LandingContract {
     interface Presenter {
         boolean isUserSignedIn();
         void signOutUser();
-        void handleClickSchedule();
-        void handleClickTasks();
-        void handleClickGoals();
-        void handleClickAddNew();
-        void handleClickSelectView();
-        void handleClickSearch();
-        void handleClickSettings();
-        void handleClickLogout();
-    }}
+        void getUserData();
+        void getUserAppointments();
+        void updateSharedPreferences(Context context, UserData loadedUser);
+        void saveAppointments(Context context, List<Appointment> userAppointments);
+    }
+}

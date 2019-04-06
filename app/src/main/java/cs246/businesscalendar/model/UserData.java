@@ -2,7 +2,6 @@ package cs246.businesscalendar.model;
 
 public class UserData {
     private String email;
-    private String hashedPassword;
     private String displayName;
     private String phone;
     private int timeZoneOffset;
@@ -10,7 +9,6 @@ public class UserData {
 
     public UserData() {
         this.email = "";
-        this.hashedPassword = "";
         this.displayName = "";
         this.phone = "";
         this.timeZoneOffset = 0;
@@ -18,13 +16,11 @@ public class UserData {
     }
 
     public UserData(String email,
-                    String hashedPassword,
                     String displayName,
                     String phone,
                     int timeZoneOffset,
                     boolean is24H) {
         this.email = email;
-        this.hashedPassword = hashedPassword;
         this.displayName = displayName;
         this.phone = phone;
         this.timeZoneOffset = timeZoneOffset;
@@ -37,14 +33,6 @@ public class UserData {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getHashedPassword() {
-        return hashedPassword;
-    }
-
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
     }
 
     public String getDisplayName() {
@@ -71,7 +59,7 @@ public class UserData {
         this.timeZoneOffset = defaultTimeZone;
     }
 
-    public boolean isIs24H() {
+    public boolean getIs24H() {
         return is24H;
     }
 

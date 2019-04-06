@@ -20,5 +20,5 @@ interface DatabaseInterface {
 
     void deleteUserAppointment(String userID, String appointmentHash);
 
-    void getUserAppointments(String userID, LocalDate startDate, LocalDate endDate);
+    void getUserAppointments(String userID);
 }

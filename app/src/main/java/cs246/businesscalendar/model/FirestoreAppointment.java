@@ -153,7 +153,7 @@ public class FirestoreAppointment {
         this.hash = hash;
     }
 
-    public FirestoreAppointment fromAppointment(Appointment baseAppointment) {
+    public static FirestoreAppointment fromAppointment(Appointment baseAppointment) {
         return new FirestoreAppointment(
                 baseAppointment.getDate().getYear(),
                 baseAppointment.getDate().getMonthOfYear(),
@@ -171,7 +171,7 @@ public class FirestoreAppointment {
         );
     }
 
-    public Appointment fromFirestoreAppointment(FirestoreAppointment baseAppointment) {
+    public static Appointment fromFirestoreAppointment(FirestoreAppointment baseAppointment) {
         return new Appointment(
                 new LocalDate(
                         baseAppointment.getYear(),

@@ -87,8 +87,14 @@
     <string name="add_button">Add</string>
 
 
-    <!-- SHARED PREFERENCE STRINGS -->
-    <string name="general_shared_preferences">cs246.businesscalendar.general_shared_preferences</string>
+    <!-- PERSISTENCE REFERENCE STRINGS -->
+    <string name="user_shared_preferences">cs246.businesscalendar.user_shared_preferences</string>
+    <string name="shared_preferences_email">email</string>
+    <string name="shared_preferences_displayName">display_name</string>
+    <string name="shared_preferences_phone">phone</string>
+    <string name="shared_preferences_time_zone_offset">time_zone_offset</string>
+    <string name="shared_preferences_is24H">is24H</string>
+    <string name="internal_storage_appointments_filename">appointments</string>
 
 
     <!-- STRING ARRAYS -->

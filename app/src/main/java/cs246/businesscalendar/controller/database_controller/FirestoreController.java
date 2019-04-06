@@ -8,13 +8,17 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-import org.joda.time.LocalDate;
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.FirestoreAppointment;
 import cs246.businesscalendar.model.UserData;
 
 public class FirestoreController implements DatabaseInterface {
@@ -152,26 +156,39 @@ public class FirestoreController implements DatabaseInterface {
     }
 
     @Override
-    public void getUserAppointments(String userID, LocalDate startDate,
-                                                 LocalDate endDate){
+    public void getUserAppointments(String userID){
+        // Set the target collection
         CollectionReference appointmentsCollection = database.collection("users")
                 .document(userID).collection("appointments");
 
-/*
-        appointmentsCollection.whereGreaterThanOrEqualTo()
-                // Note - Void is used when setting a document as nothing is returned
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        // Retrieve the Target Documents
+        appointmentsCollection.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            List<Appointment> downloadedAppointments = new ArrayList<>();
+                            if (task.getResult() != null) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    // Import document into a Firestore Appointment
+                                    FirestoreAppointment downloadFSA =
+                                            document.toObject(FirestoreAppointment.class);
+
+                                    // Translate to Appointment and Add to List
+                                    downloadedAppointments.add(FirestoreAppointment
+                                            .fromFirestoreAppointment(downloadFSA));
+                                }
+                            }
+
                             // Run the Success Tasks in the UI
-                            listener.onAddUserSuccess();
+                            ((FirestoreGetAppointmentsListenerInterface) listener)
+                                    .onGetAppointmentsSuccess(downloadedAppointments);
                         } else {
                             // Run the Failure Tasks in the UI
-                            listener.onAddUserFailure();
+                            ((FirestoreGetAppointmentsListenerInterface) listener)
+                                    .onGetAppointmentsFailure();
                         }
                     }
                 });
-*/
     }
 }

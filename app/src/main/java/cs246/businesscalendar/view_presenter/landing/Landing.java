@@ -11,26 +11,31 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cs246.businesscalendar.R;
 
 import cs246.businesscalendar.controller.database_controller.FirestoreAddUserListenerInterface;
+import cs246.businesscalendar.controller.database_controller.FirestoreGetAppointmentsListenerInterface;
+import cs246.businesscalendar.controller.database_controller.FirestoreGetUserListenerInterface;
 import cs246.businesscalendar.model.Appointment;
+import cs246.businesscalendar.model.UserData;
 import cs246.businesscalendar.utilities.TestItems;
 import cs246.businesscalendar.view_presenter.select_view.SelectView;
 import cs246.businesscalendar.view_presenter.add_new.AddNew;
 
 public class Landing extends AppCompatActivity implements LandingContract.View,
-        FirestoreAddUserListenerInterface {
+        FirestoreGetUserListenerInterface, FirestoreGetAppointmentsListenerInterface {
     private static final String TAG = "Landing";
     private LandingPresenter presenter;
-    private RecyclerView myRecycler;
     private RecyclerView.Adapter myAdapter;
-    private RecyclerView.LayoutManager myLayoutManager;
+    private ProgressBar indeterminateProgressBar;
+    private List<Appointment> appointments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,27 +110,22 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
         // Set Presenter
         presenter = new LandingPresenter(this);
 
-        // Obtain Display Name in Shared Preferences
-        SharedPreferences myPreferences = this.getSharedPreferences(
-                getString(R.string.general_shared_preferences), Context.MODE_PRIVATE);
-        String welcome = "Welcome " + myPreferences.getString("display_name", "");
+        // Initialize the Appointment List
+        appointments = new ArrayList<>();
 
-        // Include Display Name with Welcome
-        TextView welcomeText = findViewById(R.id.landingTitle);
-        welcomeText.setText(welcome);
-
-        // SET UP TEST LIST OF APPOINTMENTS ************* TO REMOVE *************************
-        List<Appointment> testAppointments = TestItems.testAppointments();
-
-        // Set Recycler View with Layout Manager and Adapter
-        myRecycler = findViewById(R.id.landingRecyclerView);
+        // Set Recycler View with Layout Manager
+        RecyclerView myRecycler = findViewById(R.id.landingRecyclerView);
         myRecycler.setHasFixedSize(true);
         myRecycler.addItemDecoration(new DividerItemDecoration(myRecycler.getContext(),
                 DividerItemDecoration.VERTICAL));
-        myLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager myLayoutManager = new LinearLayoutManager(this);
         myRecycler.setLayoutManager(myLayoutManager);
-        myAdapter = new LandingRecyclerViewAdapter(this, testAppointments);
+        myAdapter = new LandingRecyclerViewAdapter(this, appointments);
         myRecycler.setAdapter(myAdapter);
+
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar = findViewById(R.id.landingIndeterminateProgress);
+        indeterminateProgressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -136,8 +136,11 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
         if (!presenter.isUserSignedIn()) {
             finish();
         } else {
-            // Load User Data Into Shared Preferences
+            // Start Indeterminate Progress Bar
+            indeterminateProgressBar.setVisibility(View.VISIBLE);
 
+            // Load User Data Into Shared Preferences
+            presenter.getUserData();
         }
     }
     public void showSchedule() {
@@ -187,13 +190,52 @@ public class Landing extends AppCompatActivity implements LandingContract.View,
     }
 
     @Override
-    public void onAddUserSuccess() {
+    public void onGetUserSuccess(UserData loadedUser) {
+        presenter.updateSharedPreferences(this, loadedUser);
 
+        // Update Welcome for User
+        String welcome = "Welcome " + loadedUser.getDisplayName();
+        TextView welcomeText = findViewById(R.id.landingTitle);
+        welcomeText.setText(welcome);
+
+        // Load User Appointments
+        presenter.getUserAppointments();
     }
 
     @Override
-    public void onAddUserFailure() {
+    public void onGetUserFailure() {
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar.setVisibility(View.GONE);
 
+        // Inform the User
+        informUser("WARNING:  Error Retrieving User Information");
+    }
+
+    @Override
+    public void onGetAppointmentsSuccess(List<Appointment> downloadedAppointments) {
+        // Clear any old data in the appointments
+        appointments.clear();
+
+        // Load the new appointments
+        appointments.addAll(downloadedAppointments);
+
+        // Notify the adapter
+        myAdapter.notifyDataSetChanged();
+
+        // Save the list data to an internal file
+        presenter.saveAppointments(this, downloadedAppointments);
+
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onGetAppointmentsFailure() {
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar.setVisibility(View.GONE);
+
+        // Inform the User
+        informUser("WARNING:  Error Retrieving User Appintments");
     }
 
     @Override
