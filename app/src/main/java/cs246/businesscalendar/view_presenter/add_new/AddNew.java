@@ -111,9 +111,6 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
     @Override
     public void showAddNewAppointment() {
         moveToNextActivity(ModifyAppointment.class);
-        Intent thisIntent = new Intent(this, ModifyAppointment.class);
-
-        startActivity(thisIntent);
     }
 
     @Override
@@ -160,7 +157,6 @@ public class AddNew extends AppCompatActivity implements AddNewContract.View {
         Intent thisIntent = new Intent(this, activityClass);
         thisIntent.putParcelableArrayListExtra("appointments",
                 (ArrayList<ParcelableAppointment>) parcelableAppointments);
-        thisIntent.putExtra("hash", "None");
         startActivityForResult(thisIntent, GENERAL_REQUEST_CODE);
     }
 

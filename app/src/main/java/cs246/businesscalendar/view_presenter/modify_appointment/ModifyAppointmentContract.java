@@ -4,6 +4,7 @@ interface ModifyAppointmentContract {
     interface View {
         void showConfirm();
         void showCancel();
+        void informUser(String message);
     }
 
     interface Presenter {
