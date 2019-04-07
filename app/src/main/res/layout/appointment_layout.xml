@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/appointmentlayoutTitle"
-        android:textSize="@dimen/small_label_text"
+        android:textSize="@dimen/label_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_margin"
@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/appointmentlayoutDescription"
-        android:textSize="@dimen/description_text"
+        android:textSize="@dimen/medium_label_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"

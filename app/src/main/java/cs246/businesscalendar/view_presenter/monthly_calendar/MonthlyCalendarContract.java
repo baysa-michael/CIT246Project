@@ -13,6 +13,7 @@ interface MonthlyCalendarContract {
     interface View {
         void showReturn();
         void showAdd();
+        void informUser(String message);
     }
 
     interface Presenter {

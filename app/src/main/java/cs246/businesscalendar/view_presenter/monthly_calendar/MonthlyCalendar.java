@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
@@ -147,7 +149,7 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
     }
 
     public void showAdd() {
-        finish();
+        informUser("NOTE:  Function not yet implemented - Please add appointments through the Add New Appointment view");
     }
 
     public void updateCalendar(LocalDate testDate) {
@@ -280,5 +282,13 @@ public class MonthlyCalendar extends AppCompatActivity implements MonthlyCalenda
                 ((ConstraintLayout) weekOfMonth.getChildAt(j)).removeAllViews();
             }
         }
+    }
+
+    @Override
+    public void informUser(String message) {
+        int duration = Toast.LENGTH_SHORT;
+        Toast toastSuccessful = Toast.makeText(this, message, duration);
+        toastSuccessful.setGravity(Gravity.CENTER, 0, 0);
+        toastSuccessful.show();
     }
 }

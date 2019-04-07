@@ -14,6 +14,7 @@ interface WeeklyCalendarContract {
         void display1224Time(boolean is24HTime);
         void displayAppointments(List<List<Appointment>> weeklyAppointments, LocalDate startDate);
         void updateCalendar(LocalDate updateDate, boolean is24HTime);
+        void informUser(String message);
     }
 
     interface Presenter {

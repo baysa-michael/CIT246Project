@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -165,8 +167,7 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
     }
 
     public void showAdd() {
-        // ************************* NEED TO IMPLEMENT CODE TO LINK TO MODIFY APPOINTMENT *********
-        finish();
+        informUser("NOTE:  Function not yet implemented - Please add appointments through the Add New Appointment view");
     }
 
     /**
@@ -307,5 +308,13 @@ public class DailyCalendar extends AppCompatActivity implements DailyCalendarCon
         List<Appointment> dailyAppointments =
                 presenter.retrieveAppointmentsByDay(convertedAppointments, updateDate);
         displayAppointments(dailyAppointments);
+    }
+
+    @Override
+    public void informUser(String message) {
+        int duration = Toast.LENGTH_SHORT;
+        Toast toastSuccessful = Toast.makeText(this, message, duration);
+        toastSuccessful.setGravity(Gravity.CENTER, 0, 0);
+        toastSuccessful.show();
     }
 }
